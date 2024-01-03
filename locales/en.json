@@ -1,0 +1,1238 @@
+{
+  "labels": {
+    "loading": "Loading...",
+    "email": "E-mail",
+    "name": "Name",
+    "password": "Password",
+    "password-1": "Enter the current password",
+    "newPassword": "Enter a new password",
+    "examinationPassword": "Repeat new password",
+    "language": "Profile Language",
+    "phone": "Telephone",
+    "contacts": "Other contacts",
+    "wallet": "Wallet",
+    "wallet-number": "Wallet number",
+    "verification-code": "Verification code",
+    "notification-success": "Done",
+    "notification-error": "Error",
+    "notification-massage": "A letter has been sent to your mail",
+    "notification-success-changed-email": "Mail changed successfully",
+    "notification-activated-error-massage": "Account activation error contact support",
+    "notification-activated-success-massage": "Account successfully activated",
+    "select-new-project": "Create new project",
+    "agreement": {
+      "i-accept": "i accept",
+      "user-agreement": "user agreement",
+      "privacy-policy": "privacy policy",
+      "and": "and"
+    },
+    "registration": "Registration",
+    "login": "Login",
+    "phone-number": "Phone number",
+    "enable-download-protection-1": "Enable download",
+    "true-enable-download-protection-1": "Download Protection",
+    "enable-download-protection-2": "protection",
+    "true-enable-download-protection-2": "Enable",
+    "enable-branding-1": "Enable",
+    "enable-branding-2": "branding",
+    "true-enable-branding-1": "Branding",
+    "true-enable-branding-2": "Enable",
+    "switch-language": "Switch language",
+    "hours": "hours",
+    "confirm-activation": "Confirm activation and charge for",
+    "cancel": "Cancel",
+    "apply": "Apply",
+    "remind-me-later": "Remind me later",
+    "get-bonus": "Get bonus",
+    "save": "Save",
+    "saved": "Save",
+    "google": "Sign in with Google",
+    "vkontakte": "Sign in with VKontakte",
+    "yandex": "Sign in with Yandex"
+  },
+  "errors": {
+    "required-to-fill": "Required to fill",
+    "invalid-number": "Invalid number",
+    "invalid-email": "Invalid Email",
+    "invalid-date": "Invalid date or time. Set the conference time to 1 hour in advance",
+    "invalid-phone-number": "Invalid phone number",
+    "agreement-error": "You must accept the User Agreement and Privacy Policy!",
+    "401-title": "Authorization error",
+    "401-error": "Wrong username or password",
+    "403-error": "You need to Login",
+    "something": "Something went wrong"
+  },
+  "loginPage": {
+    "title": "Login",
+    "not-registered-yet": "Not registered yet?",
+    "go-to-the-registration-page": "Go to the registration page",
+    "forgot-password": "Forgot your password?",
+    "go-to-the-password-recovery-page": "Go to the password recovery page"
+  },
+  "conferencePage": {
+    "message-1": "The conference has not started yet",
+    "message-2": "The conference is over",
+    "message-3": "You don't have access"
+  },
+  "registrationPage": {
+    "title": "Registration",
+    "bonusTitle": "Registration bonus",
+    "bonusText1": "Upon registration, you receive a bonus balance for 30 days to test our platform.",
+    "bonusText2": "This budget is enough to conduct a 2-hour online broadcast for 15 viewers or to show a 2-hour uploaded video to 15 viewers.",
+    "already-registered": "Already registered?",
+    "go-to-the-login-page": "Go to the login page",
+    "register": "Register",
+    "notification-title": "Registration error",
+    "notification-success": "You have successfully registered",
+    "notification-message": "User with this email is already registered"
+  },
+  "recoveryPage": {
+    "title": "Password recovery"
+  },
+  "menuLinks": {
+    "project-settings": "Project Settings",
+    "video-files": "Videos",
+    "online-broadcasts": "Live",
+    "playlists": "Playlists",
+    "password-access": "Password access",
+    "paid-access": "Paid access",
+    "data-collection": "Collection",
+    "statistics": "Statistics",
+    "resource-usage": "Resource usage",
+    "sales": "Sales",
+    "finance": "Finance",
+    "support": "Support",
+    "account-management": "Account management",
+    "users": "Users",
+    "activity": "Activity",
+    "profile-settings": "Profile settings",
+    "top-up-balance": "Top up balance",
+    "documentation": "Documentation",
+    "partner-program": "Partner program",
+    "exit": "Exit",
+    "materials": "Materials",
+    "conferences": "Videoconferencing"
+  },
+  "profile-settings": {
+    "tabs": {
+      "label-1": "Account",
+      "label-2": "Change Password",
+      "label-3": "Notifications"
+    },
+    "tab-1": {
+      "heading": "Account information",
+      "form": {
+        "label-1": "E-mail:",
+        "label-2": "Name:",
+        "label-3": "Profile Language:",
+        "label-4": "Telephone:",
+        "label-5": "Other contacts:"
+      },
+      "notification": "You have been sent a link with a new email confirmation on"
+    },
+    "tab-2": {
+      "heading": "Change Password",
+      "form": {
+        "label-1": "Enter the current password",
+        "label-2": "Enter a new password",
+        "label-3": "Repeat new password"
+      },
+      "notification-massage-error": "Wrong password specified",
+      "message-rules-1": "The password must be at least 6 characters, maximum 255",
+      "message-rules-2": "The password does not comply with the rules",
+      "message-rules-3": "Invalid password",
+      "save": "Save",
+      "reset": "Reset"
+    },
+    "tab-3": {
+      "heading": "Email notifications",
+      "email": "Email for notifications:",
+      "checkbox-1": "When the balance is less than:",
+      "checkbox-2": "Duplicate notifications to the email address of the account: ",
+      "checkbox-3": "After processing the uploaded video file",
+      "checkbox-4": "If an error occurs while processing the video file",
+      "checkbox-5": "When the video file was purchased",
+      "checkbox-6": "About incorrect live streaming settings",
+      "checkbox-7": "When the camera is not available",
+      "checkbox-8": "When online streaming is disabled due to low bitrate",
+      "checkbox-9": "When there is no recording online broadcast",
+      "checkbox-10": "Receive the Boomstream Newsletter",
+      "text": "Notifications are now sent by email:"
+    }
+  },
+  "create-project": {
+    "heading": "It’s time to create your first project on Boomstream platform",
+    "title": "Done",
+    "text": "Project created",
+    "btn": "Create",
+    "card-1": {
+      "heading": "Create Empty Project",
+      "headline": "You create new project for:",
+      "text-1": "Uploading video files",
+      "text-2": "Creating live broadcasting",
+      "text-3": "Applying pay per view system"
+    },
+    "card-2": {
+      "heading": "Create Test Project",
+      "headline": "You create project for getting acquainted with Boomstream service:",
+      "text-1": "There will be uploaded demo video in Videos section",
+      "text-2": "There will be created test stream in Live section"
+    },
+    "card-3": {
+      "heading": "Create Subscription Test Project",
+      "headline": "You create test project for getting acquainted with Boomstream service and PPV system:",
+      "text-1": "There will be uploaded demo video in Videos section",
+      "text-2": "There will be created test stream in Live section",
+      "text-3": "There will be created two Password subscriptions: for demo video and for test stream"
+    }
+  },
+  "new-project": {
+    "heading": "New Project",
+    "headline": "Write the name of the project",
+    "btn-1": "Create",
+    "btn-2": "Cancel",
+    "input-error": "Write the name of the project",
+    "success": "A new project has been created:",
+    "error": "A new project has not been created"
+  },
+  "statistic": {
+    "timesSpaceMs": "Occupied disk space",
+    "playtimeMs": "Consumed traffic in 30 days",
+    "balance": "Account balance"
+  },
+  "brand": {
+    "heading": "Branding activation",
+    "headline": "This option includes:",
+    "text-1": "Your logo in player;",
+    "text-2": "Your logo in subscription;",
+    "text-3": "Your logo in letter;",
+    "text-4": "Possibility to change text of letter's heading;",
+    "text-5": "branding.player-domain-parking;",
+    "text-6": "Connect Google Analytics, Facebook Pixel or Yandex.Metrika counter to your player;",
+    "text-7": "Connect your SMTP gateway, so customers will receive letters with your mail address instead of no-reply",
+    "text-7-1": "boomstream.com;",
+    "text-8": "Connect PayPal account to start monetizing your video content.",
+    "text-9": "Cost of \"Branding option\" is - ",
+    "text-10": "Renewal for the next month is carried out on the date the option is activated. Your manager will definitely contact you to agree and extend the service for the next month.",
+    "text-span": "per month.",
+    "accept": "Confirm activation and charge for",
+    "cancel": "Cancel",
+    "notification-title": "Done",
+    "notification-massage": "Branding is enabled"
+  },
+  "protection": {
+    "heading": "Video Download Protection activation",
+    "text-1": "To protect video courses and lessons from downloading, we encrypt information before delivery to the viewer using Clear Key DRM technology. As a result, downloaders and browser extensions either do not see the file or download an encrypted version. Playback of content is possible only through our player, since access is opened with an individual key created for the viewer. The key is transferred automatically, the user does not need to enter anything.",
+    "text-2": "If the \"Download protection\" option is active, you can enable the display of dynamic watermarks during browsing. Every 8 seconds, a watermark will appear in a random place on the screen, which contains the name, ip address of the device and the email of the viewer. The mark is translucent and does not interfere with reproduction. To enable the watermark, you should use password, payment or registration form access restriction.",
+    "text-3": "Cost of \"Download protection\" is -",
+    "text-4": "Renewal for the next month is carried out on the date the option is activated. Your manager will definitely contact you to agree and extend the service for the next month.",
+    "text-span": "per month",
+    "accept": "Confirm activation and charge for",
+    "notification-massage": "Video download protection is enabled"
+  },
+  "bonus": {
+    "text-1": "We will credit",
+    "text-2": "as a bonus to your account if you replenish the balance within",
+    "text-3": "23 hours",
+    "text-4": "after registration!",
+    "link": "Get bonus"
+  },
+  "complete-registration": {
+    "heading":  "Complete registration",
+    "email": {
+      "label": "Email",
+      "validation": "Please input email address"
+    },
+    "phone":  {
+      "label": "Phone",
+      "validation-1": "Please input phone",
+      "validation-2": "Please input correct phone: +000 000 00 00"
+    },
+    "btn-success": "Done",
+    "btn-close": "Remind later",
+    "message": "Thank you! Data updated"
+  },
+  "video": {
+    "title": "Videos",
+    "buttons": {
+      "btn-1": "Upload video",
+      "btn-2": "Create folder",
+      "btn-3": "Add in ...",
+      "btn-4": "Add to playlist",
+      "btn-5": "Limit access",
+      "btn-6": "Add to live stream",
+      "btn-7": "Delete",
+      "btn-8": "Add"
+    },
+    "sorting": {
+      "title-1": "Sort",
+      "title-2": "Name",
+      "title-3": "Type",
+      "title-4": "Date",
+      "text-1": "From A to Z",
+      "text-2": "From Z to A",
+      "text-3": "From old to new",
+      "text-4": "From new to old"
+    },
+    "table": {
+      "label-1": "Name",
+      "label-2": "Code",
+      "label-3": "Quality",
+      "label-4": "Time",
+      "label-5": "Creation date",
+      "text-1": "It`s empty in here",
+      "text-2": "Start by uploading a video"
+    },
+    "tooltips": {
+      "label-1": "Playlists:",
+      "label-2": "Password access:",
+      "label-3": "Live:",
+      "label-4": "Collection:",
+      "label-5": "Paid access:",
+      "label-6": "Videoconferencing:"
+    },
+    "status": {
+      "title": "Statuses",
+      "label": "Quality",
+      "text-1": "file processing",
+      "text-2": "file is ready for streaming",
+      "text-3": "file processing is interrupted with an error",
+      "text-4": " file is not available as the original has insufficient resolution"
+    },
+    "ElMessageBox": {
+      "title-1": "Create folder",
+      "placeholder": "Enter name",
+      "btn-1": "Create",
+      "btn-2": "Cancel",
+      "message-1": "You have created a folder:",
+      "message-2": "Creation canceled",
+      "message-3": "File deleted",
+      "message-4": "Video added"
+    }
+  },
+  "conferences": {
+    "heading": "Videoconferencing",
+    "label": {
+      "name": "Name",
+      "code": "Code",
+      "status": "Status",
+      "recording": "Recordings",
+      "viewers": "Viewers online",
+      "date": "Creation date",
+      "text-1": "It`s empty in here",
+      "text-2": "Start by creating a video conference"
+    } ,
+    "buttons": {
+      "open": "Open",
+      "rename": "Rename",
+      "move": "Move",
+      "moveRoot": "Move to root",
+      "create-btn": "Create",
+      "add": "Add new event",
+      "create": "Create folder",
+      "clear": "Clear selection",
+      "addIn": "Add in ...",
+      "playlist": "Add to playlist",
+      "limit": "Limit access",
+      "addLS": "Add to live stream",
+      "delete": "Delete"
+    },
+    "tooltips": {
+      "playlist": "Playlists:",
+      "password": "Password access:",
+      "broadcast": "Live:",
+      "data": "Collection:",
+      "paid": "Paid access:"
+    },
+    "sorting": {
+      "title-1": "Sort",
+      "title-2": "Name",
+      "title-3": "Type",
+      "title-4": "Date",
+      "text-1": "From A to Z",
+      "text-2": "From Z to A",
+      "text-3": "From old to new",
+      "text-4": "From new to old"
+    },
+    "ElMessageBox": {
+      "title-1": "Create videoconference",
+      "title-2": "Create folder",
+      "title-3": "Rename",
+      "label-1": "Enter name",
+      "label-2": "Conference start date and time",
+      "label-3": "Your time zone",
+      "label-4": "Conference time",
+      "label-5": "Lobby",
+      "btn-1": "Create",
+      "btn-2": "Cancel",
+      "btn-3": "Save",
+      "message-1": "You have created a videoconference:",
+      "message-2": "You have created a folder:",
+      "message-3": "Deleted",
+      "message-4": "File moved"
+    }
+  },
+  "media": {
+    "btn-1": "Open completely",
+    "btn-2": "Rename",
+    "dialog": {
+      "title": "Enter a new name",
+      "btn-1": "Cancel",
+      "btn-2": "Save"
+    },
+    "tabs": {
+      "label-1": "Information",
+      "label-2": "Publishing player",
+      "label-3": "Settings",
+      "label-4": "Chat",
+      "label-5": "Restreaming",
+      "label-6": "Limit access",
+      "label-7": "Participants",
+      "label-8": "Records",
+      "info": {
+        "label-1": "Media content code:",
+        "label-2": "Date of creation:",
+        "label-3": "Record status:",
+        "tooltip-1": "Copy",
+        "tooltip-2": "Reference",
+        "btn-1": "The recording of the broadcast has begun",
+        "btn-2": "Start recording the broadcast",
+        "message": "The code is copied"
+      },
+      "player": {
+        "tabs": {
+          "label-1": "Direct link",
+          "label-2": "Static",
+          "label-3": "Adaptive",
+          "label-4": "Pop-up",
+          "label-5": "Page",
+          "form": {
+            "label-1": "Autostart video",
+            "label-2": "Hide name",
+            "label-3": "Prohibit rewinding",
+            "label-4": "Volume:",
+            "label-5": "Start at",
+            "label-6": "Embed code:",
+            "label-7": "Player Size:",
+            "placeholder": "Choose a time",
+            "content": "Copy",
+            "link": "Make page settings"
+          }
+        },
+        "message": "The code is copied"
+      },
+      "settings": {
+        "form": {
+          "label-1": "Media name:",
+          "label-2": "Description:",
+          "label-3": "Media start date and time:",
+          "label-4": "Your time zone",
+          "label-5": "Auto recording when connecting",
+          "label-6": "Display recordings after media completion",
+          "label-7": "Saving new video files:",
+          "placeholder-1": "The specified description will appear on the registration page of your event",
+          "placeholder-2": "Select the date and time",
+          "tooltip-1": "Please specify your time zone",
+          "tooltip-2": "for the correct display of the time",
+          "tooltip-3": "before the start of the broadcast.",
+          "radio-1": "In the root project",
+          "radio-2": "In a folder",
+          "message": "Please input Activity name"
+        }
+      },
+      "chat": {
+        "form": {
+          "label-1": "Enable chat",
+          "label-2": "Administrator name:",
+          "label-3": "Remember name for authorized user",
+          "label-4": "Display a list of users in chat",
+          "label-5": "Number of recent messages from history:",
+          "label-6": "Message before chat:",
+          "placeholder": "Chat search ..."
+        },
+        "table": {
+          "label-1": "Name",
+          "label-2": "Message",
+          "label-3": "Time"
+        }
+      },
+      "restreaming": {
+        "title": "New server",
+        "label-1": "Server address",
+        "label-2": "Broadcast Key",
+        "label-3": "Login",
+        "label-4": "Password",
+        "label-5": "Enable",
+        "btn-1": "Add new server",
+        "btn-2": "Remove",
+        "btn-3": "Add",
+        "message-1": "Please input Activity address",
+        "message-2": "Please input Activity key",
+        "message-3": "Please input Activity login",
+        "message-4": "Please input Activity password",
+        "message-5": "Server deleted"
+      },
+      "participants": {
+        "placeholder": "Search ...",
+        "label-1": "Name",
+        "label-2": "Registration date"
+      },
+      "records": {
+        "table": {
+          "label-1": "Name",
+          "label-2": "Media Code",
+          "label-3": "Quality",
+          "label-4": "Time",
+          "label-5": "Date of creation",
+          "empty": {
+            "text-1": "It`s empty in here",
+            "text-2": "Start by adding a video"
+          }
+        },
+        "btn-1": "Add video",
+        "btn-2": "Remove",
+        "message": "Video deleted"
+      }
+    },
+    "message": "Please input Activity name"
+  },
+  "alerts": {
+    "titles": {
+      "email": "Подтвердите ваш электронный адрес!",
+      "balance": "Подтвердите ваш электронный адрес!"
+    },
+    "body": {
+      "email": "Ссылка для подтверждения отправлена на электронный адрес",
+      "balance-1": "Сумма на вашем счету менее ",
+      "balance-1-2": "Пожалуйста, не забудьте своевременно пополнить баланс.",
+      "balance-2": "Средства на вашем счету закончились, поэтому создание новых видео невозможно. Существующие файлы будут удалены "
+    },
+    "btns": {
+      "email": "Отправить повторно",
+      "balance": "Пополнить баланс"
+    }
+  },
+  "projectSettings": {
+    "heading": "Project Settings",
+    "popover": "Rename the project",
+    "upload": {
+      "title-1": "Drop file here or",
+      "title-2": "click to upload",
+      "text": ".jpeg/jpg/png/svg/webp files with a size less than 10Mb",
+      "error": "The file exceeds the download size"
+    },
+    "modal": {
+      "title": "Enter a new project name",
+      "btn-1": "Rename",
+      "btn-2": "Cancel",
+      "warning": "Enter at least 1 character",
+      "name": "Project Name:",
+      "info": "You canceled the renaming of the project"
+    },
+    "tabs": {
+      "tab-1": "Basic",
+      "tab-2": "Integration",
+      "tab-3": "Protection",
+      "tab-4": "Geotargeting",
+      "tab-5": "Player Settings",
+      "tab-6": "Pages",
+      "tab-7": "Branding",
+      "tab-8": "Webhooks"
+    },
+    "basic": {
+      "title": "Qualities",
+      "table": {
+        "header-1": "Name",
+        "header-2": "Frame size",
+        "header-3": "Encoding options",
+        "header-4": "Channels number",
+        "header-5": "Copy stream",
+        "text-1": "Auto, in proportion to the quality of video",
+        "text-2": "Stereo",
+        "text-3": "No"
+      },
+      "card": {
+        "heading": "Delete project",
+        "text": "Deleting a project will delete all video files contained in this project!",
+        "label": "I understand the gravity of this action",
+        "btn": "Delete",
+        "notification": "Project removed"
+      }
+    },
+    "integration": {
+      "heading-1": "Additional API keys",
+      "heading-2": "File Upload form",
+      "heading-3": "Broadcast widget",
+      "heading-4": "Integration with CMS",
+      "heading-5": "Project code",
+      "form": {
+        "label-1": "Api key",
+        "label-2": "Stream key",
+        "label-3": "Add Api Key",
+        "label-4": "Add Upload button to the Embed",
+        "label-5": "Add Uploading by link to the Embed",
+        "label-6": "Embed",
+        "label-7": "Start auto broadcasting",
+        "label-8": "Enable notifications of Timepad integration",
+        "label-9": "TUS upload link to the root of Videos",
+        "label-10": "API key upload",
+        "text-1": "If you have IP address protection enabled, changing the API key will invalidate all previously created links!",
+        "text-2": "When the function is active, the \"Start Broadcast\" button is not displayed. Broadcasting starts automatically after opening the page with an iframe.",
+        "text-3": "When placing the code, you need to replace the [CODE] tag with your broadcast code.",
+        "text-4": "If you have several events in Timepad, and only one is integrated with Boomstream, we will send error messages about registrations on another events. You can turn off these notifications here.",
+        "text-5": "Api key with rights to upload files only.",
+        "btn-1": "New",
+        "btn-2": "Add",
+        "placeholder": "Create api key for file uploading"
+      },
+      "optionsApiKey": {
+        "label-1": "For reading",
+        "label-2": "For the record",
+        "label-3": "To download"
+      },
+      "table": {
+        "label-1": "Type",
+        "label-2": "Api key",
+        "label-3": "Date of creation",
+        "label-4": "Name",
+        "btn": "Remove"
+      },
+      "card": {
+        "title": "Notice",
+        "text": "Use this API key to interact with your Boomstream project. Our API documentation can be found",
+        "link": "here"
+      },
+      "ElMessage": {
+        "add": "Api Key added",
+        "deleted": "Api Key removed"
+      }
+    },
+    "protection": {
+      "form": {
+        "label-1": "Enable the feature to get direct links to video transcodes",
+        "label-2": "Download protection",
+        "label-3": "Protection from restreaming",
+        "label-4": "Protection by domain name",
+        "label-5": "Protection by IP",
+        "label-6": "Protection by time",
+        "label-7": "Match User-Agent to allow access skipping domain protection bellow",
+        "label-8": "Match User-Agent to deny access",
+        "label-9": "Protection is disabled",
+        "label-10": "Restrict video playback if viewer's referrer is empty",
+        "label-11": "Link lifetime (hour):",
+        "label-12": "Activate download protection",
+        "text-1": "Video protection costs",
+        "text-1-1": "per month for one project.",
+        "text-2": "You can upload as many videos as you like to one project.",
+        "text-3": "One entry per line. You can use a part of User-Agent to match result.",
+        "text-4": "Here you specify the domains for which video files are allowed to be played.",
+        "text-4-1": "Domain names must be specified without the http prefix://",
+        "text-4-2": "Specify only top-level domains.",
+        "text-4-3": "All subdomains will work automatically.",
+        "text-4-4": "Specify one domain per line.",
+        "text-5": "This option is based upon verifying a signature appended to your embed code that is generated using a secret signing key. So that a particular embed code is only valid for a unique viewer, ensuring that the embed code cannot be reused.",
+        "text-5-1": "Notice: it’s not enough only to enable this option, you should generate secret signing key on your server side.",
+        "text-6": "More info",
+        "text-6-1": "here",
+        "validator": "Please enter correct details"
+      },
+      "card": {
+        "title": "Developer Documentation",
+        "text": "You can find more information about video protection on our",
+        "link": "website"
+      }
+    },
+    "geotargeting": {
+      "form": {
+        "label-1": "Targeting enabled",
+        "label-2": "Show if country not detect",
+        "label-3": "Continents and countries"
+      },
+      "countries": {
+        "Nor": "North America",
+        "US": "United States",
+        "BM": "Bermuda",
+        "GL": "Greenland",
+        "JM": "Jamaica",
+        "NI": "Nicaragua",
+        "CU": "Cuba",
+        "HN": "Honduras",
+        "MS": "Montserrat",
+        "BB": "Barbados",
+        "AN": "Netherlands Antilles",
+        "MP": "Northern Mariana Islands",
+        "KN": "Saint Kitts and Nevis",
+        "BZ": "Belize",
+        "DM": "Dominica",
+        "KY": "Cayman Islands",
+        "AW": "Aruba",
+        "PR": "Puerto Rico",
+        "AG": "Antigua and Barbuda",
+        "UM": "United States minor outlying islands",
+        "MQ": "Martinique",
+        "MX": "Mexico",
+        "VG": "Virgin Islands, British",
+        "CR": "Costa Rica",
+        "SV": "El Salvador",
+        "LC": "Saint Lucia",
+        "TC": "Turks and Caicos Islands",
+        "GD": "Grenada",
+        "VC": "Saint Vincent and the Grenadines",
+        "AI": "Anguilla",
+        "BS": "Bahamas",
+        "VI": "Virgin Islands, U.S.",
+        "TT": "Trinidad and Tobago",
+        "GP": "Guadeloupe",
+        "GT": "Guatemala",
+        "PA": "Panama",
+        "PM": "Saint Pierre and Miquelon",
+        "HT": "Haiti",
+        "CA": "Canada",
+        "DO": "Dominican Republic",
+        "BV": "Bouvet Island",
+        "FO": "Faroe Islands",
+
+        "Sou": "South America",
+        "PE": "Peru",
+        "FK": "Falkland Islands",
+        "BO": "Bolivia",
+        "PY": "Paraguay",
+        "CL": "Chile",
+        "GY": "Guyana",
+        "UY": "Uruguay",
+        "CO": "Colombia",
+        "GF": "French Guiana",
+        "SR": "Suriname",
+        "EC": "Ecuador",
+        "BR": "Brazil",
+        "AR": "Argentina",
+        "VE": "Venezuela",
+
+        "Afr": "Africa",
+        "CV": "Cape Verde",
+        "CI": "Cote d'Ivoire",
+        "RW": "Rwanda",
+        "ER": "Eritrea",
+        "LS": "Lesotho",
+        "NE": "Niger",
+        "LR": "Liberia",
+        "ST": "Sao Tome and Principe",
+        "DJ": "Djibouti",
+        "SN": "Senegal",
+        "CM": "Cameroon",
+        "SD": "Sudan",
+        "DZ": "Algeria",
+        "UG": "Uganda",
+        "KM": "Comoros",
+        "ZW": "Zimbabwe",
+        "GA": "Gabon",
+        "EH": "Western Sahara",
+        "ZM": "Zambia",
+        "BI": "Burundi",
+        "SO": "Somalia",
+        "TG": "Togo",
+        "SZ": "Swaziland",
+        "TN": "Tunisia",
+        "SL": "Sierra Leone",
+        "GH": "Ghana",
+        "EG": "Egypt",
+        "GW": "Guinea-Bissau",
+        "MG": "Madagascar",
+        "AO": "Angola",
+        "GM": "Gambia",
+        "KE": "Kenya",
+        "NA": "Namibia",
+        "ZA": "South Africa",
+        "LY": "Libya",
+        "BW": "Botswana",
+        "ML": "Mali",
+        "RE": "Reunion",
+        "SH": "Saint Helena",
+        "ET": "Ethiopia",
+        "YT": "Mayotte",
+        "GN": "Guinea",
+        "GQ": "Equatorial Guinea",
+        "TZ": "Tanzania",
+        "BF": "Burkina Faso",
+        "TD": "Chad",
+        "CD": "Congo, Democratic Republic of the",
+        "MU": "Mauritius",
+        "MZ": "Mozambique",
+        "BJ": "Benin",
+        "MA": "Morocco",
+        "MR": "Mauritania",
+        "MW": "Malawi",
+        "SC": "Seychelles",
+        "CF": "Central African Republic",
+        "CG": "Congo",
+        "NG": "Nigeria",
+
+        "Eur": "Europe",
+        "NL": "Netherlands",
+        "IM": "Isle of Man",
+        "LV": "Latvia",
+        "BE": "Belgium",
+        "JE": "Jersey",
+        "LU": "Luxembourg",
+        "PL": "Poland",
+        "FR": "France",
+        "CZ": "Czech Republic",
+        "GR": "Greece",
+        "GG": "Guernsey",
+        "SK": "Slovakia",
+        "CH": "Switzerland",
+        "PT": "Portugal",
+        "ME": "Montenegro",
+        "SJ": "Svalbard and Jan Mayen",
+        "RO": "Romania",
+        "HR": "Croatia",
+        "ES": "Spain",
+        "SI": "Slovenia",
+        "IT": "Italy",
+        "LT": "Lithuania",
+        "MK": "Macedonia",
+        "AX": "Aland Islands",
+        "FI": "Finland",
+        "NO": "Norway",
+        "BA": "Bosnia and Herzegovina",
+        "IE": "Ireland",
+        "CS": "Serbia and Montenegro",
+        "GB": "United Kingdom",
+        "AD": "Andorra",
+        "EE": "Estonia",
+        "DE": "Germany",
+        "UA": "Ukraine",
+        "LI": "Liechtenstein",
+        "HU": "Hungary",
+        "GI": "Gibraltar",
+        "RS": "Serbia",
+        "IS": "Iceland",
+        "MC": "Monaco",
+        "MD": "Moldova",
+        "BY": "Belarus",
+        "SM": "San Marino",
+        "VA": "Vatican City",
+        "MT": "Malta",
+        "RU": "Russia",
+        "SE": "Sweden",
+        "BG": "Bulgaria",
+        "AT": "Austria",
+        "DK": "Denmark",
+        "AL": "Albania",
+
+        "Asi": "Asia",
+        "TL": "Timor-Leste",
+        "AZ": "Azerbaijan",
+        "PS": "Palestinian Territory",
+        "KW": "Kuwait",
+        "KR": "South Korea",
+        "TM": "Turkmenistan",
+        "MO": "Macao",
+        "SA": "Saudi Arabia",
+        "VN": "Vietnam",
+        "OM": "Oman",
+        "LA": "Laos",
+        "IO": "British Indian Ocean Territory",
+        "KH": "Cambodia",
+        "TW": "Taiwan",
+        "CX": "Christmas Island",
+        "TR": "Turkey",
+        "GE": "Georgia",
+        "TJ": "Tajikistan",
+        "AE": "United Arab Emirates",
+        "MN": "Mongolia",
+        "SY": "Syria",
+        "BN": "Brunei",
+        "MY": "Malaysia",
+        "BD": "Bangladesh",
+        "KG": "Kyrgyzstan",
+        "AF": "Afghanistan",
+        "QA": "Qatar",
+        "YE": "Yemen",
+        "CC": "Cocos Islands",
+        "HK": "Hong Kong",
+        "MM": "Myanmar",
+        "IN": "India",
+        "ID": "Indonesia",
+        "NP": "Nepal",
+        "SG": "Singapore",
+        "KP": "North Korea",
+        "TH": "Thailand",
+        "IR": "Iran",
+        "LK": "Sri Lanka",
+        "BT": "Bhutan",
+        "BH": "Bahrain",
+        "CN": "China",
+        "LB": "Lebanon",
+        "MV": "Maldives",
+        "CY": "Cyprus",
+        "JO": "Jordan",
+        "AM": "Armenia",
+        "JP": "Japan",
+        "KZ": "Kazakhstan",
+        "PK": "Pakistan",
+        "PH": "Philippines",
+        "IQ": "Iraq",
+        "UZ": "Uzbekistan",
+        "IL": "Israel",
+
+        "Auo": "Australia & Oceania",
+        "PF": "French Polynesia ",
+        "NZ": "New Zealand",
+        "GU": "Guam",
+        "WS": "Samoa",
+        "TV": "Tuvalu",
+        "FM": "Micronesia",
+        "WF": "Wallis and Futuna",
+        "FJ": "Fiji",
+        "AU": "Australia",
+        "SB": "Solomon Islands",
+        "MH": "Marshall Islands",
+        "TO": "Tonga",
+        "PW": "Palau",
+        "NU": "Niue",
+        "PG": "Papua New Guinea ",
+        "CK": "Cook Islands",
+        "NC": "New Caledonia",
+        "NR": "Nauru",
+        "PN": "Pitcairn Islands",
+        "KI": "Kiribati",
+        "TK": "Tokelau",
+        "VU": "Vanuatu",
+        "AS": "American Samoa",
+        "NF": "Norfolk Island",
+        "Ant": "Antarctic",
+        "GS": "South Georgia and the South Sandwich Islands",
+        "AQ": "Antarctica",
+        "HM": "Heard Island and McDonald Islands",
+        "TF": "French Southern Territories"
+      },
+      "card": {
+        "title": "Notice",
+        "text": "By default your videos are accessible and playable anywhere in the world. With geo whitelisting you can designate the specific countries or regions where your videos can be played. Once enabled your videos will not load or play in any countries or regions that are not included in your whitelist. If this option is left blank playback will be available anywhere in the world. Playback settings will be changed in 10 minutes."
+      }
+    },
+    "player": {
+      "title": "Player style",
+      "card": {
+        "title": "Notice",
+        "text": "Change of player skin comes into effect within 10 minutes from the moment the form is saved"
+      }
+    },
+    "page": {
+      "form": {
+        "label-1": "Create landing page for medias",
+        "label-2": "Allow to index landing pages by search engines",
+        "label-3": "Site name",
+        "label-4": "Slogan",
+        "label-5": "Upload Logo",
+        "label-6": "Use share",
+        "label-7": "Use likes",
+        "label-8": "Use download original",
+        "label-9": "Use comments",
+        "label-10": "Comments type",
+        "label-11": "Application ID",
+        "label-12": "Use Google Analytics",
+        "label-14": "Google Analytics ID"
+      },
+      "card": {
+        "title": "Pages for video files",
+        "text-1": "This option enabled allows you to use landing page with player built in. You can connect to it Facebook comments, GA id and more.",
+        "text-2": ""
+      }
+    },
+    "branding": {
+      "tabs": {
+        "label-1": "Logo in player",
+        "label-2": "\u00abPlay\u00bb button",
+        "label-3": "Subscriptions",
+        "label-4": "Email templates",
+        "label-5": "SMTP Settings",
+        "label-6": "Domains parking",
+        "label-7": "Analytics"
+      },
+      "card": {
+        "title": "Notice",
+        "logo": {
+          "text-1": "By enabling the \"Branding\" option, you can place the logo on all videos of your project. The logo size in the player is 48x48 pixels, the file format for downloading .jpeg/jpg/png/svg/webp.",
+          "test-2": "The system automatically compresses the downloaded file to the specified size.",
+          "text-3": "If you specify the site address in the \"link to the site\" window, the user will go to the specified address when clicking on your logo in the player. Specify the address of the type https://boomstream.com",
+          "text-4": "Using \"Margin\" and \"Position\", you can move the logo in the player window."
+        },
+        "btnPlay": {
+          "text-1": "By enabling the \"Branding\" option, you can replace the \u00abPlay\u00bb button on all videos of your project. The size of the central button in the player is 60x60 pixels, the file format for downloading .jpeg/jpg/png/svg/webp.",
+          "text-2": "The system automatically compresses the downloaded file to the specified size."
+        },
+        "paidAccess": {
+          "text-1": "By enabling the \"Branding\" option, you can place the logo on the sales interface of your content. The displayed logo size here is 250x50 pixels, the file format for downloading .jpeg/jpg/png/svg/webp.",
+          "text-2": "The system automatically compresses the downloaded file to the specified size."
+        },
+        "letterTemplates": {
+          "text-1": "By enabling the \"Branding\" option, you can place the logo in the header of emails.",
+          "text-2": "The logo size here is 250x50 pixels, the file format for downloading .jpeg/jpg/png/svg/webp.",
+          "text-3": "The system automatically compresses the downloaded file to the specified size.",
+          "text-4": "By specifying the title of the email, the user will receive the email: Your title..."
+        },
+        "settingsSMTP": {
+          "text-1": "This option will allow you to send Boomstream template emails from your email address.",
+          "text-2": "In the «SMTP Server» section, you should specify the address of your smtp server. It usually looks like this: smtp.mail.ru , smtp.yandex.ru, smtp.gmail.com",
+          "text-3": "In the «Port» field, you specify the value that is specified by your mail provider. The standard is 25, 465, 587. Please note that for different types of encryption, SSL, TLS, STARTTLS, you need to specify different ports.",
+          "text-4": "In the «Authorization Data» section, you specify the username and password under which you log in to your mail service.",
+          "text-5": "In the «Sender's Data» section, specify the email address from which the emails will be sent. It often coincides with the login for authorization in the mail service. In the «Sender's name» field, enter any information, it is displayed in the mail clients in the section from whom the letter came.",
+          "text-6": "The type of encryption. Check with your mail service which type it supports through search or support. In most cases, this will be an SSL connection. Try using TLS, STARTTLS if the test email is not sent via SSL.",
+          "text-7": "Then click «Save» and «Send test message». If the sending is successful, you will receive a message to the email address that you specified in the «Sender's Details» section.",
+          "text-8": "If we were unable to connect the specified email via SMTP, then you will receive an error notification to your account registration email on Boomstream. In this email, we will return to you the error that your mail server gave us.",
+          "text-9": "Write to support{'@'}boomstream.com for any questions."
+        },
+        "domainParking": {
+          "text-1": "Domain parking is necessary so that all links of your project (video files, screenshots, player) contain the name of your domain, and not our system domains.",
+          "text-2": "You can use both second-level domain names (for example, domain.com ), and the third, fourth, etc. level (for example, video.domain.com , a.b.c.domain.com ).",
+          "text-3": "In order to use your domain, you need to:",
+          "text-4": "* In the DNS settings of your site, create a CNAME record that will link to the play domain.boomstream.com.",
+          "text-5": "Please do not specify the domain of your main resource. To park, use a new domain, for example, video.domain.com .",
+          "text-6": "For example, if you want to use a domain video.domain.com then you need to create the following CNAME record:",
+          "text-7": "video.domain.com. CNAME play.boomstream.com.",
+          "text-8": "In your personal account on the \"Domain Parking\" page, in the «Domain name» field, specify the created CNAME record, for example, video. domain.com",
+          "text-9": "In the «Redirect URL» field, enter the address of your resource without www, for example, http://domain.com",
+          "text-10": "Save and wait for the changes to be applied.",
+          "text-11": "You can read more about CNAME records here.",
+          "text-12": "Attention! We periodically check parked domains. And if, after the next check, the domain does not have a correct CNAME record, media files, screenshots and the player will refer to our system domains until the domain check is successful."
+        },
+        "analyticsCounters": {
+          "text-1": "Analytics counters need to be created separately, you can not prescribe already linked counters to other sites/applications.",
+          "text-2": "The Google Analytics counter looks like UA-0123456-1. How to create,",
+          "text-3": "The Yandex Metrika counter looks like 01234567. How to create,",
+          "text-4": "The Facebook Pixel counter looks like 0123062412295558. How to create,",
+          "link": "manual"
+        }
+      },
+      "logoPlayer": {
+        "title": "Logo in player",
+        "form": {
+          "label-1": "Redirect domain link",
+          "label-2": "Margin",
+          "label-3": "Position"
+        },
+        "radio": {
+          "label-1": "Top left",
+          "label-2": "Top right",
+          "label-3": "Bottom left",
+          "label-4": "Bottom right"
+        },
+        "ElMessage": "Logo removed"
+      },
+      "buttonPlay": {
+        "title": "\u00abPlay\u00bb button",
+        "ElMessage": "\u00abPlay\u00bb button removed"
+      },
+      "paidAccess": {
+        "title": "Subscriptions",
+        "ElMessage": "Logo removed",
+        "example": {
+          "text-1": "Pay Per View Example",
+          "text-3": "$1.00",
+          "text-4": "30 days",
+          "text-5": "Buy for",
+          "text-6": "Already have a ticket? Enter password:",
+          "text-7": "Password",
+          "text-8": "Enter",
+          "text-9": "We send it after purchase to your email"
+        }
+      },
+      "letterTemplates": {
+        "title": "Email templates",
+        "form": {
+          "label-1": "Set a different background",
+          "label-2": "Description under logo:",
+          "label-3": "Set a different description color",
+          "label-4": "Email title:",
+          "label-5": "Remove Boomstream support contacts"
+        },
+        "pattern": {
+          "text-1": "You have been granted access to the content ...",
+          "text-2": "Password for access: XXX-XXX-XXX",
+          "text-3": "Number of access days: XX",
+          "text-4": "Link to Media: https://play-hwd.boomstream.com/ XXXXXXXXX",
+          "text-5": "Seller's contacts:",
+          "text-6": "Contact person: XXXXXXXXX",
+          "text-7": "Telephone: +X XXX XXX XX XX",
+          "text-8": "Email: XXXX{'@'}XXXX.XXX",
+          "text-9": "This email was sent from an address used only for notifications.",
+          "text-10": "Incoming messages to this address are not processed.",
+          "text-11": "If you have any questions, we will be happy to help.",
+          "text-12": "Contact our technical support at",
+          "text-14": "or by phone"
+        },
+        "ElMessage": "Logo removed"
+      },
+      "smtpSettings": {
+        "title-1": "Step 1. SMTP Settings",
+        "title-2": "Step 2. Check Settings",
+        "form": {
+          "label-1": "Use custom email",
+          "label-2": "SMTP server",
+          "label-3": "SMTP port",
+          "label-4": "Login",
+          "label-5": "Password",
+          "label-6": "Sender email",
+          "label-7": "Sender name",
+          "label-8": "Encryption type",
+          "title-1": "Server settings",
+          "title-2": "Authorization data",
+          "title-3": "Sender's data",
+          "title-4": "Encryption type",
+          "text-1": "Check SMTP settings.",
+          "text-2": "After you click the button below, we will send a test letter to the mail address, written \"Sender Email\".",
+          "text-3": "If settings are correct, you will receive letter from Sender email and with Sender name.",
+          "text-4": "If something goes wrong, you will receive letter from no-reply{'@'}boomstream.com with an error from your mail service."
+        },
+        "btn": "Send test message",
+        "ElMessage": "Test message sent",
+        "pattern": "Enter the correct SMTP server",
+        "isVerifiedMsg": {
+          "Success": "Email verification was successful",
+          "Wait": "While sending a message",
+          "Fail": "Email verification failed"
+        }
+      },
+      "domainParking": {
+        "title": "Domains parking",
+        "form": {
+          "label-1": "Domain name",
+          "label-2": "Domain status:",
+          "label-3": "Certificate status:",
+          "label-4": "Redirect URL"
+        },
+        "protocol": {
+          "https": "Ssl certificate added",
+          "http": "Ssl certificate has not been added yet"
+        },
+        "domainStatus": {
+          "active-1": "Domain successfully parked",
+          "active-2": "The domain has been successfully verified.",
+          "new-1": "The certificate is being created. This usually takes about 2 minutes. Wait, and then refresh the page.",
+          "new-2": "The domain was recently created and is not yet active.",
+          "new-3": "The next check is at",
+          "error-1": "Domain did not pass CNAME check.",
+          "error-2": "The domain has not passed the test.",
+          "default": "The default domain will be used."
+        },
+        "rules": {
+          "message": "Maintain a valid domain"
+        },
+        "elMessage": {
+          "text-1": "The domain is busy",
+          "text-2": "The domain is free",
+          "text-3": "For security reasons, the settings cannot be changed within 5 minutes. Left 3"
+        }
+      },
+      "analytics": {
+        "title": "Analytics",
+        "form": {
+          "label-1": "Google Analytics code",
+          "label-2": "Yandex Metrika code",
+          "label-3": "Facebook Pixel code"
+        }
+      }
+    },
+    "webhooks": {
+      "title": "Webhooks",
+      "btn-1": "Create Webhook",
+      "btn-2": "Remove",
+      "empty": {
+        "title": "It`s empty in here",
+        "text": "Start by creating a Webhook`s"
+      },
+      "modal": {
+        "title": "Create Webhook",
+        "label-1": "Webhooks",
+        "label-2": "Enter the Url",
+        "btn": "Create"
+      },
+      "table": {
+        "title-1": "Name",
+        "title-2": "Url",
+        "title-3": "Status",
+        "title-4": "Generated"
+      },
+      "ElMessage": {
+        "text-1": "Webhook created",
+        "text-2": "Webhook deleted"
+      },
+      "card": {
+        "title": "Developer Documentation",
+        "text-1": "Webhooks are designed for URL notification of various events occurring in the Boomstream platform. The following events are currently supported:",
+        "text-2": "A POST request with information about the event is sent to the URL specified in the settings.",
+        "text-3": "To view the output results when using web hooks, follow the link in the documentation",
+        "link": "documentation",
+        "li-1": "Successful processing of the video file. Comes after the creation of the first transcode.",
+        "li-2": "An error occurred while processing the video file.",
+        "li-3": "Successful video purchase.",
+        "li-4": "Start of the live broadcast.",
+        "li-5": "Stop live broadcasts.",
+        "li-6": "Creating images for the cover.",
+        "li-7": "Sending a notification that the viewer has activated the password for the first time."
+      }
+    }
+  },
+  "support": {
+    "heading": "Support Service",
+    "form": {
+      "label-1": "Theme",
+      "label-2": "Messages",
+      "label-3": "Status",
+      "label-4": "Updated",
+      "empty": {
+        "title": "It's empty here",
+        "text": "Start by creating a support ticket"
+      }
+    },
+    "form-2": {
+      "label-1": "Author",
+      "label-2": "Date",
+      "label-3": "Message",
+      "label-4": "Message:",
+      "empty": {
+        "title": "History is missing"
+      },
+      "placeholder": "Text of the appeal...",
+      "buttons":{
+        "btn-1": "Submit",
+        "btn-2": "Close"
+      }
+    },
+    "buttons":{
+      "btn-1": "Create",
+      "btn-2": "Close"
+    },
+    "dialog": {
+      "title": "New appeal",
+      "label-1": "Theme:",
+      "label-2": "Message:",
+      "btn": "Create"
+    },
+    "ElMessage": {
+      "text-1": "The appeal has been sent",
+      "text-2": "If you close the request, the support service will stop responding to this request. Are you sure?",
+      "text-3": "Warning",
+      "text-4": "The appeal is closed",
+      "text-5": "Cancelled",
+      "btn-1": "Yes",
+      "btn-2": "No"
+    }
+  },
+  "footer": {
+    "logo":"HWD Ltd.",
+    "link-1": "Uploading video",
+    "link-2": "Protect media by password",
+    "link-3": "Create Pay-Per-View",
+    "link-4": "Create stream",
+    "link-5": "Generate new password",
+    "link-6": "Connect your PayPal account",
+    "link-7": "Create playlist",
+    "link-8": "Create a promo code for a discount",
+    "link-9": "API Documentation",
+    "link-10": "Terms & Conditions",
+    "link-11": "Official documents"
+  }
+}

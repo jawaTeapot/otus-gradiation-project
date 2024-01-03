@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', Arial, sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.el-dialog__body {
+  padding-top: 0 !important;
+}
+
+.my-drawer {
+  .el-drawer__header {
+    @apply mb-0 px-0 #{!important};
+  }
+}
+
+.el-drawer__body {
+  @apply p-0 #{!important};
+}
+
+.my-checkbox {
+  .el-checkbox__label {
+    @apply text-[11px] leading-4 md:text-sm #{!important};
+  }
+}
+
+.my-label {
+  .el-checkbox__label {
+    @apply whitespace-normal md:whitespace-nowrap #{!important};
+  }
+}
