@@ -21,7 +21,9 @@ const md = useMediaQuery('(min-width: 767px)')
 const props = defineProps<{
   modelValue: boolean,
 }>()
+
 const emit = defineEmits(['update:modelValue'])
+
 const setMyDrawer = computed({
   get () {
     return props.modelValue

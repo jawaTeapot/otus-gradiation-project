@@ -5,7 +5,7 @@
         v-model="setProp"
         :show-close="false"
         :close-on-click-modal="false"
-        class="!w-[320px] sm:!w-[600px]"
+        class="my-dialog !w-[320px] sm:!w-[600px]"
         style="border-radius: 15px"
         align-center
       >

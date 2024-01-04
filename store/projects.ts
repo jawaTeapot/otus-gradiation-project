@@ -10,11 +10,11 @@ import type {
 import { userProjectActivateBranding, userProjectActivateDRM, userProjectCreate } from '~/apollo/mutations/projects'
 
 export const useProjectsStore = defineStore('projects', () => {
-  const projects = ref<Array<Project>>()
+  const projects = ref<Array<Project>>([])
   const currentProject = ref<Project>()
   const projectSettings = ref()
 
-  const setProgect = (item: Array<Project>) => {
+  const setProject = (item: Array<Project>) => {
     projects.value = item
     const projectLocalId: string | null = localStorage.getItem('currentProject')
     if (projectLocalId) {
@@ -28,9 +28,13 @@ export const useProjectsStore = defineStore('projects', () => {
   }
 
   const changeCurrentProject = (projectId: string) => {
+    console.log(3, projectId)
     const cp = projects.value?.find(el => el.id === projectId)
+    console.log(4, cp)
     if (cp) {
+      console.log(5, cp)
       currentProject.value = cp
+      console.log(6)
       localStorage.setItem('currentProject', cp.id)
     }
   }
@@ -41,9 +45,11 @@ export const useProjectsStore = defineStore('projects', () => {
     if (!res || !res.data) {
       throw new Error('Ошибка')
     }
-
-    projects.value?.push(res.data.userProjectCreate.record)
-    changeCurrentProject(res.data.userProjectCreate.record.id)
+    // TODO: довести до ума создание/добавление проекта
+    [...projects.value].push(res.data.userProjectCreate.record)
+    console.log(1)
+    currentProject.value = res.data.userProjectCreate.record
+    console.log(2)
     return res.data
   }
 
@@ -69,7 +75,7 @@ export const useProjectsStore = defineStore('projects', () => {
     projects,
     currentProject,
     projectSettings,
-    setProgect,
+    setProject,
     changeCurrentProject,
     createProject,
     activateBranding,

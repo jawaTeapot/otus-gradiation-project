@@ -49,6 +49,54 @@ mutation loginProfileUpdate ($input: LoginProfileUpdateInput) {
 }
 `
 
+export const loginProfileAddPhoneEmail = gql`
+ mutation loginProfileAddPhoneEmail($input: LoginProfileAddPhoneEmailInput){
+    loginProfileAddPhoneEmail(input: $input){
+        record {
+            id
+            email
+            username
+            isEmailVerified
+            emailSettings {
+                email
+                useBothEmails
+                balance
+                balanceLimit
+                mediaSuccess
+                mediaError
+                mediaBuy
+                liveCodecs
+                cameraError
+                liveAutokick
+                liveNotRecorded
+                news
+            }
+            account {
+                balance
+                balanceLine
+                currency
+                creditEnabled
+                removeMediaAt
+            }
+            stat {
+                playtimeMs
+                timesSpaceMs
+            }
+            settings {
+                phone
+                about
+                language {
+                    id
+                    title
+                    code
+                }
+            }
+            createdAt
+        }
+    }
+}
+`
+
 export const loginProfilePasswordChange = gql`
   mutation loginProfilePasswordChange ($input: LoginProfileChangePasswordInput) {
     loginProfilePasswordChange (input: $input){

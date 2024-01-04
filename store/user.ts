@@ -4,15 +4,14 @@ import { jwtDecode } from 'jwt-decode'
 import { useLoaderStore } from '~/store/loader'
 import type {
   CheckMyPromoCode,
-  FetchLoginProfileResponse,
+  FetchLoginProfileResponse, ProfileAddPhoneEmailDTO, ProfileAddPhoneEmailResponse,
   Projects,
   Tariffs,
-  UpdateProfileDTO, UpdateProfileResponse,
   User
 } from '~/types/store/user'
 import { loginProfile } from '~/apollo/queries/user'
 import { useProjectsStore } from '~/store/projects'
-import { loginProfileUpdate } from '~/apollo/mutations/user'
+import { loginProfileAddPhoneEmail } from '~/apollo/mutations/user'
 
 export const useUserStore = defineStore('user', () => {
   const user = ref<User>()
@@ -54,7 +53,7 @@ export const useUserStore = defineStore('user', () => {
         userTariffs.value = data.tariffs
         userProjects.value = data.userProjects
         const projectsStore = useProjectsStore()
-        projectsStore.setProgect(data.userProjects.nodes)
+        projectsStore.setProject(data.userProjects.nodes)
       } catch (e) {
         console.log(e)
       } finally {
@@ -63,23 +62,13 @@ export const useUserStore = defineStore('user', () => {
     })
   }
 
-  const updateUserProfile = async (dto: Partial<UpdateProfileDTO['input']>) => {
-    const payload: UpdateProfileDTO = {
-      input: {
-        email: user.value?.email || '',
-        username: user.value?.username || '',
-        languageId: user.value?.settings.language.id || '',
-        phone: user.value?.settings.phone || '',
-        about: user.value?.settings.about || '',
-        ...dto
-      }
-    }
-    const { mutate } = useMutation<UpdateProfileResponse>(loginProfileUpdate)
-    const res = await mutate(payload)
+  const profileAddPhoneEmail = async (dto: ProfileAddPhoneEmailDTO) => {
+    const { mutate } = useMutation<ProfileAddPhoneEmailResponse>(loginProfileAddPhoneEmail)
+    const res = await mutate(dto)
     if (!res || !res.data) {
       throw new Error('Ошибка')
     }
-    user.value = res.data.loginProfileUpdate.record
+    user.value = res.data.loginProfileAddPhoneEmail.record
     return res?.data
   }
 
@@ -91,6 +80,6 @@ export const useUserStore = defineStore('user', () => {
     userProjects,
     fetchLoginProfile,
     fetchUserData,
-    updateUserProfile
+    profileAddPhoneEmail
   }
 })

@@ -3,7 +3,7 @@
     v-model="dialogFormVisible"
     :title="$t('complete-registration.heading')"
     :show-close="false"
-    class="!w-[500px] px-7 py-3 !rounded-3xl"
+    class="my-dialog !w-[500px] px-7 py-3 !rounded-3xl"
     :center="true"
     :close-on-click-modal="false"
   >
@@ -65,9 +65,11 @@ const submitForm = async (formEl: FormInstance | undefined) => {
   await formEl.validate(async (valid) => {
     if (valid) {
       const { email, phone } = form
-      await userStore.updateUserProfile({
-        email,
-        phone
+      await userStore.profileAddPhoneEmail({
+        input: {
+          email: email || null,
+          phone: phone || null
+        }
       })
       ElMessage({
         grouping: true,

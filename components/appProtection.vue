@@ -6,7 +6,7 @@
         :show-close="false"
         :close-on-click-modal="false"
         :title="$t('protection.heading')"
-        class="!w-[320px] sm:!w-[600px]"
+        class="my-dialog !w-[320px] sm:!w-[600px]"
         style="border-radius: 15px"
         align-center
       >
@@ -52,6 +52,7 @@ import { ElMessage } from 'element-plus'
 import { ref } from 'vue'
 import { useProjectsStore } from '~/store/projects'
 import { useUserStore } from '~/store/user'
+
 const { t } = useI18n()
 const userStore = useUserStore()
 const projectsStore = useProjectsStore()
@@ -60,7 +61,9 @@ const isLoading = ref<boolean>(false)
 const props = defineProps<{
   modelValue: boolean;
 }>()
+
 const emit = defineEmits(['update:modelValue'])
+
 const setProp = computed({
   get () {
     return props.modelValue

@@ -86,13 +86,10 @@ export type Projects = {
     nodes: Array<Project>;
 }
 
-export type UpdateProfileDTO = {
+export type ProfileAddPhoneEmailDTO = {
     input: {
-        email: string;
-        username: string;
-        languageId: string;
+        email: string | null;
         phone: string | null;
-        about: string | null;
     }
 }
 
@@ -103,9 +100,8 @@ export type FetchLoginProfileResponse = {
     userProjects: Projects;
 }
 
-export type UpdateProfileResponse = {
-    loginProfileUpdate: {
-        id: number;
+export type ProfileAddPhoneEmailResponse = {
+    loginProfileAddPhoneEmail: {
         record: User;
     }
 }
