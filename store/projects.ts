@@ -1,11 +1,13 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import type {
-  Project,
+  ActivateBrandingDTO,
+  ActivateBrandingResponse,
+  ActivateDRMDTO,
+  ActivateDRMResponse,
   CreateProjectDTO,
   CreateProjectResponse,
-  ActivateDRMDTO,
-  ActivateBrandingDTO, ActivateBrandingResponse, ActivateDRMResponse
+  Project
 } from '~/types/store/projects'
 import { userProjectActivateBranding, userProjectActivateDRM, userProjectCreate } from '~/apollo/mutations/projects'
 
@@ -45,11 +47,8 @@ export const useProjectsStore = defineStore('projects', () => {
     if (!res || !res.data) {
       throw new Error('Ошибка')
     }
-    // TODO: довести до ума создание/добавление проекта
-    [...projects.value].push(res.data.userProjectCreate.record)
-    console.log(1)
-    currentProject.value = res.data.userProjectCreate.record
-    console.log(2)
+    projects.value = projects.value.concat([res.data.userProjectCreate.record])
+    changeCurrentProject(res.data.userProjectCreate.record.id)
     return res.data
   }
 

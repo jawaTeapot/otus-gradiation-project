@@ -47,32 +47,30 @@ const open = () => {
     inputErrorMessage: t('new-project.headline')
   })
     .then(async ({ value }) => {
-      await projectsStore.createProject({
-        input: {
-          attribute: 'Empty',
-          title: value
-        }
-      })
-      return { value }
-    })
-    .then(({ value }) => {
-      ElMessage({
-        customClass: 'min-w-[280px]',
-        showClose: true,
-        grouping: true,
-        center: true,
-        type: 'success',
-        message: `${t('new-project.success')} ${value}`
-      })
-    })
-    .catch(() => {
-      ElMessage({
-        showClose: true,
-        grouping: true,
-        center: true,
-        type: 'error',
-        message: t('new-project.error')
-      })
+      try {
+        await projectsStore.createProject({
+          input: {
+            attribute: 'Empty',
+            title: value
+          }
+        })
+        ElMessage({
+          customClass: 'min-w-[280px]',
+          showClose: true,
+          grouping: true,
+          center: true,
+          type: 'success',
+          message: `${t('new-project.success')} ${value}`
+        })
+      } catch (e) {
+        ElMessage({
+          showClose: true,
+          grouping: true,
+          center: true,
+          type: 'error',
+          message: t('new-project.error')
+        })
+      }
     })
 }
 </script>

@@ -73,7 +73,7 @@
               </NuxtLink>
             </el-dropdown-item>
 
-            <el-dropdown-item v-for="item in dataLink" :key="item">
+            <el-dropdown-item v-for="item in dataLink" :key="item.path">
               <NuxtLink class="flex items-center no-underline" :to="`${getSourceUrl()}${item.path}`" target="_blank">
                 <Icon :name="item.icon" :class="$colorMode.value === 'dark' ? 'text-2xl text-white' : 'text-2xl text-black'" />
 
@@ -107,6 +107,7 @@ const xl = useMediaQuery('(min-width: 1280px)')
 
 const userStore = useUserStore()
 const { locale, locales, t } = useI18n()
+const localePath = useLocalePath()
 const switchLocalePath = useSwitchLocalePath()
 const drawerMobile = ref<boolean>(false)
 const headerBonus = ref<boolean>(userStore.userCheckMyPromoCode?.isAvailable ? userStore.userCheckMyPromoCode?.isAvailable : false)

@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import { jwtDecode } from 'jwt-decode'
+import { ElMessage } from 'element-plus'
 import { useLoaderStore } from '~/store/loader'
 import type {
   CheckMyPromoCode,
@@ -40,26 +41,30 @@ export const useUserStore = defineStore('user', () => {
   }
 
   const fetchUserData = async (hideLoader?: boolean) => {
-    await useAsyncData(async () => {
-      const loaderStore = useLoaderStore()
-      if (!hideLoader) {
-        loaderStore.setLoader(true)
-      }
-      try {
-        const data = await fetchLoginProfile()
-        parseUserRoles()
-        user.value = data.loginProfile
-        userCheckMyPromoCode.value = data.checkMyPromoCode
-        userTariffs.value = data.tariffs
-        userProjects.value = data.userProjects
-        const projectsStore = useProjectsStore()
-        projectsStore.setProject(data.userProjects.nodes)
-      } catch (e) {
-        console.log(e)
-      } finally {
-        loaderStore.setLoader(false)
-      }
-    })
+    const loaderStore = useLoaderStore()
+    if (!hideLoader) {
+      loaderStore.setLoader(true)
+    }
+    try {
+      const data = await fetchLoginProfile()
+      parseUserRoles()
+      user.value = data.loginProfile
+      userCheckMyPromoCode.value = data.checkMyPromoCode
+      userTariffs.value = data.tariffs
+      userProjects.value = data.userProjects
+      const projectsStore = useProjectsStore()
+      projectsStore.setProject(data.userProjects.nodes)
+    } catch (e) {
+      console.log(e)
+      ElMessage({
+        grouping: true,
+        center: true,
+        message: t('errors.something'),
+        type: 'error'
+      })
+    } finally {
+      loaderStore.setLoader(false)
+    }
   }
 
   const profileAddPhoneEmail = async (dto: ProfileAddPhoneEmailDTO) => {

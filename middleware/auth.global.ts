@@ -1,7 +1,6 @@
-export default defineNuxtRouteMiddleware((to) => {
-  const config = useRuntimeConfig()
+export default defineNuxtRouteMiddleware((to, from) => {
   const auth = useAuth()
   if (!to.meta.public && auth.tokenStrategy.token?.status().unknown()) {
-    return navigateTo(`${config.app.baseURL}app/login`)
+    return navigateTo('app/login')
   }
 })

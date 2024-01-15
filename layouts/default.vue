@@ -20,7 +20,7 @@ import { useUserStore } from '~/store/user'
 const loader = useLoaderStore()
 const userStore = useUserStore()
 
-nextTick().then(() => userStore.fetchUserData(true)).then(() => console.log('user', userStore.user))
+nextTick().then(async () => await useAsyncData('user', () => userStore.fetchUserData()))
 </script>
 
 <style scoped lang="scss" />

@@ -98,6 +98,7 @@ interface RuleForm {
 const { t } = useI18n()
 const ruleFormRef = ref<FormInstance>()
 const auth = ref()
+const localePath = useLocalePath()
 const isLoading = ref(false)
 
 const loginForm = ref<RuleForm>({
@@ -137,10 +138,8 @@ const submitForm = async (formEl: FormInstance | undefined) => {
         const auth = useAuth()
         const { email, password } = loginForm.value
         await auth.loginWith('local', { body: { email, password } })
-        const localePath = useLocalePath()
         return navigateTo(localePath({ path: '/app' }))
       } catch (e: any) {
-        console.log('error', e)
         if (e.status === 401) {
           ElMessage({
             grouping: true,
