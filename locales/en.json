@@ -87,7 +87,8 @@
     "notification-message": "User with this email is already registered"
   },
   "recoveryPage": {
-    "title": "Password recovery"
+    "title": "Password recovery",
+    "btn": "Send"
   },
   "menuLinks": {
     "project-settings": "Project Settings",

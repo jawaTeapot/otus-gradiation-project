@@ -87,7 +87,8 @@
     "notification-message": "Пользователь с таким Email уже зарегистрирован"
   },
   "recoveryPage": {
-    "title": "Восстановление пароля"
+    "title": "Восстановление пароля",
+    "btn": "Отправить"
   },
   "menuLinks": {
     "project-settings": "Настройки проекта",
