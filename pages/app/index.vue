@@ -6,14 +6,9 @@
     <div>
       {{ projectsStore.projects }}
     </div>
-
-    <!-- Form -->
-    <el-button text @click="dialogFormVisible = true">
-      open a Form nested Dialog
-    </el-button>
     <client-only>
       <el-dialog
-        v-model="dialogFormVisible"
+        v-model="creatNewProject"
         fullscreen
         align-center
         append-to-body
@@ -26,7 +21,7 @@
           </div>
         </template>
         <template #default>
-          <app-create-project @is-open="dialogFormVisible = false" />
+          <app-create-project />
         </template>
       </el-dialog>
     </client-only>
@@ -42,25 +37,9 @@ definePageMeta({
   public: false
 })
 
-// const props = defineProps<{
-//   isOpen: boolean,
-// }>()
-//
-// const emit = defineEmits(['update:modelValue'])
-//
-// const setMyDrawer = computed({
-//   get () {
-//     return props.modelValue
-//   },
-//   set (e: boolean) {
-//     return emit('update:modelValue', e)
-//   }
-// })
-
 const userStore = useUserStore()
 const projectsStore = useProjectsStore()
-
-const dialogFormVisible = ref(false)
+const creatNewProject = computed(() => !userStore.userProjects.length)
 </script>
 
 <style scoped lang="scss">

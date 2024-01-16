@@ -13,6 +13,8 @@ definePageMeta({
   public: true,
   layout: 'website'
 })
+
+const localePath = useLocalePath()
 </script>
 
 <style scoped lang="scss" />

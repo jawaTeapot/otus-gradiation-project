@@ -26,6 +26,7 @@ import type { LocaleObject } from 'vue-i18n-routing'
 
 const { locale, locales } = useI18n()
 const switchLocalePath = useSwitchLocalePath()
+const localePath = useLocalePath()
 
 const availableLocales = computed(() => {
   return [...locales.value].filter((i) => {

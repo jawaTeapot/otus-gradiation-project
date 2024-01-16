@@ -16,11 +16,11 @@ export const useProjectsStore = defineStore('projects', () => {
   const currentProject = ref<Project>()
   const projectSettings = ref()
 
-  const setProject = (item: Array<Project>) => {
-    projects.value = item
+  const setProject = (items: Array<Project>) => {
+    projects.value = items
     const projectLocalId: string | null = localStorage.getItem('currentProject')
     if (projectLocalId) {
-      const cp = projects.value?.find(el => el.id === projectLocalId)
+      const cp = items.find(el => el.id === projectLocalId)
       if (cp) {
         currentProject.value = cp
       }
@@ -30,13 +30,9 @@ export const useProjectsStore = defineStore('projects', () => {
   }
 
   const changeCurrentProject = (projectId: string) => {
-    console.log(3, projectId)
     const cp = projects.value?.find(el => el.id === projectId)
-    console.log(4, cp)
     if (cp) {
-      console.log(5, cp)
       currentProject.value = cp
-      console.log(6)
       localStorage.setItem('currentProject', cp.id)
     }
   }
@@ -47,7 +43,9 @@ export const useProjectsStore = defineStore('projects', () => {
     if (!res || !res.data) {
       throw new Error('Ошибка')
     }
-    projects.value = projects.value.concat([res.data.userProjectCreate.record])
+    // this.projects.concat([res.data.userProjectCreate.record])
+    // this.projects.push(res.data.userProjectCreate.record)
+    projects.value = [...projects.value, res.data.userProjectCreate.record]
     changeCurrentProject(res.data.userProjectCreate.record.id)
     return res.data
   }

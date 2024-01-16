@@ -15,8 +15,10 @@
 </template>
 
 <script setup lang="ts">
+// import { ref } from 'vue'
 import { useLoaderStore } from '~/store/loader'
 import { useUserStore } from '~/store/user'
+
 const loader = useLoaderStore()
 const userStore = useUserStore()
 

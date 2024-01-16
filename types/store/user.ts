@@ -93,6 +93,12 @@ export type ProfileAddPhoneEmailDTO = {
     }
 }
 
+export type ChangeEmailDTO = {
+    input : {
+        code: string;
+    }
+}
+
 export type FetchLoginProfileResponse = {
     loginProfile: User;
     checkMyPromoCode: CheckMyPromoCode;
@@ -103,5 +109,11 @@ export type FetchLoginProfileResponse = {
 export type ProfileAddPhoneEmailResponse = {
     loginProfileAddPhoneEmail: {
         record: User;
+    }
+}
+
+export type ChangeEmailResponse = {
+    loginProfileEmailChange: {
+        response: string;
     }
 }

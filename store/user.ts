@@ -1,25 +1,32 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import { jwtDecode } from 'jwt-decode'
-import { ElMessage } from 'element-plus'
 import { useLoaderStore } from '~/store/loader'
 import type {
+  ChangeEmailDTO,
+  ChangeEmailResponse,
   CheckMyPromoCode,
-  FetchLoginProfileResponse, ProfileAddPhoneEmailDTO, ProfileAddPhoneEmailResponse,
-  Projects,
+  FetchLoginProfileResponse,
+  ProfileAddPhoneEmailDTO,
+  ProfileAddPhoneEmailResponse,
   Tariffs,
   User
 } from '~/types/store/user'
 import { loginProfile } from '~/apollo/queries/user'
 import { useProjectsStore } from '~/store/projects'
-import { loginProfileAddPhoneEmail } from '~/apollo/mutations/user'
+import { loginProfileAddPhoneEmail, loginProfileEmailChange } from '~/apollo/mutations/user'
+import type { Project } from '~/types/store/projects'
 
 export const useUserStore = defineStore('user', () => {
   const user = ref<User>()
   const userRoles = ref<Array<string>>()
   const userCheckMyPromoCode = ref<CheckMyPromoCode>()
   const userTariffs = ref<Tariffs>()
-  const userProjects = ref<Projects>()
+
+  const userProjects = computed((): Array<Project> => {
+    const projectsStore = useProjectsStore()
+    return projectsStore.projects
+  })
 
   const parseUserRoles = () => {
     const auth = useAuth()
@@ -51,17 +58,10 @@ export const useUserStore = defineStore('user', () => {
       user.value = data.loginProfile
       userCheckMyPromoCode.value = data.checkMyPromoCode
       userTariffs.value = data.tariffs
-      userProjects.value = data.userProjects
       const projectsStore = useProjectsStore()
       projectsStore.setProject(data.userProjects.nodes)
     } catch (e) {
       console.log(e)
-      ElMessage({
-        grouping: true,
-        center: true,
-        message: t('errors.something'),
-        type: 'error'
-      })
     } finally {
       loaderStore.setLoader(false)
     }
@@ -77,6 +77,15 @@ export const useUserStore = defineStore('user', () => {
     return res?.data
   }
 
+  const changeEmail = async (dto: ChangeEmailDTO) => {
+    const { mutate } = useMutation<ChangeEmailResponse>(loginProfileEmailChange)
+    const res = await mutate(dto)
+    if (!res || !res.data) {
+      throw new Error('Ошибка')
+    }
+    return res.data
+  }
+
   return {
     user,
     userRoles,
@@ -85,6 +94,7 @@ export const useUserStore = defineStore('user', () => {
     userProjects,
     fetchLoginProfile,
     fetchUserData,
-    profileAddPhoneEmail
+    profileAddPhoneEmail,
+    changeEmail
   }
 })

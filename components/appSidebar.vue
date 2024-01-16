@@ -83,6 +83,7 @@ import { useMediaQuery } from '@vueuse/core'
 import { useUserStore } from '~/store/user'
 import { useProjectsStore } from '~/store/projects'
 
+const localePath = useLocalePath()
 const dialogBrand = ref(false)
 const dialogProtection = ref(false)
 const userStore = useUserStore()

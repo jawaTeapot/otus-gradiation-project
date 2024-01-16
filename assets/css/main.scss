@@ -36,3 +36,35 @@ body {
     @apply whitespace-normal md:whitespace-nowrap #{!important};
   }
 }
+
+.my-bg-vue-tel-input-white {
+  .vti__dropdown-list {
+    @apply z-[2];
+  }
+}
+
+.my-bg-vue-tel-input-black {
+  .vti__flag {
+    @apply bg-transparent shadow-none;
+  }
+  .vti__dropdown {
+    &:hover {
+      @apply bg-transparent;
+    }
+  }
+  .vti__dropdown.open {
+    @apply bg-transparent;
+  }
+  .vti__dropdown-list.below {
+    @apply top-[38px];
+  }
+  .vti__dropdown-list {
+    @apply bg-[#1d1e1f] border-[#4C4D4F] z-[2];
+  }
+  .vti__dropdown-item.highlighted {
+    @apply bg-[#18222c];
+  }
+  .vti__input {
+    @apply bg-transparent;
+  }
+}

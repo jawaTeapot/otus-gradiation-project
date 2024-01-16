@@ -34,10 +34,11 @@ import { ref } from 'vue'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { useProjectsStore } from '~/store/projects'
 
-const emit = defineEmits(['is-open'])
+// const emit = defineEmits(['is-open'])
 
 const { t } = useI18n()
-const projectStore = useProjectsStore()
+const projectsStore = useProjectsStore()
+
 const dataProject = ref([
   {
     id: 'Empty',
@@ -71,33 +72,32 @@ const open = (attribute: string) => {
     inputErrorMessage: t('new-project.headline')
   })
     .then(async ({ value }) => {
-      await projectStore.createProject({
-        input: {
-          attribute,
-          title: value
-        }
-      })
+      try {
+        await projectsStore.createProject({
+          input: {
+            attribute,
+            title: value
+          }
+        })
+        ElMessage({
+          showClose: true,
+          grouping: true,
+          center: true,
+          type: 'success',
+          message: `${t('new-project.success')} ${value}`
+        })
+        // emit('is-open', false)
+      } catch (e) {
+        console.log(e)
+        ElMessage({
+          showClose: true,
+          grouping: true,
+          center: true,
+          type: 'error',
+          message: t('new-project.error')
+        })
+      }
       return { value }
-    })
-    .then(({ value }) => {
-      ElMessage({
-        showClose: true,
-        grouping: true,
-        center: true,
-        type: 'success',
-        message: `${t('new-project.success')} ${value}`
-      })
-      emit('is-open', false)
-    })
-    .catch((e) => {
-      console.log(e)
-      ElMessage({
-        showClose: true,
-        grouping: true,
-        center: true,
-        type: 'error',
-        message: t('new-project.error')
-      })
     })
 }
 </script>

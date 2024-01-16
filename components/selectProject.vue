@@ -1,13 +1,13 @@
 <template>
   <div>
     <client-only>
-      <el-select v-model="projectModel" placement="bottom" filterable>
+      <el-select v-model="projectModel" placement="bottom" filterable class="min-w-[180px]">
         <el-option :value="false" @click="open()">
           {{ $t('labels.select-new-project') }}
         </el-option>
         <el-divider class="!my-0" />
         <el-option
-          v-for="item in userStore.userProjects?.nodes"
+          v-for="item in userStore.userProjects"
           :key="item.id"
           :label="item.title"
           :value="item.id"
@@ -25,6 +25,7 @@ import { useUserStore } from '~/store/user'
 const userStore = useUserStore()
 const projectsStore = useProjectsStore()
 const { t } = useI18n()
+
 const projectModel = computed({
   get () {
     if (!projectsStore.currentProject) {
@@ -71,6 +72,7 @@ const open = () => {
           message: t('new-project.error')
         })
       }
+      return { value }
     })
 }
 </script>
