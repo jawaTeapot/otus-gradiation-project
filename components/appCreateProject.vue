@@ -34,8 +34,6 @@ import { ref } from 'vue'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { useProjectsStore } from '~/store/projects'
 
-// const emit = defineEmits(['is-open'])
-
 const { t } = useI18n()
 const projectsStore = useProjectsStore()
 
@@ -86,7 +84,6 @@ const open = (attribute: string) => {
           type: 'success',
           message: `${t('new-project.success')} ${value}`
         })
-        // emit('is-open', false)
       } catch (e) {
         console.log(e)
         ElMessage({

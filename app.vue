@@ -6,7 +6,6 @@
 
 <script lang="ts" setup>
 import 'element-plus/theme-chalk/dark/css-vars.css'
-// import axios from 'axios'
 import { ElNotification } from 'element-plus'
 import { useUserStore } from '~/store/user'
 

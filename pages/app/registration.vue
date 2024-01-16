@@ -98,7 +98,6 @@
 import { ref, reactive } from 'vue'
 import type { FormInstance, FormRules } from 'element-plus'
 import { ElNotification } from 'element-plus'
-// import axios from 'axios'
 import { useCookies } from '@vueuse/integrations/useCookies'
 import { VueTelInput } from 'vue-tel-input'
 import 'vue-tel-input/vue-tel-input.css'
@@ -186,23 +185,6 @@ const submitForm = async (formEl: FormInstance | undefined) => {
         const tz = new Date().toString().match(/([A-Z]+[+-][0-9]+.*)/)
         const cookies = useCookies()
         const referrer = cookies.get('referrer')
-        // await axios.post(`${runtimeConfig.public.apiBase}/api/v1/register`, {
-        //   email,
-        //   password,
-        //   username,
-        //   phone,
-        //   referrer: document.referrer,
-        //   referrerIframe: referrer || '',
-        //   utm: null,
-        //   preferredLanguages,
-        //   languageCode: locale.value,
-        //   affiliateId: '',
-        //   userAgent: navigator.userAgent,
-        //   idCreator: '',
-        //   fromSocial: null,
-        //   socialId: '',
-        //   tz: tz ? tz[1] : null
-        // })
         await $fetch(`${runtimeConfig.public.apiBase}/api/v1/register`, {
           method: 'POST',
           body: {
