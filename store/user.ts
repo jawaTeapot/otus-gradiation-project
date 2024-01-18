@@ -2,25 +2,10 @@ import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import { jwtDecode } from 'jwt-decode'
 import { useLoaderStore } from '~/store/loader'
-import type {
-  UpdateProfileResponse,
-  UpdateProfileDTO,
-  ChangeEmailDTO,
-  ChangeEmailResponse,
-  CheckMyPromoCode,
-  FetchLoginProfileResponse,
-  ProfileAddPhoneEmailDTO,
-  ProfileAddPhoneEmailResponse,
-  Tariffs,
-  User, ChangeUserPasswordDTO, ChangeUserPasswordResponse, SetNotificationDTO, SetNotificationResponse
-} from '~/types/store/user'
+import type { UpdateProfileResponse, UpdateProfileDTO, ChangeEmailDTO, ChangeEmailResponse, CheckMyPromoCode, FetchLoginProfileResponse, ProfileAddPhoneEmailDTO, ProfileAddPhoneEmailResponse, Tariffs, User, ChangeUserPasswordDTO, ChangeUserPasswordResponse, SetNotificationDTO, SetNotificationResponse } from '~/types/store/user'
 import { loginProfile } from '~/apollo/queries/user'
 import { useProjectsStore } from '~/store/projects'
-import {
-  loginProfileAddPhoneEmail,
-  loginProfileEmailChange, loginProfilePasswordChange,
-  loginProfileResendActivationMail, loginProfileSetNotification, loginProfileUpdate
-} from '~/apollo/mutations/user'
+import { loginProfileAddPhoneEmail, loginProfileEmailChange, loginProfilePasswordChange, loginProfileResendActivationMail, loginProfileSetNotification, loginProfileUpdate } from '~/apollo/mutations/user'
 import type { Project } from '~/types/store/projects'
 
 export const useUserStore = defineStore('user', () => {
@@ -129,19 +114,5 @@ export const useUserStore = defineStore('user', () => {
     return res.data
   }
 
-  return {
-    user,
-    userRoles,
-    userCheckMyPromoCode,
-    userTariffs,
-    userProjects,
-    fetchLoginProfile,
-    fetchUserData,
-    profileAddPhoneEmail,
-    changeEmail,
-    resendActivationMail,
-    updateUserProfile,
-    changeUserPassword,
-    setNotification
-  }
+  return { user, userRoles, userCheckMyPromoCode, userTariffs, userProjects, fetchLoginProfile, fetchUserData, profileAddPhoneEmail, changeEmail, resendActivationMail, updateUserProfile, changeUserPassword, setNotification }
 })

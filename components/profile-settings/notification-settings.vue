@@ -212,5 +212,4 @@ watchDebounced(form, (el) => {
     }
   })
 }, { debounce: 1300, maxWait: 5000 })
-console.log('userStore', userStore.user?.emailSettings)
 </script>

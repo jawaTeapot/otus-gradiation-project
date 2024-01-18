@@ -17,10 +17,205 @@ export type Project = {
     stat: Stat;
 }
 
+export type ProjectSettingsIntegrationApiKeyList = {
+    id: number;
+    apiKey: string;
+    allowType: string;
+    name: string | null;
+    added: string;
+}
+
+export type ProjectSettingsIntegration = {
+    apiKey: string;
+    apiKeyFtp: string;
+    code: string;
+    downloadFromComputer: boolean;
+    downloadByLink: boolean;
+    autoBroadcasting: boolean;
+    timepadNotifaication: boolean;
+    domain: string;
+    apiKeyList: Array<ProjectSettingsIntegrationApiKeyList>;
+}
+
+export type ProjectSettingsProtection = {
+    useDirectLink: boolean;
+    isEncrypt: boolean;
+    security: string;
+    userAgentAllow: Array<string>;
+    userAgentDeny: Array<string>;
+    deniedEmptyReferrer: boolean;
+    timeValid: number | null;
+    domains: {
+        domainList: Array<string>;
+    }
+}
+
+export type ProjectSettingsTargetingCountryList = {
+    id: number;
+    iso: string;
+    isSelected: boolean;
+}
+
+export type ProjectSettingsTargetingCountries = {
+    iso: string;
+    countryList: Array<ProjectSettingsTargetingCountryList>;
+}
+
+export type ProjectSettingsTargeting = {
+    useTargeting: boolean;
+    showUnknown: boolean;
+    countries: Array<ProjectSettingsTargetingCountries>;
+}
+
+export type ProjectSettingsPageImage = {
+    name: string;
+    url: string
+}
+
+export type ProjectSettingsPage = {
+    usePage: boolean;
+    indexPage: boolean;
+    siteName: string;
+    slogan: string;
+    image: ProjectSettingsPageImage | null;
+    useShare: boolean;
+    useLikes: boolean;
+    useDownload: boolean;
+    useComments: boolean;
+    commentsType: string | null;
+    commentsId: string | null;
+    useGoogle: boolean;
+    googleCode: string | null;
+}
+
+export type ProjectSettingsBrandingPlayerLogoImage = {
+    name: string;
+    url: string;
+}
+
+export type ProjectSettingsBrandingPlayerLogo = {
+    playerLogoImage: ProjectSettingsBrandingPlayerLogoImage | null;
+    usePlayerLogo: boolean;
+    playerLogoUrl: string | null;
+    playerLogoPosition: string;
+    playerLogoMargin: number;
+}
+
+export type ProjectSettingsBrandingPlayButtonImage = {
+    name: string;
+    url: string;
+}
+
+export type ProjectSettingsBrandingPlayButton = {
+    playButtonImage: ProjectSettingsBrandingPlayButtonImage | null;
+    usePlayButton: boolean;
+}
+
+export type ProjectSettingsBrandingPpvLogoImage = {
+    name: string;
+    url: string;
+}
+
+export type ProjectSettingsBrandingPpvLogo = {
+    playerPpvImage: ProjectSettingsBrandingPpvLogoImage | null;
+    usePpvLogo: boolean;
+}
+
+export type ProjectSettingsBrandingEmailPatternLogoImage = {
+    name: string;
+    url: string;
+}
+
+export type ProjectSettingsBrandingEmailPattern = {
+    useEmailLogo: boolean;
+    emailLogoImage: ProjectSettingsBrandingEmailPatternLogoImage | null;
+    emailLogoBg: string;
+    removeBoomstreamContact: boolean;
+    emailSubjectString: string | null;
+    logoDescription: string;
+    emailDescriptionColor: string;
+}
+
+export type ProjectSettingsBrandingSmtpSettings = {
+    useCustomEmails: boolean;
+    smtpHost: string | null;
+    smtpPort: string | null;
+    login: string | null;
+    password: string | null;
+    email: string | null;
+    senderName: string | null;
+    encryptionType: string;
+    isVerified: string | null;
+}
+
+export type ProjectSettingsBrandingDomainParking = {
+    useDomain: boolean;
+    domain: string;
+    redirectUrl: string;
+    protocol: string;
+    domainNextCheck: string;
+    domainStatus: string;
+    domainIsExist: boolean;
+}
+
+export type ProjectSettingsBrandingAnalyticsCounter = {
+    useGoogleAnalytics: boolean;
+    googleAnalyticsCode: string | null
+    useYandexMetrika: boolean;
+    yandexMetrikaCode: string | null;
+    useFacebookPixel: boolean;
+    facebookPixelCode: string | null;
+}
+
+export type ProjectSettingsBranding = {
+    playerLogo: ProjectSettingsBrandingPlayerLogo;
+    playButton: ProjectSettingsBrandingPlayButton;
+    ppvLogo: ProjectSettingsBrandingPpvLogo;
+    emailPattern: ProjectSettingsBrandingEmailPattern;
+    smtpSettings: ProjectSettingsBrandingSmtpSettings;
+    domainParking: ProjectSettingsBrandingDomainParking;
+    analyticsCounter: ProjectSettingsBrandingAnalyticsCounter;
+}
+
+export type ProjectSettingsWebhook = {
+    id: number;
+    name: string | null;
+    url: string | null;
+    createdAt: string | null;
+    status: string | null
+}
+
+export type ProjectSettings = {
+    id: number | string;
+    integration: ProjectSettingsIntegration;
+    protection: ProjectSettingsProtection;
+    targeting: ProjectSettingsTargeting;
+    skin: {
+        skinType: string;
+    },
+    page: ProjectSettingsPage;
+    branding: ProjectSettingsBranding;
+    webhook: {
+        webhookNameList: Array<string>;
+        webhookList: Array<ProjectSettingsWebhook>;
+    }
+}
+
+export type ProjectSettingsQuery = {
+    userProjectSettings: ProjectSettings;
+}
+
 export type CreateProjectDTO = {
     input: {
         attribute : string;
         title : string;
+    }
+}
+
+export type ProjectChangeTitleDTO = {
+    input: {
+        id: string;
+        title: string;
     }
 }
 
@@ -39,6 +234,12 @@ export type ActivateDRMDTO = {
 export type CreateProjectResponse = {
     userProjectCreate: {
         record: Project;
+    }
+}
+
+export type ProjectChangeTitleResponse = {
+    userProjectChangeTitle: {
+        title: string;
     }
 }
 

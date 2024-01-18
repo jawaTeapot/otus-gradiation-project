@@ -7,14 +7,21 @@ import type {
   ActivateDRMResponse,
   CreateProjectDTO,
   CreateProjectResponse,
-  Project
+  Project, ProjectChangeTitleDTO, ProjectChangeTitleResponse,
+  ProjectSettings, ProjectSettingsQuery
 } from '~/types/store/projects'
-import { userProjectActivateBranding, userProjectActivateDRM, userProjectCreate } from '~/apollo/mutations/projects'
+import {
+  userProjectActivateBranding,
+  userProjectActivateDRM,
+  userProjectChangeTitle,
+  userProjectCreate
+} from '~/apollo/mutations/projects'
+import { userProjectSettings } from '~/apollo/queries/projects'
 
 export const useProjectsStore = defineStore('projects', () => {
   const projects = ref<Array<Project>>([])
   const currentProject = ref<Project>()
-  const projectSettings = ref()
+  const projectSettings = ref<ProjectSettings>()
 
   const setProject = (items: Array<Project>) => {
     projects.value = items
@@ -43,10 +50,28 @@ export const useProjectsStore = defineStore('projects', () => {
     if (!res || !res.data) {
       throw new Error('Ошибка')
     }
-    // this.projects.concat([res.data.userProjectCreate.record])
-    // this.projects.push(res.data.userProjectCreate.record)
     projects.value = [...projects.value, res.data.userProjectCreate.record]
     changeCurrentProject(res.data.userProjectCreate.record.id)
+    return res.data
+  }
+
+  const getUserProjectSettings = async (projectId: number | string) => {
+    const { data, error } = await useAsyncQuery<ProjectSettingsQuery>(userProjectSettings, {
+      projectId
+    })
+    // @ts-ignore
+    if (error.value?.cause?.graphQLErrors[0]?.extensions?.errorData?.errorCode === 403 || error.value?.cause?.networkError?.statusCode === 401) { return }
+    projectSettings.value = data.value.userProjectSettings
+    return data.value
+  }
+
+  const projectChangeTitle = async (dto: ProjectChangeTitleDTO) => {
+    const { mutate } = useMutation<ProjectChangeTitleResponse>(userProjectChangeTitle)
+    const res = await mutate(dto)
+    if (!res || !res.data) {
+      throw new Error('Ошибка')
+    }
+    currentProject.value = Object.assign({}, currentProject.value, { title: res?.data?.userProjectChangeTitle.title })
     return res.data
   }
 
@@ -76,6 +101,8 @@ export const useProjectsStore = defineStore('projects', () => {
     changeCurrentProject,
     createProject,
     activateBranding,
-    activateDRM
+    activateDRM,
+    getUserProjectSettings,
+    projectChangeTitle
   }
 })
