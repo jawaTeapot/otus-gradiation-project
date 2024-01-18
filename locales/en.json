@@ -3,6 +3,7 @@
     "loading": "Loading...",
     "email": "E-mail",
     "name": "Name",
+    "code": "Enter a code",
     "password": "Password",
     "password-1": "Enter the current password",
     "newPassword": "Enter a new password",
@@ -87,8 +88,11 @@
     "notification-message": "User with this email is already registered"
   },
   "recoveryPage": {
-    "title": "Password recovery",
-    "btn": "Send"
+    "title-1": "Password recovery",
+    "title-2": "Change password",
+    "text": "A password recovery code has been sent to your Email.",
+    "btn-1": "Send",
+    "btn-2": "Change"
   },
   "menuLinks": {
     "project-settings": "Project Settings",

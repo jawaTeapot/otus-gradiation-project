@@ -16,6 +16,3 @@ const playerProps = defineProps<{
   playerSkin?: string;
 }>()
 </script>
-
-<style scoped>
-</style>

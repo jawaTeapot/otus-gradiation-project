@@ -3,7 +3,6 @@ import { gql } from 'graphql-tag'
 export const loginProfileUpdate = gql`
 mutation loginProfileUpdate ($input: LoginProfileUpdateInput) {
     loginProfileUpdate (input: $input) {
-        id
         record {
             id
             email
@@ -122,20 +121,20 @@ export const loginProfileResendActivationMail = gql`
 `
 
 export const loginProfileSetNotification = gql`
-  mutation loginProfileSetNotification($input: LoginProfileSetNotificationInput) {
+mutation loginProfileSetNotification($input: LoginProfileSetNotificationInput) {
     loginProfileSetNotification(input: $input){
-      email
-      useBothEmails
-      balance
-      balanceLimit
-      mediaSuccess
-      mediaError
-      mediaBuy
-      liveCodecs
-      cameraError
-      liveAutokick:
-      liveNotRecorded
-      news
+        email
+        useBothEmails
+        balance
+        balanceLimit
+        mediaSuccess
+        mediaError
+        mediaBuy
+        liveCodecs
+        cameraError
+        liveAutokick:
+        liveNotRecorded
+        news
     }
-  }
+}
 `

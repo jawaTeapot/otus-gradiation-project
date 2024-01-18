@@ -14,11 +14,11 @@
         @submit.prevent="submitForm(formRef)"
       >
         <el-form-item :label="$t('labels.name')" prop="username">
-          <el-input v-model="registerForm.username" />
+          <el-input v-model="registerForm.username" autocomplete="off" />
         </el-form-item>
 
         <el-form-item :label="$t('labels.email')" prop="email">
-          <el-input v-model="registerForm.email" />
+          <el-input v-model="registerForm.email" autocomplete="off" />
         </el-form-item>
 
         <el-form-item :label="$t('labels.phone-number')" prop="phone">
@@ -35,7 +35,7 @@
         </el-form-item>
 
         <el-form-item :label="$t('labels.password')" prop="password" type="password" :inline-message="true">
-          <el-input v-model="registerForm.password" type="password" show-password />
+          <el-input v-model="registerForm.password" type="password" show-password autocomplete="off" />
         </el-form-item>
 
         <auth-verification ref="auth" v-model="registerForm.code" />

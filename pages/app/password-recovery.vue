@@ -2,7 +2,7 @@
   <div class="grid grid-cols-1 gap-5 lg:grid-cols-[1fr_1fr] max-w-[1180px] mx-auto p-3">
     <el-card>
       <h1 class="text-2xl font-bold mb-5 w-[500px]">
-        {{ $t('recoveryPage.title') }}
+        {{ $t('recoveryPage.title-1') }}
       </h1>
       <el-form
         ref="formRef"
@@ -14,14 +14,14 @@
         @submit.prevent="submitForm"
       >
         <el-form-item :label="$t('labels.email')" prop="email">
-          <el-input v-model="passwordRecovery.email" />
+          <el-input v-model="passwordRecovery.email" autocomplete="off" />
         </el-form-item>
         <el-form-item :label="$t('labels.verification-code')" prop="code">
           <auth-verification ref="auth" v-model="passwordRecovery.code" />
         </el-form-item>
         <el-form-item>
           <el-button class="w-full" type="success" native-type="submit">
-            {{ $t('recoveryPage.btn') }}
+            {{ $t('recoveryPage.btn-1') }}
           </el-button>
         </el-form-item>
       </el-form>

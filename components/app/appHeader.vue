@@ -8,7 +8,7 @@
           </el-badge>
         </el-button>
         <app-menu v-model="drawerMobile" />
-        <NuxtLink :to="localePath({ path: '/app/index' })">
+        <NuxtLink :to="localePath({ path: '/app' })">
           <NuxtImg v-show="$colorMode.value === 'dark'" class="max-w-[150px] md:max-w-[198px]" src="/img/logo-black.svg" alt="logo" />
           <NuxtImg v-show="$colorMode.value === 'light'" class="max-w-[150px] md:max-w-[198px]" src="/img/logo-white.svg" alt="logo" />
         </NuxtLink>
@@ -99,8 +99,9 @@ import { useMediaQuery } from '@vueuse/core'
 import { useCookies } from '@vueuse/integrations/useCookies'
 import type { LocaleObject } from 'vue-i18n-routing'
 import { useUserStore } from '~/store/user'
-import { getSourceUrl } from '~/utils'
-import AppBonus from '~/components/appBonus.vue'
+import { getSourceUrl } from '~/composables'
+import AppBonus from '~/components/app/appBonus.vue'
+import SelectProject from '~/components/app/selectProject.vue'
 
 const lg = useMediaQuery('(min-width: 1024px)')
 const xl = useMediaQuery('(min-width: 1280px)')

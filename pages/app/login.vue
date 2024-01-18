@@ -82,7 +82,7 @@
 import { ElMessage } from 'element-plus'
 import type { FormInstance, FormRules } from 'element-plus'
 import { ref, reactive } from 'vue'
-import AuthVerification from '~/components/authVerification.vue'
+import AuthVerification from '~/components/auth/authVerification.vue'
 
 definePageMeta({
   public: true,

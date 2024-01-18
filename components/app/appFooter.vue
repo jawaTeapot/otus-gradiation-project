@@ -30,7 +30,7 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { getSourceUrl } from '~/utils'
+import { getSourceUrl } from '~/composables'
 
 const footerLinksTwo = ref([
   {

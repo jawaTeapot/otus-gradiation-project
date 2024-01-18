@@ -3,6 +3,8 @@ import { ref } from 'vue'
 import { jwtDecode } from 'jwt-decode'
 import { useLoaderStore } from '~/store/loader'
 import type {
+  UpdateProfileResponse,
+  UpdateProfileDTO,
   ChangeEmailDTO,
   ChangeEmailResponse,
   CheckMyPromoCode,
@@ -10,16 +12,20 @@ import type {
   ProfileAddPhoneEmailDTO,
   ProfileAddPhoneEmailResponse,
   Tariffs,
-  User
+  User, ChangeUserPasswordDTO, ChangeUserPasswordResponse, SetNotificationDTO, SetNotificationResponse
 } from '~/types/store/user'
 import { loginProfile } from '~/apollo/queries/user'
 import { useProjectsStore } from '~/store/projects'
-import { loginProfileAddPhoneEmail, loginProfileEmailChange } from '~/apollo/mutations/user'
+import {
+  loginProfileAddPhoneEmail,
+  loginProfileEmailChange, loginProfilePasswordChange,
+  loginProfileResendActivationMail, loginProfileSetNotification, loginProfileUpdate
+} from '~/apollo/mutations/user'
 import type { Project } from '~/types/store/projects'
 
 export const useUserStore = defineStore('user', () => {
   const user = ref<User>()
-  const userRoles = ref<Array<string>>()
+  const userRoles = ref<Array<string>>([])
   const userCheckMyPromoCode = ref<CheckMyPromoCode>()
   const userTariffs = ref<Tariffs>()
 
@@ -77,8 +83,45 @@ export const useUserStore = defineStore('user', () => {
     return res?.data
   }
 
+  const updateUserProfile = async (dto: UpdateProfileDTO) => {
+    const { mutate } = useMutation<UpdateProfileResponse>(loginProfileUpdate)
+    const res = await mutate(dto)
+    if (!res || !res.data) {
+      throw new Error('Ошибка')
+    }
+    user.value = res.data.loginProfileUpdate.record
+    return res?.data
+  }
+
+  const changeUserPassword = async (dto: ChangeUserPasswordDTO) => {
+    const { mutate } = useMutation<ChangeUserPasswordResponse>(loginProfilePasswordChange)
+    const res = await mutate(dto)
+    if (!res || !res.data) {
+      throw new Error('Ошибка')
+    }
+    return res.data
+  }
+
   const changeEmail = async (dto: ChangeEmailDTO) => {
     const { mutate } = useMutation<ChangeEmailResponse>(loginProfileEmailChange)
+    const res = await mutate(dto)
+    if (!res || !res.data) {
+      throw new Error('Ошибка')
+    }
+    return res.data
+  }
+
+  const resendActivationMail = async () => {
+    const { mutate } = useMutation(loginProfileResendActivationMail)
+    const res = await mutate()
+    if (!res || !res.data) {
+      throw new Error('Ошибка')
+    }
+    return res.data
+  }
+
+  const setNotification = async (dto: SetNotificationDTO) => {
+    const { mutate } = useMutation<SetNotificationResponse>(loginProfileSetNotification)
     const res = await mutate(dto)
     if (!res || !res.data) {
       throw new Error('Ошибка')
@@ -95,6 +138,10 @@ export const useUserStore = defineStore('user', () => {
     fetchLoginProfile,
     fetchUserData,
     profileAddPhoneEmail,
-    changeEmail
+    changeEmail,
+    resendActivationMail,
+    updateUserProfile,
+    changeUserPassword,
+    setNotification
   }
 })

@@ -2,10 +2,10 @@
   <div class="grid grid-cols-1 gap-5 lg:grid-cols-[1fr_1fr] max-w-[1180px] mx-auto p-3">
     <el-card>
       <h1 class="text-2xl font-bold">
-        Изменение пароля
+        {{ $t('recoveryPage.title-2') }}
       </h1>
       <p class="my-5">
-        На ваш Email был отправлен код восстановления пароля.
+        {{ $t('recoveryPage.text') }}
       </p>
       <el-form
         ref="formRef"
@@ -16,19 +16,19 @@
         status-icon
         @submit.prevent="submitForm"
       >
-        <el-form-item label="Код" prop="recoveryCode">
-          <el-input v-model="recoveryForm.code" />
+        <el-form-item :label="$t('labels.code')" prop="code">
+          <el-input v-model="recoveryForm.code" autocomplete="off" />
         </el-form-item>
         <el-form-item :label="$t('labels.newPassword')" prop="password">
-          <el-input v-model="recoveryForm.password" type="password" show-password />
+          <el-input v-model="recoveryForm.password" type="password" show-password autocomplete="off" />
         </el-form-item>
         <el-form-item :label="$t('labels.examinationPassword')" prop="repeatPassword">
-          <el-input v-model="recoveryForm.repeatPassword" type="password" show-password />
+          <el-input v-model="recoveryForm.repeatPassword" type="password" show-password autocomplete="off" />
         </el-form-item>
         <auth-verification ref="auth" v-model="recoveryForm.codeCheck" />
         <el-form-item>
           <el-button class="w-full" type="success" :loading="isLoading" native-type="submit">
-            Изменить
+            {{ $t('recoveryPage.btn-2') }}
           </el-button>
         </el-form-item>
       </el-form>

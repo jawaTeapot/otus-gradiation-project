@@ -1,11 +1,13 @@
 <template>
   <app-loader v-if="loader.isLoading" />
   <div v-else class="h-screen grid grid-cols-1 xl:grid-cols-[auto_1fr]">
-    <app-sidebar />
+    <app-sidebar v-if="xl" />
     <div class="flex flex-col justify-between">
       <div>
         <app-header />
         <main class="p-2 md:p-3 lg:p-5">
+          <app-completed-registration />
+          <app-alert />
           <slot />
         </main>
       </div>
@@ -15,10 +17,10 @@
 </template>
 
 <script setup lang="ts">
-// import { ref } from 'vue'
 import { useLoaderStore } from '~/store/loader'
 import { useUserStore } from '~/store/user'
 
+const xl = useMediaQuery('(min-width: 1280px)')
 const loader = useLoaderStore()
 const userStore = useUserStore()
 

@@ -99,6 +99,40 @@ export type ChangeEmailDTO = {
     }
 }
 
+export type UpdateProfileDTO = {
+    input: {
+        email: string;
+        username: string;
+        languageId: string | number;
+        phone: string | null;
+        about: string | null;
+    }
+}
+
+export type ChangeUserPasswordDTO = {
+    input : {
+        oldPassword: string;
+        password: string;
+    }
+}
+
+export type SetNotificationDTO = {
+    input: {
+        email: string | null;
+        useBothEmails: boolean;
+        balance: boolean;
+        balanceLimit: string;
+        mediaSuccess: boolean;
+        mediaError: boolean;
+        mediaBuy: boolean;
+        liveCodecs: boolean;
+        cameraError: boolean;
+        liveAutokick: boolean;
+        liveNotRecorded: boolean;
+        news: boolean;
+    }
+}
+
 export type FetchLoginProfileResponse = {
     loginProfile: User;
     checkMyPromoCode: CheckMyPromoCode;
@@ -116,4 +150,20 @@ export type ChangeEmailResponse = {
     loginProfileEmailChange: {
         response: string;
     }
+}
+
+export type UpdateProfileResponse = {
+    loginProfileUpdate: {
+        record: User
+    }
+}
+
+export type ChangeUserPasswordResponse = {
+    loginProfilePasswordChange: {
+        response: string;
+    }
+}
+
+export type SetNotificationResponse = {
+    loginProfileSetNotification: EmailSettings
 }
