@@ -41,31 +41,30 @@
       <el-tab-pane :label="$t('projectSettings.tabs.tab-1')" name="basic">
         <basic />
       </el-tab-pane>
-      <el-tab-pane v-if="projectsStore.projectSettings?.integration" :label="$t('projectSettings.tabs.tab-2')" name="integration">
-        i
-        <!--        <integration />-->
+      <el-tab-pane v-if="projectSettings?.integration" :label="$t('projectSettings.tabs.tab-2')" name="integration">
+        <integration />
       </el-tab-pane>
-      <el-tab-pane v-if="projectsStore.projectSettings?.protection" :label="$t('projectSettings.tabs.tab-3')" name="protection">
+      <el-tab-pane v-if="projectSettings?.protection" :label="$t('projectSettings.tabs.tab-3')" name="protection">
         p
         <!--        <protection />-->
       </el-tab-pane>
-      <el-tab-pane v-if="projectsStore.projectSettings?.targeting" :label="$t('projectSettings.tabs.tab-4')" name="geotargeting">
+      <el-tab-pane v-if="projectSettings?.targeting" :label="$t('projectSettings.tabs.tab-4')" name="geotargeting">
         g
         <!--        <geotargeting />-->
       </el-tab-pane>
-      <el-tab-pane v-if="projectsStore.projectSettings?.skin" :label="$t('projectSettings.tabs.tab-5')" name="settings">
+      <el-tab-pane v-if="projectSettings?.skin" :label="$t('projectSettings.tabs.tab-5')" name="settings">
         p
         <!--        <player-settings :tab="activeTab" />-->
       </el-tab-pane>
-      <el-tab-pane v-if="projectsStore.projectSettings?.page" :label="$t('projectSettings.tabs.tab-6')" name="pages">
+      <el-tab-pane v-if="projectSettings?.page" :label="$t('projectSettings.tabs.tab-6')" name="pages">
         p
         <!--        <page-settings />-->
       </el-tab-pane>
-      <el-tab-pane v-if="projectsStore.projectSettings?.branding" :label="$t('projectSettings.tabs.tab-7')" name="branding">
+      <el-tab-pane v-if="projectSettings?.branding" :label="$t('projectSettings.tabs.tab-7')" name="branding">
         b
         <!--        <branding-settings />-->
       </el-tab-pane>
-      <el-tab-pane v-if="projectsStore.projectSettings?.webhook" :label="$t('projectSettings.tabs.tab-8')" name="webhooks">
+      <el-tab-pane v-if="projectSettings?.webhook" :label="$t('projectSettings.tabs.tab-8')" name="webhooks">
         w
         <!--        <webhooks />-->
       </el-tab-pane>
@@ -80,6 +79,7 @@ import { ElMessage, ElMessageBox } from 'element-plus'
 import type { TabsPaneContext } from 'element-plus'
 import { useProjectsStore } from '~/store/projects'
 import Basic from '~/components/project-settings/basic.vue'
+import Integration from '~/components/project-settings/integration.vue'
 
 const { t } = useI18n()
 const loading = ref<boolean>(true)
@@ -106,6 +106,7 @@ onMounted(() => {
   }, { immediate: true })
 })
 
+const projectSettings = computed(() => projectsStore.projectSettings)
 const projectId = computed(() => projectsStore.currentProject ? projectsStore.currentProject.id : '')
 const projectName = computed(() => projectsStore.currentProject ? projectsStore.currentProject.title : '')
 

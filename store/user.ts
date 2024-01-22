@@ -50,6 +50,7 @@ export const useUserStore = defineStore('user', () => {
       projectsStore.setProject(data.userProjects.nodes)
     } catch (e) {
       console.log(e)
+      throw new Error('Ошибка')
     } finally {
       loaderStore.setLoader(false)
     }

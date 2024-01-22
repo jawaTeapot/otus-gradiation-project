@@ -9,6 +9,8 @@ import type {
   CreateProjectResponse,
   DeletedProjectDTO,
   DeletedProjectResponse,
+  GenerateAPIKeyDTO,
+  GenerateAPIKeyResponse,
   Project,
   ProjectChangeTitleDTO,
   ProjectChangeTitleResponse,
@@ -20,7 +22,8 @@ import {
   userProjectActivateDRM,
   userProjectChangeTitle,
   userProjectCreate,
-  userProjectDeleted
+  userProjectDeleted,
+  userProjectGenerateAPIKey
 } from '~/apollo/mutations/projects'
 import { userProjectSettings } from '~/apollo/queries/projects'
 
@@ -84,7 +87,7 @@ export const useProjectsStore = defineStore('projects', () => {
     })
     // @ts-ignore
     if (error.value?.cause?.graphQLErrors[0]?.extensions?.errorData?.errorCode === 403 || error.value?.cause?.networkError?.statusCode === 401) { return }
-    projectSettings.value = data.value.userProjectSettings
+    projectSettings.value = { ...data.value.userProjectSettings }
     return data.value
   }
 
@@ -124,6 +127,18 @@ export const useProjectsStore = defineStore('projects', () => {
     return res.data
   }
 
+  const generateAPIKey = async (dto: GenerateAPIKeyDTO) => {
+    const { mutate } = useMutation<GenerateAPIKeyResponse>(userProjectGenerateAPIKey)
+    const res = await mutate(dto)
+    if (!res || !res.data) {
+      throw new Error('Ошибка')
+    }
+    if (projectSettings.value) {
+      projectSettings.value = { ...projectSettings.value, integration: { ...projectSettings.value?.integration, apiKey: res.data.userProjectGenerateAPIKey.apiKey } }
+    }
+    return res.data
+  }
+
   return {
     projects,
     currentProject,
@@ -135,6 +150,7 @@ export const useProjectsStore = defineStore('projects', () => {
     activateBranding,
     activateDRM,
     getUserProjectSettings,
-    projectChangeTitle
+    projectChangeTitle,
+    generateAPIKey
   }
 })

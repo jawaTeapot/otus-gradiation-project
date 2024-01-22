@@ -237,6 +237,10 @@ export type ActivateDRMDTO = {
     }
 }
 
+export type GenerateAPIKeyDTO = {
+    projectId: number | string;
+}
+
 export type CreateProjectResponse = {
     userProjectCreate: {
         record: Project;
@@ -264,5 +268,11 @@ export type ActivateBrandingResponse = {
 export type ActivateDRMResponse = {
     userProjectActivateDRM: {
         response: string;
+    }
+}
+
+export type GenerateAPIKeyResponse = {
+    userProjectGenerateAPIKey: {
+        apiKey: string;
     }
 }
