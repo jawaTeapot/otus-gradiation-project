@@ -20,10 +20,7 @@ export default defineNuxtConfig({
     '@nuxt-alt/auth',
     [
       '@pinia/nuxt', {
-        autoImports: [
-          'defineStore',
-          ['defineStore', 'definePiniaStore']
-        ]
+        storesDirs: ['./store/**']
       }
     ],
     '@vueuse/nuxt',

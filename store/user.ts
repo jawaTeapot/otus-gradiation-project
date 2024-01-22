@@ -13,11 +13,11 @@ export const useUserStore = defineStore('user', () => {
   const userRoles = ref<Array<string>>([])
   const userCheckMyPromoCode = ref<CheckMyPromoCode>()
   const userTariffs = ref<Tariffs>()
+  const projectsStore = useProjectsStore()
 
-  const userProjects = computed((): Array<Project> => {
-    const projectsStore = useProjectsStore()
-    return projectsStore.projects
-  })
+  const userProjects = computed(():Array<Project> => projectsStore.projects)
+
+  const userProjectName = computed(() => projectsStore.currentProject?.title)
 
   const parseUserRoles = () => {
     const auth = useAuth()
@@ -114,5 +114,5 @@ export const useUserStore = defineStore('user', () => {
     return res.data
   }
 
-  return { user, userRoles, userCheckMyPromoCode, userTariffs, userProjects, fetchLoginProfile, fetchUserData, profileAddPhoneEmail, changeEmail, resendActivationMail, updateUserProfile, changeUserPassword, setNotification }
+  return { user, userRoles, userCheckMyPromoCode, userTariffs, userProjects, fetchLoginProfile, fetchUserData, profileAddPhoneEmail, changeEmail, resendActivationMail, updateUserProfile, changeUserPassword, setNotification, userProjectName }
 })

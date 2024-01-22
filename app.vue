@@ -17,7 +17,12 @@ onMounted(async () => {
   const runtimeConfig = useRuntimeConfig()
   if (routerParam.query['activation-code']) {
     try {
-      await $fetch(`${runtimeConfig.public.apiBase}/api/v1/register/activate?code=${routerParam.query['activation-code']}`, { method: 'POST' })
+      await $fetch(`${runtimeConfig.public.apiBase}/api/v1/register/activate`, {
+        method: 'POST',
+        body: {
+          code: routerParam.query['activation-code']
+        }
+      })
       await router.replace({ query: undefined })
       ElNotification({
         customClass: '!w-auto',

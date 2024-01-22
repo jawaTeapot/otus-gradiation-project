@@ -31,7 +31,7 @@
       </div>
     </el-alert>
     <el-alert
-      v-if="userBalance === 0"
+      v-if="userBalance <= 0"
       class="!mb-2"
       title="Пополните баланс!"
       type="error"
@@ -57,7 +57,7 @@ const verified = computed(() => userStore.user?.isEmailVerified)
 const balance = computed(() => userStore.user?.emailSettings.balance)
 const balanceLimit = computed(() => Number(userStore.user?.emailSettings.balanceLimit))
 const userBalance = computed(() => Number(userStore.user?.account.balance))
-const currency = computed(() => Number(userStore.user?.account.currency))
+const currency = computed(() => userStore.user?.account.currency)
 const userEmail = computed(() => userStore.user?.email)
 // const showAlert = ref(true)
 

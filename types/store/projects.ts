@@ -212,6 +212,12 @@ export type CreateProjectDTO = {
     }
 }
 
+export type DeletedProjectDTO = {
+    input: {
+        id : string;
+    }
+}
+
 export type ProjectChangeTitleDTO = {
     input: {
         id: string;
@@ -234,6 +240,12 @@ export type ActivateDRMDTO = {
 export type CreateProjectResponse = {
     userProjectCreate: {
         record: Project;
+    }
+}
+
+export type DeletedProjectResponse = {
+    userProjectDeleted: {
+        response: string;
     }
 }
 

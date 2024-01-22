@@ -7,14 +7,20 @@ import type {
   ActivateDRMResponse,
   CreateProjectDTO,
   CreateProjectResponse,
-  Project, ProjectChangeTitleDTO, ProjectChangeTitleResponse,
-  ProjectSettings, ProjectSettingsQuery
+  DeletedProjectDTO,
+  DeletedProjectResponse,
+  Project,
+  ProjectChangeTitleDTO,
+  ProjectChangeTitleResponse,
+  ProjectSettings,
+  ProjectSettingsQuery
 } from '~/types/store/projects'
 import {
   userProjectActivateBranding,
   userProjectActivateDRM,
   userProjectChangeTitle,
-  userProjectCreate
+  userProjectCreate,
+  userProjectDeleted
 } from '~/apollo/mutations/projects'
 import { userProjectSettings } from '~/apollo/queries/projects'
 
@@ -55,6 +61,23 @@ export const useProjectsStore = defineStore('projects', () => {
     return res.data
   }
 
+  const deleteProject = async (dto: DeletedProjectDTO) => {
+    const { mutate } = useMutation<DeletedProjectResponse>(userProjectDeleted)
+    const res = await mutate(dto)
+    if (!res || !res.data) {
+      throw new Error('Ошибка')
+    } else {
+      const updatedProjects = projects.value.filter(project => project.id !== dto.input.id)
+      projects.value = updatedProjects
+      if (updatedProjects.length <= 0) {
+        projects.value = []
+      } else {
+        changeCurrentProject(updatedProjects[0].id)
+      }
+    }
+    return res.data
+  }
+
   const getUserProjectSettings = async (projectId: number | string) => {
     const { data, error } = await useAsyncQuery<ProjectSettingsQuery>(userProjectSettings, {
       projectId
@@ -71,6 +94,13 @@ export const useProjectsStore = defineStore('projects', () => {
     if (!res || !res.data) {
       throw new Error('Ошибка')
     }
+    //  else if (currentProject.value) {
+    // currentProject.value = {
+    //   ...currentProject.value,
+    //   title: res?.data?.userProjectChangeTitle.title
+    // }
+    // currentProject.value.title = res?.data?.userProjectChangeTitle.title
+    // }
     currentProject.value = Object.assign({}, currentProject.value, { title: res?.data?.userProjectChangeTitle.title })
     return res.data
   }
@@ -100,6 +130,7 @@ export const useProjectsStore = defineStore('projects', () => {
     setProject,
     changeCurrentProject,
     createProject,
+    deleteProject,
     activateBranding,
     activateDRM,
     getUserProjectSettings,

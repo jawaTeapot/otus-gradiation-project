@@ -1,23 +1,29 @@
 <template>
   <div>
     <client-only>
-      <el-select v-model="projectModel" placement="bottom" filterable class="min-w-[180px]">
+      <el-select :model-value="projectModel" placement="bottom" filterable class="min-w-[180px]" @change="selectCurrentProject">
         <el-option :value="false" @click="open()">
           {{ $t('labels.select-new-project') }}
         </el-option>
         <el-divider class="!my-0" />
         <el-option
-          v-for="item in userStore.userProjects"
+          v-for="item in projects"
           :key="item.id"
           :label="item.title"
           :value="item.id"
         />
       </el-select>
     </client-only>
+    {{ userStore.userProjectName }}
+    <el-divider />
+    {{ userStore.userProjects }}
+    <el-divider />
+    {{ projects }}
   </div>
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { useProjectsStore } from '~/store/projects'
 import { useUserStore } from '~/store/user'
@@ -26,18 +32,45 @@ const userStore = useUserStore()
 const projectsStore = useProjectsStore()
 const { t } = useI18n()
 
-const projectModel = computed({
-  get () {
-    if (!projectsStore.currentProject) {
-      return ''
-    } else {
-      return projectsStore.currentProject.id
-    }
-  },
-  set (nv) {
-    projectsStore.changeCurrentProject(nv)
+watch(() => projectsStore.projects, (nv, ov) => {
+  console.log('nv', nv)
+  console.log('ov', ov)
+}, { immediate: true, deep: true })
+
+watchEffect(() => {
+  console.log('watchEffect', projectsStore.projects)
+})
+
+const projectModel = computed(() => {
+  if (projectsStore.currentProject) {
+    return projectsStore.currentProject.id
+  } else {
+    return ''
   }
 })
+
+console.log('projectModel', projectModel.value)
+
+// const projectModel = ref('')
+
+const projects = computed(() => projectsStore.projects)
+
+// const projectModel = computed({
+//   get () {
+//     if (!projectsStore.currentProject) {
+//       return ''
+//     } else {
+//       return projectsStore.currentProject.id
+//     }
+//   },
+//   set (nv) {
+//     projectsStore.changeCurrentProject(nv)
+//   }
+// })
+
+function selectCurrentProject (el: string) {
+  projectsStore.changeCurrentProject(el)
+}
 
 const open = () => {
   ElMessageBox.prompt(t('new-project.headline'), t('new-project.heading'), {
@@ -76,7 +109,3 @@ const open = () => {
     })
 }
 </script>
-
-<style scoped>
-
-</style>

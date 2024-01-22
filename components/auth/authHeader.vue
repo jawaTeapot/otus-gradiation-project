@@ -34,15 +34,9 @@ const availableLocales = computed(() => {
   })
 })
 
-// console.log(availableLocales.value)
-// console.log('locales', locales)
-// console.log('locale', locale)
-
 const switchLocal = (el: string | LocaleObject) => {
   if (typeof el !== 'string') {
     return navigateTo(switchLocalePath(el.code))
   }
 }
 </script>
-
-<style scoped lang="scss" />

@@ -31,6 +31,7 @@
 <script setup lang="ts">
 import { useUserStore } from '~/store/user'
 import { useProjectsStore } from '~/store/projects'
+import AppCreateProject from '~/components/app/appCreateProject.vue'
 
 definePageMeta({
   layout: 'default',
@@ -41,6 +42,3 @@ const userStore = useUserStore()
 const projectsStore = useProjectsStore()
 const creatNewProject = computed(() => !userStore.userProjects.length)
 </script>
-
-<style scoped lang="scss">
-</style>

@@ -9,4 +9,5 @@
 
 <script setup lang="ts">
 import { getIdProject, getSourceUrl } from '~/composables'
+import TimeComponent from '~/components/app/timeComponent.vue'
 </script>
