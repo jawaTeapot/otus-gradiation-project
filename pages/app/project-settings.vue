@@ -29,8 +29,6 @@
       </el-popover>
     </div>
 
-    {{ userStore.userProjectName }}
-
     <el-tabs
       v-model="activeName"
       v-loading="loading"
@@ -82,9 +80,7 @@ import { ElMessage, ElMessageBox } from 'element-plus'
 import type { TabsPaneContext } from 'element-plus'
 import { useProjectsStore } from '~/store/projects'
 import Basic from '~/components/project-settings/basic.vue'
-import { useUserStore } from '~/store/user'
 
-const userStore = useUserStore()
 const { t } = useI18n()
 const loading = ref<boolean>(true)
 const projectsStore = useProjectsStore()
@@ -111,20 +107,7 @@ onMounted(() => {
 })
 
 const projectId = computed(() => projectsStore.currentProject ? projectsStore.currentProject.id : '')
-
 const projectName = computed(() => projectsStore.currentProject ? projectsStore.currentProject.title : '')
-// const projectName = computed({
-//   get () {
-//     if (!projectsStore.currentProject) {
-//       return ''
-//     } else {
-//       return projectsStore.currentProject.title
-//     }
-//   },
-//   set (nv) {
-//     projectsStore.changeCurrentProject(nv)
-//   }
-// })
 
 const changeProjectName = () => {
   ElMessageBox.prompt(t('projectSettings.modal.title'), '', {

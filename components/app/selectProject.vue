@@ -14,11 +14,6 @@
         />
       </el-select>
     </client-only>
-    {{ userStore.userProjectName }}
-    <el-divider />
-    {{ userStore.userProjects }}
-    <el-divider />
-    {{ projects }}
   </div>
 </template>
 
@@ -26,20 +21,11 @@
 import { computed } from 'vue'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { useProjectsStore } from '~/store/projects'
-import { useUserStore } from '~/store/user'
 
-const userStore = useUserStore()
 const projectsStore = useProjectsStore()
 const { t } = useI18n()
 
-watch(() => projectsStore.projects, (nv, ov) => {
-  console.log('nv', nv)
-  console.log('ov', ov)
-}, { immediate: true, deep: true })
-
-watchEffect(() => {
-  console.log('watchEffect', projectsStore.projects)
-})
+const projects = computed(() => projectsStore.projects)
 
 const projectModel = computed(() => {
   if (projectsStore.currentProject) {
@@ -48,25 +34,6 @@ const projectModel = computed(() => {
     return ''
   }
 })
-
-console.log('projectModel', projectModel.value)
-
-// const projectModel = ref('')
-
-const projects = computed(() => projectsStore.projects)
-
-// const projectModel = computed({
-//   get () {
-//     if (!projectsStore.currentProject) {
-//       return ''
-//     } else {
-//       return projectsStore.currentProject.id
-//     }
-//   },
-//   set (nv) {
-//     projectsStore.changeCurrentProject(nv)
-//   }
-// })
 
 function selectCurrentProject (el: string) {
   projectsStore.changeCurrentProject(el)

@@ -17,8 +17,6 @@ export const useUserStore = defineStore('user', () => {
 
   const userProjects = computed(():Array<Project> => projectsStore.projects)
 
-  const userProjectName = computed(() => projectsStore.currentProject?.title)
-
   const parseUserRoles = () => {
     const auth = useAuth()
     const { roles } = jwtDecode <{roles: string[]}>(auth.tokenStrategy.token?.get().toString() ?? '')
@@ -49,7 +47,6 @@ export const useUserStore = defineStore('user', () => {
       user.value = data.loginProfile
       userCheckMyPromoCode.value = data.checkMyPromoCode
       userTariffs.value = data.tariffs
-      const projectsStore = useProjectsStore()
       projectsStore.setProject(data.userProjects.nodes)
     } catch (e) {
       console.log(e)
@@ -114,5 +111,5 @@ export const useUserStore = defineStore('user', () => {
     return res.data
   }
 
-  return { user, userRoles, userCheckMyPromoCode, userTariffs, userProjects, fetchLoginProfile, fetchUserData, profileAddPhoneEmail, changeEmail, resendActivationMail, updateUserProfile, changeUserPassword, setNotification, userProjectName }
+  return { user, userRoles, userCheckMyPromoCode, userTariffs, userProjects, fetchLoginProfile, fetchUserData, profileAddPhoneEmail, changeEmail, resendActivationMail, updateUserProfile, changeUserPassword, setNotification }
 })

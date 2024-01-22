@@ -56,7 +56,7 @@ export const useProjectsStore = defineStore('projects', () => {
     if (!res || !res.data) {
       throw new Error('Ошибка')
     }
-    projects.value = [...projects.value, res.data.userProjectCreate.record]
+    projects.value.push({ ...res.data.userProjectCreate.record })
     changeCurrentProject(res.data.userProjectCreate.record.id)
     return res.data
   }
@@ -93,15 +93,16 @@ export const useProjectsStore = defineStore('projects', () => {
     const res = await mutate(dto)
     if (!res || !res.data) {
       throw new Error('Ошибка')
+    } else if (currentProject.value) {
+      currentProject.value = { ...currentProject.value, title: res.data.userProjectChangeTitle.title }
+      const index = projects.value.findIndex(project => project.id === currentProject.value?.id)
+      if (index !== -1) {
+        const updatedProject = { ...currentProject.value }
+        const updatedProjects = [...projects.value]
+        updatedProjects[index] = updatedProject
+        projects.value = updatedProjects
+      }
     }
-    //  else if (currentProject.value) {
-    // currentProject.value = {
-    //   ...currentProject.value,
-    //   title: res?.data?.userProjectChangeTitle.title
-    // }
-    // currentProject.value.title = res?.data?.userProjectChangeTitle.title
-    // }
-    currentProject.value = Object.assign({}, currentProject.value, { title: res?.data?.userProjectChangeTitle.title })
     return res.data
   }
 
