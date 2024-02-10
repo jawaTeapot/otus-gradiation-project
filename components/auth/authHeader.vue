@@ -1,6 +1,6 @@
 <template>
   <div class="p-2 md:p-3 flex items-center justify-between">
-    <NuxtLink type="primary" :to="localePath({ path: '/app/login' })">
+    <NuxtLink type="primary" :to="{ path: '/app' }">
       <NuxtImg v-show="$colorMode.value === 'dark'" class="max-w-[200px] md:max-w-[250px]" src="/img/logo-black.svg" alt="logo" />
       <NuxtImg v-show="$colorMode.value === 'light'" class="max-w-[200px] md:max-w-[250px]" src="/img/logo-white.svg" alt="logo" />
     </NuxtLink>
@@ -22,11 +22,10 @@
 </template>
 
 <script setup lang="ts">
-import type { LocaleObject } from 'vue-i18n-routing'
+import type { LocaleObject } from '@nuxtjs/i18n'
 
 const { locale, locales } = useI18n()
 const switchLocalePath = useSwitchLocalePath()
-const localePath = useLocalePath()
 
 const availableLocales = computed(() => {
   return [...locales.value].filter((i) => {

@@ -65,7 +65,7 @@
 import { ref } from 'vue'
 import { ElMessage } from 'element-plus'
 import type { ElTable } from 'element-plus'
-import { useMediaQuery } from '@vueuse/core/index'
+import { useMediaQuery } from '@vueuse/core'
 import { useProjectsStore } from '~/store/projects'
 
 const md = useMediaQuery('(min-width: 767px)')

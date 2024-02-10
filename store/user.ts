@@ -2,24 +2,32 @@ import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import { jwtDecode } from 'jwt-decode'
 import { useLoaderStore } from '~/store/loader'
-import type { UpdateProfileResponse, UpdateProfileDTO, ChangeEmailDTO, ChangeEmailResponse, CheckMyPromoCode, FetchLoginProfileResponse, ProfileAddPhoneEmailDTO, ProfileAddPhoneEmailResponse, Tariffs, User, ChangeUserPasswordDTO, ChangeUserPasswordResponse, SetNotificationDTO, SetNotificationResponse } from '~/types/store/user'
+import type {
+  UpdateProfileResponse, UpdateProfileDTO, ChangeEmailDTO,
+  ChangeEmailResponse, CheckMyPromoCode, FetchLoginProfileResponse,
+  ProfileAddPhoneEmailDTO, ProfileAddPhoneEmailResponse, Tariffs,
+  User, ChangeUserPasswordDTO, ChangeUserPasswordResponse,
+  SetNotificationDTO, SetNotificationResponse
+} from '~/types/store/user'
 import { loginProfile } from '~/apollo/queries/user'
 import { useProjectsStore } from '~/store/projects'
-import { loginProfileAddPhoneEmail, loginProfileEmailChange, loginProfilePasswordChange, loginProfileResendActivationMail, loginProfileSetNotification, loginProfileUpdate } from '~/apollo/mutations/user'
+import {
+  loginProfileAddPhoneEmail, loginProfileEmailChange, loginProfilePasswordChange,
+  loginProfileResendActivationMail, loginProfileSetNotification, loginProfileUpdate
+} from '~/apollo/mutations/user'
 import type { Project } from '~/types/store/projects'
 
 export const useUserStore = defineStore('user', () => {
-  const user = ref<User>()
-  const userRoles = ref<Array<string>>([])
-  const userCheckMyPromoCode = ref<CheckMyPromoCode>()
-  const userTariffs = ref<Tariffs>()
+  const user = ref(<User>{})
+  const userRoles = ref(<Array<string>>[])
+  const userCheckMyPromoCode = ref(<CheckMyPromoCode>{})
+  const userTariffs = ref(<Tariffs>{})
   const projectsStore = useProjectsStore()
 
   const userProjects = computed(():Array<Project> => projectsStore.projects)
 
-  const parseUserRoles = () => {
-    const auth = useAuth()
-    const { roles } = jwtDecode <{roles: string[]}>(auth.tokenStrategy.token?.get().toString() ?? '')
+  const parseUserRoles = (token: string) => {
+    const { roles } = jwtDecode <{roles: string[]}>(token)
     userRoles.value = roles
   }
 
@@ -36,24 +44,25 @@ export const useUserStore = defineStore('user', () => {
     return data.value as FetchLoginProfileResponse
   }
 
-  const fetchUserData = async (hideLoader?: boolean) => {
-    const loaderStore = useLoaderStore()
-    if (!hideLoader) {
-      loaderStore.setLoader(true)
-    }
-    try {
-      const data = await fetchLoginProfile()
-      parseUserRoles()
-      user.value = data.loginProfile
-      userCheckMyPromoCode.value = data.checkMyPromoCode
-      userTariffs.value = data.tariffs
-      projectsStore.setProject(data.userProjects.nodes)
-    } catch (e) {
-      console.log(e)
-      throw new Error('Ошибка')
-    } finally {
-      loaderStore.setLoader(false)
-    }
+  const fetchUserData = async (token: string, hideLoader?: boolean) => {
+    await useAsyncData(async () => {
+      const loaderStore = useLoaderStore()
+      if (!hideLoader) {
+        loaderStore.setLoader(true)
+      }
+      try {
+        const data = await fetchLoginProfile()
+        parseUserRoles(token)
+        user.value = { ...data.loginProfile }
+        userCheckMyPromoCode.value = { ...data.checkMyPromoCode }
+        userTariffs.value = { ...data.tariffs }
+        projectsStore.setProject([...data.userProjects.nodes])
+      } catch (e) {
+        throw new Error('Ошибка')
+      } finally {
+        loaderStore.setLoader(false)
+      }
+    })
   }
 
   const profileAddPhoneEmail = async (dto: ProfileAddPhoneEmailDTO) => {
@@ -62,7 +71,7 @@ export const useUserStore = defineStore('user', () => {
     if (!res || !res.data) {
       throw new Error('Ошибка')
     }
-    user.value = res.data.loginProfileAddPhoneEmail.record
+    user.value = { ...res.data.loginProfileAddPhoneEmail.record }
     return res?.data
   }
 
@@ -72,7 +81,7 @@ export const useUserStore = defineStore('user', () => {
     if (!res || !res.data) {
       throw new Error('Ошибка')
     }
-    user.value = res.data.loginProfileUpdate.record
+    user.value = { ...res.data.loginProfileUpdate.record }
     return res?.data
   }
 

@@ -11,7 +11,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { getSourceUrl } from '~/composables'
+import { getSourceUrl } from '~/utils'
 import { useUserStore } from '~/store/user'
 
 const userStore = useUserStore()

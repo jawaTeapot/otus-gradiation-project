@@ -20,7 +20,7 @@
           Оператор – Общество с ограниченной ответственностью «ХВД», ИНН 6161062312, адрес: 344092, г.о. Город Ростов-на-Дону, ул. Творческая, д. 9, стр. 1, помещен. Н 13, ком. 38, самостоятельно или совместно с другими лицами организующие и (или) осуществляющие обработку персональных данных, а также определяющие цели обработки персональных данных, состав персональных данных, подлежащих обработке, действия (операции), совершаемые с персональными данными.
         </li>
         <li class="font-normal ml-2.5 mb-2">
-          Пользовательское соглашение (Пользовательское соглашение, Договор-оферта, Договор, Оферта) – Пользовательское соглашение Оператора; актуальная версия Пользовательского соглашения расположена на странице <el-link class="!text-base mb-1" type="primary" :href="localePath({ path: '/app/terms' })" target="_blank">
+          Пользовательское соглашение (Пользовательское соглашение, Договор-оферта, Договор, Оферта) – Пользовательское соглашение Оператора; актуальная версия Пользовательского соглашения расположена на странице <el-link class="!text-base mb-1" type="primary" href="/app/terms" target="_blank">
             https://boomstream.com/ru/terms.html
           </el-link>;<br> Пользовательское соглашение, в соответствии с которым Оператор предоставляет услуги в рамках сервисов Сайта, в том числе, но, не ограничиваясь, услуги Платного доступа.
         </li>
@@ -211,7 +211,7 @@
         </li>
         <li class="font-bold ml-2.5 mb-2">
           Условия пользования Сайтом
-          <ol class="font-normal list-inside ml-2.5 mt-1.5">
+          <div class="font-normal ml-2.5 mt-1.5">
             4. 1. Пользователь при использовании Сайта, подтверждает, что:
             <ol class="list-inside ml-2.5 mt-1.5">
               <li class="mb-1.5">
@@ -230,7 +230,7 @@
                 4. 1. 5. акцепт Пользовательского соглашения и/или проставление «галочки» («V») (иного подобного знака) на Сайте под ссылкой на данные Правила является письменным согласием Пользователя на сбор, хранение, другие способы обработки, а также передачу третьим лицам персональных данных, предоставляемых Пользователем, на получение рекламных и/или информационных рассылок. Одновременно с этим также и использование Пользователем Сайта означает безоговорочное согласие Пользователя с настоящими Правилами и указанными в них условиями обработки персональных данных, как без использования средств автоматизации, так и с их использованием.
               </li>
             </ol>
-          </ol>
+          </div>
         </li>
         <li class="font-bold ml-2.5 mb-2">
           Изменение персональных данных
@@ -540,7 +540,7 @@
             <li class="mt-3.5">
               Notices to Registered Users
               <p class="mt-1.5">
-                If you have registered for an Account, BOOMSTREAM may use your Personal Information to send emails regarding your registration, including confirmation to verify the accuracy of any information you have provided, and instructions on how to post Content. BOOMSTREAM may also send you emails to verify your identity or to notify you if BOOMSTREAM believes your use of BOOMSTREAM Properties violates any <el-link type="primary" :href="localePath({ path: '/app/terms' })" target="_blank">
+                If you have registered for an Account, BOOMSTREAM may use your Personal Information to send emails regarding your registration, including confirmation to verify the accuracy of any information you have provided, and instructions on how to post Content. BOOMSTREAM may also send you emails to verify your identity or to notify you if BOOMSTREAM believes your use of BOOMSTREAM Properties violates any <el-link type="primary" href="/app/terms" target="_blank">
                   GENERAL TERMS
                 </el-link> for the use of the BOOMSTREAM Properties.
               </p>
@@ -629,7 +629,7 @@
               <b>The right to data portability</b> – You have the right to request that BOOMSTREAM transfer the data that we have collected to another organization, or directly to you, under certain conditions.
               <br>
               If you make a request, we have one month to respond to you. If you would like to exercise any of these rights, please contact us at our email:
-              Write to us: <el-link type="primary" :href="localePath({ path: '/app/terms' })" target="_blank">
+              Write to us: <el-link type="primary" href="/app/terms" target="_blank">
                 support@boomstream.com
               </el-link>
             </li>
@@ -819,5 +819,4 @@ definePageMeta({
 })
 
 const { locale } = useI18n()
-const localePath = useLocalePath()
 </script>

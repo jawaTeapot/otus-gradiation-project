@@ -22,9 +22,10 @@ import { useUserStore } from '~/store/user'
 
 const xl = useMediaQuery('(min-width: 1280px)')
 const loader = useLoaderStore()
+const auth = useNuxtApp().$auth
 const userStore = useUserStore()
 
-nextTick().then(async () => await useAsyncData('user', () => userStore.fetchUserData()))
+nextTick().then(() => userStore.fetchUserData(auth.tokenStrategy.token?.get().toString() || ''))
 </script>
 
 <style scoped lang="scss" />

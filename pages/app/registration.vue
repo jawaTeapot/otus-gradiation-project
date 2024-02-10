@@ -44,11 +44,11 @@
           <el-checkbox v-model="registerForm.agreement" size="large" name="agreement">
             <span class="flex flex-wrap text-xs ">
               {{ $t('labels.agreement.i-accept') }}
-              <el-link class="mx-1 !text-xs" type="primary" :href="localePath({ path: '/app/terms' })" target="_blank">
+              <el-link class="mx-1 !text-xs" type="primary" href="/app/terms" target="_blank">
                 {{ $t('labels.agreement.user-agreement') }}
               </el-link>
               {{ $t('labels.agreement.and') }}
-              <el-link class="sm:ml-1 !text-xs" type="primary" :href="localePath({ path: '/app/privacy' })" target="_blank">
+              <el-link class="sm:ml-1 !text-xs" type="primary" href="/app/privacy" target="_blank">
                 {{ $t('labels.agreement.privacy-policy') }}
               </el-link>
             </span>
@@ -78,7 +78,7 @@
         <div class="text-lg font-bold">
           {{ $t('registrationPage.already-registered') }}
         </div>
-        <el-link type="primary" :href="localePath({ path: '/app/login' })">
+        <el-link type="primary" href="/app/login">
           {{ $t('registrationPage.go-to-the-login-page') }}
         </el-link>
       </el-card>
@@ -86,7 +86,7 @@
         <div class="text-lg font-bold">
           {{ $t('loginPage.forgot-password') }}
         </div>
-        <el-link type="primary" :href="localePath({ path: '/app/password-recovery' })">
+        <el-link type="primary" href="/app/password-recovery">
           {{ $t('loginPage.go-to-the-password-recovery-page') }}
         </el-link>
       </el-card>
@@ -108,7 +108,6 @@ definePageMeta({
 })
 
 const { t, locale, locales } = useI18n()
-const localePath = useLocalePath()
 const formRef = ref<FormInstance>()
 const auth = ref()
 const preferredLanguages: string[] = []
@@ -212,7 +211,7 @@ const submitForm = async (formEl: FormInstance | undefined) => {
           type: 'success'
         })
         await auth.loginWith('local', { body: { email, password } })
-        return navigateTo(localePath({ path: '/app' }))
+        return navigateTo('/app')
       } catch (e) {
         ElNotification({
           customClass: '!w-auto',

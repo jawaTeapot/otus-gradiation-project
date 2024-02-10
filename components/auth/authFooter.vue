@@ -7,14 +7,10 @@
           {{ $t('footer.logo') }}
         </el-link>
       </div>
-      <NuxtLink type="primary" :to="localePath({ path: '/app/login' })">
+      <NuxtLink type="primary" :to="{ path: '/app' }">
         <NuxtImg v-show="$colorMode.value === 'dark'" class="max-w-[150px]" src="/img/logo-black.svg" alt="logo" />
         <NuxtImg v-show="$colorMode.value === 'light'" class="max-w-[150px]" src="/img/logo-white.svg" alt="logo" />
       </NuxtLink>
     </div>
   </footer>
 </template>
-
-<script lang="ts" setup>
-const localePath = useLocalePath()
-</script>

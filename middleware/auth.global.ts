@@ -1,7 +1,6 @@
 export default defineNuxtRouteMiddleware((to, from) => {
-  const auth = useAuth()
-  if (!to.meta.public && auth.tokenStrategy.token?.status().unknown()) {
-    const localePath = useLocalePath()
-    return navigateTo(`${localePath({ path: '/app/login' })}`)
+  const auth = useNuxtApp()
+  if (!to.meta.public && auth.$auth.tokenStrategy.token?.status().unknown()) {
+    return navigateTo('/app/login')
   }
 })

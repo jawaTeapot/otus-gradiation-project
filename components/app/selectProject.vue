@@ -64,6 +64,7 @@ const open = () => {
           message: `${t('new-project.success')} ${value}`
         })
       } catch (e) {
+        console.log(e)
         ElMessage({
           showClose: true,
           grouping: true,

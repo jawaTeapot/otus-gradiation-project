@@ -9,10 +9,12 @@ import 'element-plus/theme-chalk/dark/css-vars.css'
 import { ElNotification } from 'element-plus'
 import { useUserStore } from '~/store/user'
 
+const auth = useNuxtApp().$auth
 const userStore = useUserStore()
 const { t } = useI18n()
 const router = useRouter()
 const routerParam = useRoute()
+
 onMounted(async () => {
   const runtimeConfig = useRuntimeConfig()
   if (routerParam.query['activation-code']) {
@@ -47,7 +49,7 @@ onMounted(async () => {
         }
       })
       await router.replace({ query: undefined })
-      await nextTick(() => { userStore.fetchUserData(true) })
+      await nextTick(() => { userStore.fetchUserData(auth.tokenStrategy.token?.get().toString() || '', true) })
       ElNotification({
         customClass: '!w-auto',
         title: t('labels.notification-success'),

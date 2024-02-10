@@ -31,7 +31,7 @@
         <div class="text-lg font-bold">
           {{ $t('loginPage.not-registered-yet') }}
         </div>
-        <el-link type="primary" :href="localePath({ path: '/app/registration' })">
+        <el-link type="primary" href="/app/registration">
           {{ $t('loginPage.go-to-the-registration-page') }}
         </el-link>
       </el-card>
@@ -39,7 +39,7 @@
         <div class="text-lg font-bold">
           {{ $t('registrationPage.already-registered') }}
         </div>
-        <el-link type="primary" :href="localePath({ path: '/app/login' })">
+        <el-link type="primary" href="/app/login">
           {{ $t('registrationPage.go-to-the-login-page') }}
         </el-link>
       </el-card>
@@ -58,7 +58,6 @@ definePageMeta({
 })
 
 const { t } = useI18n()
-const localePath = useLocalePath()
 const formRef = ref<FormInstance>()
 const auth = ref()
 const passwordRecovery = reactive({
@@ -111,7 +110,7 @@ const submitForm = async () => {
           type: 'error'
         })
       }
-      return navigateTo(localePath({ path: '/app/recovery' }))
+      return navigateTo('/app/recovery')
     }
   })
 }

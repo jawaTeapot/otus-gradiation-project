@@ -1,36 +1,22 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import type {
-  ActivateBrandingDTO,
-  ActivateBrandingResponse,
-  ActivateDRMDTO,
-  ActivateDRMResponse,
-  CreateProjectDTO,
-  CreateProjectResponse,
-  DeletedProjectDTO,
-  DeletedProjectResponse,
-  GenerateAPIKeyDTO,
-  GenerateAPIKeyResponse,
-  Project,
-  ProjectChangeTitleDTO,
-  ProjectChangeTitleResponse,
-  ProjectSettings,
-  ProjectSettingsQuery
+  ActivateBrandingDTO, ActivateBrandingResponse, ActivateDRMDTO,
+  ActivateDRMResponse, CreateProjectDTO, CreateProjectResponse,
+  DeletedProjectDTO, DeletedProjectResponse, GenerateAPIKeyDTO,
+  GenerateAPIKeyResponse, Project, ProjectChangeTitleDTO,
+  ProjectChangeTitleResponse, ProjectSettings, ProjectSettingsQuery
 } from '~/types/store/projects'
 import {
-  userProjectActivateBranding,
-  userProjectActivateDRM,
-  userProjectChangeTitle,
-  userProjectCreate,
-  userProjectDeleted,
-  userProjectGenerateAPIKey
+  userProjectActivateBranding, userProjectActivateDRM, userProjectChangeTitle,
+  userProjectCreate, userProjectDeleted, userProjectGenerateAPIKey
 } from '~/apollo/mutations/projects'
 import { userProjectSettings } from '~/apollo/queries/projects'
 
 export const useProjectsStore = defineStore('projects', () => {
-  const projects = ref<Array<Project>>([])
-  const currentProject = ref<Project>()
-  const projectSettings = ref<ProjectSettings>()
+  const projects = ref(<Array<Project>>[])
+  const currentProject = ref(<Project>{})
+  const projectSettings = ref(<ProjectSettings>{})
 
   const setProject = (items: Array<Project>) => {
     projects.value = items
@@ -139,18 +125,5 @@ export const useProjectsStore = defineStore('projects', () => {
     return res.data
   }
 
-  return {
-    projects,
-    currentProject,
-    projectSettings,
-    setProject,
-    changeCurrentProject,
-    createProject,
-    deleteProject,
-    activateBranding,
-    activateDRM,
-    getUserProjectSettings,
-    projectChangeTitle,
-    generateAPIKey
-  }
+  return { projects, currentProject, projectSettings, setProject, changeCurrentProject, createProject, deleteProject, activateBranding, activateDRM, getUserProjectSettings, projectChangeTitle, generateAPIKey }
 })

@@ -72,7 +72,9 @@ import { ElMessage } from 'element-plus'
 import { ref } from 'vue'
 import { useUserStore } from '~/store/user'
 import { useProjectsStore } from '~/store/projects'
+
 const { t } = useI18n()
+const auth = useNuxtApp().$auth
 const projectsStore = useProjectsStore()
 const userStore = useUserStore()
 const isLoading = ref<boolean>(false)
@@ -113,7 +115,7 @@ const activatedBrand = async () => {
         id: currentProject.value
       }
     })
-    await userStore.fetchUserData(true)
+    await userStore.fetchUserData(auth.tokenStrategy.token?.get().toString() || '', true)
     emit('update:modelValue', false)
     ElMessage({
       grouping: true,

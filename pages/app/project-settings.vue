@@ -88,7 +88,7 @@ const storage = localStorage.getItem('projectsSettingTabName')
 const activeName = ref(storage || 'basic')
 const activeTab = ref<string>('')
 
-onMounted(() => {
+onBeforeMount(() => {
   watch(() => projectsStore.currentProject?.id, async (newId) => {
     loading.value = true
     try {

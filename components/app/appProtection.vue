@@ -54,6 +54,7 @@ import { useProjectsStore } from '~/store/projects'
 import { useUserStore } from '~/store/user'
 
 const { t } = useI18n()
+const auth = useNuxtApp().$auth
 const userStore = useUserStore()
 const projectsStore = useProjectsStore()
 const isLoading = ref<boolean>(false)
@@ -94,7 +95,7 @@ const activatedDRM = async () => {
         id: currentProject.value
       }
     })
-    await userStore.fetchUserData(true)
+    await userStore.fetchUserData(auth.tokenStrategy.token?.get().toString() || '', true)
     emit('update:modelValue', false)
     ElMessage({
       grouping: true,

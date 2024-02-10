@@ -76,7 +76,7 @@ export default defineNuxtConfig({
     ],
     lazy: true,
     langDir: 'locales',
-    strategy: 'prefix',
+    strategy: 'no_prefix',
     defaultLocale: 'ru',
     detectBrowserLanguage: {
       alwaysRedirect: true,

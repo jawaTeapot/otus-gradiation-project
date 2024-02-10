@@ -48,7 +48,7 @@
 import { reactive, ref } from 'vue'
 import { ElMessage } from 'element-plus'
 import type { FormInstance, FormRules } from 'element-plus'
-import { useMediaQuery } from '@vueuse/core/index'
+import { useMediaQuery } from '@vueuse/core'
 import { useUserStore } from '~/store/user'
 
 const md = useMediaQuery('(min-width: 767px)')

@@ -35,7 +35,7 @@
         <div class="text-lg font-bold">
           {{ $t('loginPage.not-registered-yet') }}
         </div>
-        <el-link type="primary" :href="localePath({ path: '/app/registration' })">
+        <el-link type="primary" href="/app/registration">
           {{ $t('loginPage.go-to-the-registration-page') }}
         </el-link>
       </el-card>
@@ -43,7 +43,7 @@
         <div class="text-lg font-bold">
           {{ $t('loginPage.forgot-password') }}
         </div>
-        <el-link type="primary" :href="localePath({ path: '/app/password-recovery' })">
+        <el-link type="primary" href="/app/password-recovery">
           {{ $t('loginPage.go-to-the-password-recovery-page') }}
         </el-link>
       </el-card>
@@ -98,7 +98,6 @@ interface RuleForm {
 const { t } = useI18n()
 const ruleFormRef = ref<FormInstance>()
 const auth = ref()
-const localePath = useLocalePath()
 const isLoading = ref(false)
 
 const loginForm = ref<RuleForm>({
@@ -138,7 +137,7 @@ const submitForm = async (formEl: FormInstance | undefined) => {
         const auth = useAuth()
         const { email, password } = loginForm.value
         await auth.loginWith('local', { body: { email, password } })
-        return navigateTo(localePath({ path: '/app' }))
+        return navigateTo('/app')
       } catch (e: any) {
         if (e.status === 401) {
           ElMessage({

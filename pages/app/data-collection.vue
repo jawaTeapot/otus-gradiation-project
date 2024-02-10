@@ -8,6 +8,6 @@
 </template>
 
 <script setup lang="ts">
-import { getIdProject, getSourceUrl } from '~/composables'
+import { getIdProject, getSourceUrl } from '~/utils'
 import TimeComponent from '~/components/app/timeComponent.vue'
 </script>

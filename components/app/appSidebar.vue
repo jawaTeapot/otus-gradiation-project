@@ -9,13 +9,13 @@
             </el-badge>
           </el-icon>
           <template #title>
-            <NuxtLink :to="localePath({ path: '/app' })" class="flex items-center justify-center">
+            <NuxtLink :to="{ path: '/app' }" class="flex items-center justify-center">
               <NuxtImg v-show="$colorMode.value === 'light'" class="w-[183px]" src="/img/logo-white.svg" alt="" />
               <NuxtImg v-show="$colorMode.value === 'dark'" class="w-[183px]" src="/img/logo-black.svg" alt="" />
             </NuxtLink>
           </template>
         </el-menu-item>
-        <el-menu-item v-for="item in menuItems" :key="item.id" :index="localePath({ path: `/app/${item.href}` })">
+        <el-menu-item v-for="item in menuItems" :key="item.id" :index="`/app/${item.href}`">
           <el-icon>
             <Icon :name="item.icon" class="text-2xl" />
           </el-icon>
@@ -41,7 +41,7 @@
             </el-icon>
             <span>  {{ $t(item.title) }}</span>
           </template>
-          <el-menu-item v-for="e of item.children" :key="e.idx" :index="localePath({ path: `/app/${e.href}` })">
+          <el-menu-item v-for="e of item.children" :key="e.idx" :index="`/app/${e.href}`">
             <span> {{ $t(e.title) }}</span>
           </el-menu-item>
         </el-sub-menu>
@@ -83,7 +83,6 @@ import { useMediaQuery } from '@vueuse/core'
 import { useUserStore } from '~/store/user'
 import { useProjectsStore } from '~/store/projects'
 
-const localePath = useLocalePath()
 const dialogBrand = ref(false)
 const dialogProtection = ref(false)
 const userStore = useUserStore()

@@ -8,7 +8,7 @@
           </el-badge>
         </el-button>
         <app-menu v-model="drawerMobile" />
-        <NuxtLink :to="localePath({ path: '/app' })">
+        <NuxtLink :to="{ path: '/app' }">
           <NuxtImg v-show="$colorMode.value === 'dark'" class="max-w-[150px] md:max-w-[198px]" src="/img/logo-black.svg" alt="logo" />
           <NuxtImg v-show="$colorMode.value === 'light'" class="max-w-[150px] md:max-w-[198px]" src="/img/logo-white.svg" alt="logo" />
         </NuxtLink>
@@ -66,7 +66,7 @@
             </el-dropdown-menu>
 
             <el-dropdown-item divided>
-              <NuxtLink class="flex items-center no-underline" :to="localePath({ path: '/app/profile-settings' })">
+              <NuxtLink class="flex items-center no-underline" :to="{ path: '/app/profile-settings' }">
                 <Icon name="mdi:gear" :class="$colorMode.value === 'dark' ? 'text-2xl text-white' : 'text-2xl text-black'" />
 
                 <span :class="$colorMode.value === 'dark' ? 'ml-1 text-sm text-white' : 'ml-1 text-sm text-black'">{{ $t("menuLinks.profile-settings") }}</span>
@@ -97,9 +97,9 @@
 import { ref } from 'vue'
 import { useMediaQuery } from '@vueuse/core'
 import { useCookies } from '@vueuse/integrations/useCookies'
-import type { LocaleObject } from 'vue-i18n-routing'
+import type { LocaleObject } from '@nuxtjs/i18n'
 import { useUserStore } from '~/store/user'
-import { getSourceUrl } from '~/composables'
+import { getSourceUrl } from '~/utils'
 import AppBonus from '~/components/app/appBonus.vue'
 import SelectProject from '~/components/app/selectProject.vue'
 
@@ -108,7 +108,6 @@ const xl = useMediaQuery('(min-width: 1280px)')
 
 const userStore = useUserStore()
 const { locale, locales, t } = useI18n()
-const localePath = useLocalePath()
 const switchLocalePath = useSwitchLocalePath()
 const drawerMobile = ref<boolean>(false)
 const headerBonus = ref<boolean>(userStore.userCheckMyPromoCode?.isAvailable ? userStore.userCheckMyPromoCode?.isAvailable : false)
