@@ -45,24 +45,22 @@ export const useUserStore = defineStore('user', () => {
   }
 
   const fetchUserData = async (token: string, hideLoader?: boolean) => {
-    await useAsyncData(async () => {
-      const loaderStore = useLoaderStore()
-      if (!hideLoader) {
-        loaderStore.setLoader(true)
-      }
-      try {
-        const data = await fetchLoginProfile()
-        parseUserRoles(token)
-        user.value = { ...data.loginProfile }
-        userCheckMyPromoCode.value = { ...data.checkMyPromoCode }
-        userTariffs.value = { ...data.tariffs }
-        projectsStore.setProject([...data.userProjects.nodes])
-      } catch (e) {
-        throw new Error('Ошибка')
-      } finally {
-        loaderStore.setLoader(false)
-      }
-    })
+    const loaderStore = useLoaderStore()
+    if (!hideLoader) {
+      loaderStore.setLoader(true)
+    }
+    try {
+      const data = await fetchLoginProfile()
+      parseUserRoles(token)
+      user.value = { ...data.loginProfile }
+      userCheckMyPromoCode.value = { ...data.checkMyPromoCode }
+      userTariffs.value = { ...data.tariffs }
+      projectsStore.setProject([...data.userProjects.nodes])
+    } catch (e) {
+      throw new Error('Ошибка')
+    } finally {
+      loaderStore.setLoader(false)
+    }
   }
 
   const profileAddPhoneEmail = async (dto: ProfileAddPhoneEmailDTO) => {

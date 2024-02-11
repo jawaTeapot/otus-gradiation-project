@@ -119,9 +119,7 @@ export const useProjectsStore = defineStore('projects', () => {
     if (!res || !res.data) {
       throw new Error('Ошибка')
     }
-    if (projectSettings.value) {
-      projectSettings.value = { ...projectSettings.value, integration: { ...projectSettings.value?.integration, apiKey: res.data.userProjectGenerateAPIKey.apiKey } }
-    }
+    projectSettings.value = { ...projectSettings.value, integration: { ...projectSettings.value?.integration, apiKey: res.data.userProjectGenerateAPIKey.apiKey } }
     return res.data
   }
 
