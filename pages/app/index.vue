@@ -1,11 +1,7 @@
 <template>
   <div>
     <h1>Hello World</h1>
-    <div>{{ userStore.user }}</div>
     <el-divider />
-    <div>
-      {{ projectsStore.projects }}
-    </div>
     <client-only>
       <el-dialog
         v-model="creatNewProject"
@@ -30,7 +26,6 @@
 
 <script setup lang="ts">
 import { useUserStore } from '~/store/user'
-import { useProjectsStore } from '~/store/projects'
 import AppCreateProject from '~/components/app/appCreateProject.vue'
 
 definePageMeta({
@@ -39,6 +34,5 @@ definePageMeta({
 })
 
 const userStore = useUserStore()
-const projectsStore = useProjectsStore()
 const creatNewProject = computed(() => !userStore.userProjects.length)
 </script>

@@ -31,7 +31,7 @@
                   <Icon :name="$colorMode.value === 'dark' ? 'fxemoji:whitesun' : 'fxemoji:crescentmoon'" class="text-2xl" />
                 </el-button>
                 <div class="relative">
-                  <el-button v-for="item in availableLocales" :key="typeof item !== 'string' ? item.code : item" circle size="large" @click="switchLocal(item)">
+                  <el-button circle size="large" @click="switchLocal">
                     <Icon name="mdi:earth" class="text-2xl" />
                   </el-button>
                   <div class="rounded-full bg-red-400 text-center text-xs absolute -top-1 -right-1 px-1">
@@ -97,7 +97,6 @@
 import { ref } from 'vue'
 import { useMediaQuery } from '@vueuse/core'
 import { useCookies } from '@vueuse/integrations/useCookies'
-import type { LocaleObject } from '@nuxtjs/i18n'
 import { useUserStore } from '~/store/user'
 import { getSourceUrl } from '~/utils'
 import AppBonus from '~/components/app/appBonus.vue'
@@ -107,8 +106,7 @@ const lg = useMediaQuery('(min-width: 1024px)')
 const xl = useMediaQuery('(min-width: 1280px)')
 
 const userStore = useUserStore()
-const { locale, locales, t } = useI18n()
-const switchLocalePath = useSwitchLocalePath()
+const { locale, setLocale, t } = useI18n()
 const drawerMobile = ref<boolean>(false)
 const headerBonus = ref<boolean>(userStore.userCheckMyPromoCode?.isAvailable ? userStore.userCheckMyPromoCode?.isAvailable : false)
 const tagName = computed(() => userStore.user?.username[0])
@@ -131,16 +129,8 @@ const dataLink = ref([
   }
 ])
 
-const availableLocales = computed(() => {
-  return [...locales.value].filter((i) => {
-    return typeof i !== 'string' && i.code !== locale.value
-  })
-})
-
-const switchLocal = (el: string | LocaleObject) => {
-  if (typeof el !== 'string') {
-    return navigateTo(switchLocalePath(el.code))
-  }
+function switchLocal () {
+  locale.value === 'en' ? setLocale('ru') : setLocale('en')
 }
 
 const closeDrawer = () => {

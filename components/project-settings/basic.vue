@@ -87,7 +87,7 @@ const projectModel = computed({
   }
 })
 
-const tableData = ref([
+const tableData = computed(() => [
   {
     name: '240p',
     size: '426 × 240',
@@ -153,5 +153,3 @@ const deleted = async () => {
   }
 }
 </script>
-
-<style scoped lang="scss" />

@@ -10,7 +10,7 @@
         <Icon :name="$colorMode.value === 'dark' ? 'fxemoji:whitesun' : 'fxemoji:crescentmoon'" class="text-2xl" />
       </el-button>
       <div class="relative">
-        <el-button v-for="item in availableLocales" :key="typeof item !== 'string' ? item.code : item" circle size="large" @click="switchLocal(item)">
+        <el-button circle size="large" @click="switchLocal">
           <Icon name="mdi:earth" class="text-2xl" />
         </el-button>
         <div class="rounded-full bg-red-400 text-center text-xs absolute -top-1 -right-1 px-1">
@@ -22,20 +22,9 @@
 </template>
 
 <script setup lang="ts">
-import type { LocaleObject } from '@nuxtjs/i18n'
+const { locale, setLocale } = useI18n()
 
-const { locale, locales } = useI18n()
-const switchLocalePath = useSwitchLocalePath()
-
-const availableLocales = computed(() => {
-  return [...locales.value].filter((i) => {
-    return typeof i !== 'string' && i.code !== locale.value
-  })
-})
-
-const switchLocal = (el: string | LocaleObject) => {
-  if (typeof el !== 'string') {
-    return navigateTo(switchLocalePath(el.code))
-  }
+function switchLocal () {
+  locale.value === 'en' ? setLocale('ru') : setLocale('en')
 }
 </script>
