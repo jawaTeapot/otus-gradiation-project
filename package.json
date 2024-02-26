@@ -14,9 +14,12 @@
     "production": "rm -rf node_modules && NODE_ENV=production yarn install --prefer-offline --pure-lockfile --non-interactive --production=true",
     "clean": "rimraf node_modules .nuxt .output yarn.lock",
     "clean-cache": "yarn cache clean --all && npx nuxi cleanup",
-    "test": "vitest",
+    "test": "vitest run",
     "coverage": "vitest run --coverage"
   },
+
+  "pre-commit": ["lint", "build", "test"],
+
   "devDependencies": {
     "@nuxt/eslint-config": "^0.2.0",
     "@nuxt/test-utils": "^3.11.0",
@@ -29,6 +32,7 @@
     "happy-dom": "^13.6.2",
     "nuxt": "^3.10.3",
     "playwright-core": "^1.41.2",
+    "pre-commit": "^1.2.2",
     "sass": "^1.70.0",
     "sass-loader": "^14.1.0",
     "typescript": "^5.3.3",
