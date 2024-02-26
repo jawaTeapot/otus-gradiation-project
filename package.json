@@ -18,7 +18,7 @@
     "coverage": "vitest run --coverage"
   },
 
-  "pre-commit": ["lint", "build", "test"],
+  "pre-commit": ["lint", "test", "build"],
 
   "devDependencies": {
     "@nuxt/eslint-config": "^0.2.0",
