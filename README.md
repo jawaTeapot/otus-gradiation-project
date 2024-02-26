@@ -42,4 +42,5 @@ Check out the [deployment documentation](https://nuxt.com/docs/getting-started/d
 - Apollo - https://www.npmjs.com/package/@nuxtjs/apollo
 - TypeScript - https://www.npmjs.com/package/typescript
 - pre-commit - https://github.com/observing/pre-commit
-- International Telephone Input with Vue - https://vue-tel-input.iamstevendao.com/
+- International Telephone Input with Vue - https://vue-tel-input.iamstevendao.com
+- chart.js - https://www.chartjs.org
