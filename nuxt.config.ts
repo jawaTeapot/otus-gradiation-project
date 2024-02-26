@@ -39,7 +39,8 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
     'nuxt-icon',
     '@nuxtjs/apollo',
-    '@nuxt/image'
+    '@nuxt/image',
+    '@nuxt/test-utils/module'
   ],
 
   devtools: { enabled: true },
