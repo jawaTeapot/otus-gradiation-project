@@ -44,3 +44,5 @@ Check out the [deployment documentation](https://nuxt.com/docs/getting-started/d
 - pre-commit - https://github.com/observing/pre-commit
 - International Telephone Input with Vue - https://vue-tel-input.iamstevendao.com
 - chart.js - https://www.chartjs.org
+
+![Uploading image.png…]()
