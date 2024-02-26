@@ -42,4 +42,7 @@ Check out the [deployment documentation](https://nuxt.com/docs/getting-started/d
 - Apollo - https://www.npmjs.com/package/@nuxtjs/apollo
 - TypeScript - https://www.npmjs.com/package/typescript
 - pre-commit - https://github.com/observing/pre-commit
-- International Telephone Input with Vue - https://vue-tel-input.iamstevendao.com/
+- International Telephone Input with Vue - https://vue-tel-input.iamstevendao.com
+- chart.js - https://www.chartjs.org
+
+![image](https://github.com/v-js-d/otus-gradiation-project/assets/78386140/01c35e5b-04fa-43b8-a8a9-85506a4d5684.png)
