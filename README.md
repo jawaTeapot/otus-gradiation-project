@@ -44,5 +44,6 @@ Check out the [deployment documentation](https://nuxt.com/docs/getting-started/d
 - pre-commit - https://github.com/observing/pre-commit
 - International Telephone Input with Vue - https://vue-tel-input.iamstevendao.com
 - chart.js - https://www.chartjs.org
+- pre-commit - https://github.com/observing/pre-commit
 
 ![image](https://github.com/v-js-d/otus-gradiation-project/assets/78386140/01c35e5b-04fa-43b8-a8a9-85506a4d5684.png)
