@@ -194,7 +194,7 @@
           <el-checkbox
             v-model="form.downloadFromComputer"
             border
-            class="my-checkbox my-label !h-auto md:!h-[32px]"
+            class="my-checkbox my-label"
             :label="$t('projectSettings.integration.form.label-4')"
             @change="integrationUpdate"
           />
@@ -205,7 +205,7 @@
             v-model="form.downloadByLink"
             border
             :label="$t('projectSettings.integration.form.label-5')"
-            class="my-checkbox my-label !h-auto md:!h-[32px]"
+            class="my-checkbox my-label"
             @change="integrationUpdate"
           />
         </el-form-item>
@@ -294,7 +294,7 @@
             <el-checkbox
               v-model="form.timepadNotifaication"
               border
-              class="my-checkbox my-label !h-auto md:!h-[32px]"
+              class="my-checkbox my-label"
               :label="$t('projectSettings.integration.form.label-8')"
               @change="integrationUpdate"
             />
@@ -400,14 +400,13 @@ const generateApiKey = async (id: string) => {
     }
     if (id === 'code') {
       isLoadingCode.value = true
-      // await projectsStore.generateCode({ projectId: projectsStore.currentProject?.id })
+      await projectsStore.generateCode({ projectId: projectsStore.currentProject?.id })
     }
     if (id === 'KeyFtp') {
       isLoadingKeyFtp.value = true
-      // await projectsStore.generateAPIKeyFtp({ projectId: projectsStore.currentProject?.id })
+      await projectsStore.generateAPIKeyFtp({ projectId: projectsStore.currentProject?.id })
     }
   } catch (e) {
-    console.log(e)
     ElMessage({
       message: t('errors.something'),
       type: 'error'
@@ -421,18 +420,18 @@ const generateApiKey = async (id: string) => {
 
 const addNewApiKey = async (formEl: FormInstance | undefined) => {
   if (!formEl) { return }
-  await formEl.validate((valid) => {
+  await formEl.validate(async (valid) => {
     if (valid) {
       loadingAdd.value = true
-      // const { keyAllowType, name } = formDialog.value
+      const { keyAllowType, name } = formDialog.value
       try {
-        // await projectsStore.addApiKey({
-        //   projectId: projectsStore.currentProject?.id,
-        //   input: {
-        //     name,
-        //     keyAllowType
-        //   }
-        // })
+        await projectsStore.addApiKey({
+          projectId: projectsStore.currentProject?.id,
+          input: {
+            name,
+            keyAllowType
+          }
+        })
         formEl.resetFields()
         dialogFormVisible.value = false
         ElMessage({
@@ -462,16 +461,15 @@ const addNewApiKey = async (formEl: FormInstance | undefined) => {
   })
 }
 
-const deleteApyKey = (id: number) => {
-  console.log(id)
+const deleteApyKey = async (id: number) => {
   loadingSave.value = true
   try {
-    // await projectsStore.deleteApiKey({
-    //   projectId: Number(projectsStore.currentProject?.id),
-    //   input: {
-    //     id
-    //   }
-    // })
+    await projectsStore.deleteApiKey({
+      projectId: Number(projectsStore.currentProject?.id),
+      input: {
+        id
+      }
+    })
     ElMessage({
       grouping: true,
       center: true,
@@ -490,19 +488,19 @@ const deleteApyKey = (id: number) => {
   }
 }
 
-const integrationUpdate = () => {
+const integrationUpdate = async () => {
   loadingSave.value = true
   try {
-    // const { downloadFromComputer, downloadByLink, autoBroadcasting, timepadNotifaication } = form.value
-    // await projectsStore.updateIntegration({
-    //   projectId: projectsStore.currentProject?.id,
-    //   input: {
-    //     downloadFromComputer,
-    //     downloadByLink,
-    //     autoBroadcasting,
-    //     timepadNotifaication
-    //   }
-    // })
+    const { downloadFromComputer, downloadByLink, autoBroadcasting, timepadNotifaication } = form.value
+    await projectsStore.updateIntegration({
+      projectId: projectsStore.currentProject?.id,
+      input: {
+        downloadFromComputer,
+        downloadByLink,
+        autoBroadcasting,
+        timepadNotifaication
+      }
+    })
     ElMessage({
       grouping: true,
       center: true,
@@ -521,9 +519,3 @@ const integrationUpdate = () => {
   }
 }
 </script>
-
-<style scoped lang="scss">
-//:deep(.el-form-item__label) {
-//  @apply pr-0;
-//}
-</style>

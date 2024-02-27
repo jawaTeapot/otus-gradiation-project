@@ -241,6 +241,39 @@ export type GenerateAPIKeyDTO = {
     projectId: number | string;
 }
 
+export type GenerateCodeDTO = {
+    projectId: number | string;
+}
+
+export type GenerateAPIKeyFtpDTO = {
+    projectId: number | string;
+}
+
+export type AddApiKeyDTO = {
+    projectId: number | string;
+    input: {
+        name: string | null;
+        keyAllowType: string;
+    }
+}
+
+export type DeleteApiKeyDTO = {
+    projectId: number | string;
+    input: {
+        id: number;
+    }
+}
+
+export type UpdateIntegrationDTO = {
+    projectId: number | string;
+    input: {
+        downloadFromComputer: boolean;
+        downloadByLink: boolean;
+        autoBroadcasting: boolean;
+        timepadNotifaication: boolean;
+    }
+}
+
 export type CreateProjectResponse = {
     userProjectCreate: {
         record: Project;
@@ -275,4 +308,32 @@ export type GenerateAPIKeyResponse = {
     userProjectGenerateAPIKey: {
         apiKey: string;
     }
+}
+
+export type GenerateCodeResponse = {
+    usrProjectGenerateCode: {
+        code: string;
+    }
+}
+
+export type GenerateAPIKeyFtpResponse = {
+    userProjectGenerateAPIKeyFtp: {
+        apiKeyFtp: string;
+    }
+}
+
+export type AddApiKeyResponse = {
+    userProjectAddApiKey: {
+        apiKeyList: Array<ProjectSettingsIntegrationApiKeyList>;
+    }
+}
+
+export type DeleteApiKeyResponse = {
+    userProjectDeleteApiKey: {
+        response: string;
+    }
+}
+
+export type UpdateIntegrationResponse = {
+    userProjectIntegrationUpdate: ProjectSettingsIntegration;
 }

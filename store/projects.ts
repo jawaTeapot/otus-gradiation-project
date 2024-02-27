@@ -2,14 +2,20 @@ import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import type {
   ActivateBrandingDTO, ActivateBrandingResponse, ActivateDRMDTO,
-  ActivateDRMResponse, CreateProjectDTO, CreateProjectResponse,
-  DeletedProjectDTO, DeletedProjectResponse, GenerateAPIKeyDTO,
-  GenerateAPIKeyResponse, Project, ProjectChangeTitleDTO,
-  ProjectChangeTitleResponse, ProjectSettings, ProjectSettingsQuery
+  ActivateDRMResponse, AddApiKeyDTO, AddApiKeyResponse,
+  CreateProjectDTO, CreateProjectResponse, DeleteApiKeyDTO,
+  DeleteApiKeyResponse, DeletedProjectDTO, DeletedProjectResponse,
+  GenerateAPIKeyDTO, GenerateAPIKeyFtpDTO, GenerateAPIKeyFtpResponse,
+  GenerateAPIKeyResponse, GenerateCodeDTO, GenerateCodeResponse,
+  Project, ProjectChangeTitleDTO, ProjectChangeTitleResponse,
+  ProjectSettings, ProjectSettingsQuery, UpdateIntegrationDTO,
+  UpdateIntegrationResponse
 } from '~/types/store/projects'
 import {
-  userProjectActivateBranding, userProjectActivateDRM, userProjectChangeTitle,
-  userProjectCreate, userProjectDeleted, userProjectGenerateAPIKey
+  userProjectActivateBranding, userProjectActivateDRM, userProjectAddApiKey,
+  userProjectChangeTitle, userProjectCreate, userProjectDeleteApiKey,
+  userProjectDeleted, userProjectGenerateAPIKey, userProjectGenerateAPIKeyFtp,
+  userProjectIntegrationUpdate, usrProjectGenerateCode
 } from '~/apollo/mutations/projects'
 import { userProjectSettings } from '~/apollo/queries/projects'
 
@@ -123,5 +129,63 @@ export const useProjectsStore = defineStore('projects', () => {
     return res.data
   }
 
-  return { projects, currentProject, projectSettings, setProject, changeCurrentProject, createProject, deleteProject, activateBranding, activateDRM, getUserProjectSettings, projectChangeTitle, generateAPIKey }
+  const generateCode = async (dto: GenerateCodeDTO) => {
+    const { mutate } = useMutation<GenerateCodeResponse>(usrProjectGenerateCode)
+    const res = await mutate(dto)
+    if (!res || !res.data) {
+      throw new Error('Ошибка')
+    }
+    projectSettings.value = { ...projectSettings.value, integration: { ...projectSettings.value?.integration, code: res.data.usrProjectGenerateCode.code } }
+    return res.data
+  }
+
+  const generateAPIKeyFtp = async (dto: GenerateAPIKeyFtpDTO) => {
+    const { mutate } = useMutation<GenerateAPIKeyFtpResponse>(userProjectGenerateAPIKeyFtp)
+    const res = await mutate(dto)
+    if (!res || !res.data) {
+      throw new Error('Ошибка')
+    }
+    projectSettings.value = { ...projectSettings.value, integration: { ...projectSettings.value?.integration, apiKeyFtp: res.data.userProjectGenerateAPIKeyFtp.apiKeyFtp } }
+    return res.data
+  }
+  const addApiKey = async (dto: AddApiKeyDTO) => {
+    const { mutate } = useMutation<AddApiKeyResponse>(userProjectAddApiKey)
+    const res = await mutate(dto)
+    if (!res || !res.data) {
+      throw new Error('Ошибка')
+    }
+    projectSettings.value = { ...projectSettings.value, integration: { ...projectSettings.value?.integration, apiKeyList: [...res.data.userProjectAddApiKey.apiKeyList] } }
+    return res.data
+  }
+
+  const deleteApiKey = async (dto: DeleteApiKeyDTO) => {
+    const { mutate } = useMutation<DeleteApiKeyResponse>(userProjectDeleteApiKey)
+    const res = await mutate(dto)
+    if (!res || !res.data) {
+      throw new Error('Ошибка')
+    }
+    const apiKeyId = projectSettings.value.integration.apiKeyList.findIndex(apiKey => apiKey.id === dto.input.id)
+    if (apiKeyId !== -1) {
+      const integrationCopy = { ...projectSettings.value.integration }
+      const updatedApiKeys = [...integrationCopy.apiKeyList]
+      updatedApiKeys.splice(apiKeyId, 1)
+      integrationCopy.apiKeyList = updatedApiKeys
+      projectSettings.value.integration = integrationCopy
+    } else {
+      throw new Error('Ошибка')
+    }
+    return res.data
+  }
+
+  const updateIntegration = async (dto: UpdateIntegrationDTO) => {
+    const { mutate } = useMutation<UpdateIntegrationResponse>(userProjectIntegrationUpdate)
+    const res = await mutate(dto)
+    if (!res || !res.data) {
+      throw new Error('Ошибка')
+    }
+    projectSettings.value.integration = res.data.userProjectIntegrationUpdate
+    return res.data
+  }
+
+  return { projects, currentProject, projectSettings, setProject, changeCurrentProject, createProject, deleteProject, activateBranding, activateDRM, getUserProjectSettings, projectChangeTitle, generateAPIKey, generateCode, generateAPIKeyFtp, addApiKey, deleteApiKey, updateIntegration }
 })
