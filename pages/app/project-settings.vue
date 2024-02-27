@@ -84,8 +84,7 @@
             <protection />
           </el-tab-pane>
           <el-tab-pane :label="$t('projectSettings.tabs.tab-4')" name="geotargeting">
-            g
-            <!--        <geotargeting />-->
+            <geotargeting />
           </el-tab-pane>
           <el-tab-pane :label="$t('projectSettings.tabs.tab-5')" name="settings">
             p
@@ -118,6 +117,7 @@ import { useProjectsStore } from '~/store/projects'
 import Basic from '~/components/project-settings/basic.vue'
 import Integration from '~/components/project-settings/integration.vue'
 import Protection from '~/components/project-settings/protection.vue'
+import Geotargeting from '~/components/project-settings/geotargeting.vue'
 
 const { t } = useI18n()
 const loading = ref<boolean>(true)
