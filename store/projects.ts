@@ -8,14 +8,19 @@ import type {
   GenerateAPIKeyDTO, GenerateAPIKeyFtpDTO, GenerateAPIKeyFtpResponse,
   GenerateAPIKeyResponse, GenerateCodeDTO, GenerateCodeResponse,
   Project, ProjectChangeTitleDTO, ProjectChangeTitleResponse,
-  ProjectSettings, ProjectSettingsQuery, UpdateIntegrationDTO,
-  UpdateIntegrationResponse
+  ProjectSettings, ProjectSettingsQuery, RestreamingProtectionByDomainDTO,
+  RestreamingProtectionByDomainResponse, RestreamingProtectionByIpDTO, RestreamingProtectionByIpResponse,
+  RestreamingProtectionByTimeDTO, RestreamingProtectionByTimeResponse, RestreamingProtectionDisableDTO,
+  RestreamingProtectionDisableResponse, UpdateIntegrationDTO, UpdateIntegrationResponse,
+  UpdateProtectionDTO, UpdateProtectionResponse
 } from '~/types/store/projects'
 import {
   userProjectActivateBranding, userProjectActivateDRM, userProjectAddApiKey,
   userProjectChangeTitle, userProjectCreate, userProjectDeleteApiKey,
   userProjectDeleted, userProjectGenerateAPIKey, userProjectGenerateAPIKeyFtp,
-  userProjectIntegrationUpdate, usrProjectGenerateCode
+  userProjectIntegrationUpdate, userProjectProtectionUpdate, userProjectRestreamingProtectionByDomain,
+  userProjectRestreamingProtectionByIp, userProjectRestreamingProtectionByTime, userProjectRestreamingProtectionDisable,
+  usrProjectGenerateCode
 } from '~/apollo/mutations/projects'
 import { userProjectSettings } from '~/apollo/queries/projects'
 
@@ -187,5 +192,84 @@ export const useProjectsStore = defineStore('projects', () => {
     return res.data
   }
 
-  return { projects, currentProject, projectSettings, setProject, changeCurrentProject, createProject, deleteProject, activateBranding, activateDRM, getUserProjectSettings, projectChangeTitle, generateAPIKey, generateCode, generateAPIKeyFtp, addApiKey, deleteApiKey, updateIntegration }
+  const updateProtection = async (dto: UpdateProtectionDTO) => {
+    const { mutate } = useMutation<UpdateProtectionResponse>(userProjectProtectionUpdate)
+    const res = await mutate(dto)
+    if (!res || !res.data) {
+      throw new Error('Ошибка')
+    }
+    return res.data
+  }
+
+  const restreamingProtectionDisable = async (dto: RestreamingProtectionDisableDTO) => {
+    const { mutate } = useMutation<RestreamingProtectionDisableResponse>(userProjectRestreamingProtectionDisable)
+    const res = await mutate(dto)
+    if (!res || !res.data) {
+      throw new Error('Ошибка')
+    }
+    projectSettings.value = { ...projectSettings.value, protection: { ...projectSettings.value?.protection, userAgentAllow: res.data.userProjectRestreamingProtectionDisable.userAgentAllow } }
+    projectSettings.value = { ...projectSettings.value, protection: { ...projectSettings.value?.protection, userAgentDeny: res.data.userProjectRestreamingProtectionDisable.userAgentDeny } }
+    return res.data
+  }
+
+  const restreamingProtectionByDomain = async (dto: RestreamingProtectionByDomainDTO) => {
+    const { mutate } = useMutation<RestreamingProtectionByDomainResponse>(userProjectRestreamingProtectionByDomain)
+    const res = await mutate(dto)
+    if (!res || !res.data) {
+      throw new Error('Ошибка')
+    }
+    projectSettings.value = { ...projectSettings.value, protection: { ...projectSettings.value?.protection, userAgentAllow: res.data.userProjectRestreamingProtectionByDomain.userAgentAllow } }
+    projectSettings.value = { ...projectSettings.value, protection: { ...projectSettings.value?.protection, userAgentDeny: res.data.userProjectRestreamingProtectionByDomain.userAgentDeny } }
+    projectSettings.value = { ...projectSettings.value, protection: { ...projectSettings.value?.protection, deniedEmptyReferrer: res.data.userProjectRestreamingProtectionByDomain.deniedEmptyReferrer } }
+    projectSettings.value = { ...projectSettings.value, protection: { ...projectSettings.value?.protection, domains: res.data.userProjectRestreamingProtectionByDomain.domains } }
+    return res.data
+  }
+
+  const restreamingProtectionByIp = async (dto: RestreamingProtectionByIpDTO) => {
+    const { mutate } = useMutation<RestreamingProtectionByIpResponse>(userProjectRestreamingProtectionByIp)
+    const res = await mutate(dto)
+    if (!res || !res.data) {
+      throw new Error('Ошибка')
+    }
+    projectSettings.value = { ...projectSettings.value, protection: { ...projectSettings.value?.protection, userAgentAllow: res.data.userProjectRestreamingProtectionByIp.userAgentAllow } }
+    projectSettings.value = { ...projectSettings.value, protection: { ...projectSettings.value?.protection, userAgentDeny: res.data.userProjectRestreamingProtectionByIp.userAgentDeny } }
+    return res.data
+  }
+
+  const restreamingProtectionByTime = async (dto: RestreamingProtectionByTimeDTO) => {
+    const { mutate } = useMutation<RestreamingProtectionByTimeResponse>(userProjectRestreamingProtectionByTime)
+    const res = await mutate(dto)
+    if (!res || !res.data) {
+      throw new Error('Ошибка')
+    }
+    projectSettings.value = { ...projectSettings.value, protection: { ...projectSettings.value?.protection, userAgentAllow: res.data.userProjectRestreamingProtectionByTime.userAgentAllow } }
+    projectSettings.value = { ...projectSettings.value, protection: { ...projectSettings.value?.protection, userAgentDeny: res.data.userProjectRestreamingProtectionByTime.userAgentDeny } }
+    projectSettings.value = { ...projectSettings.value, protection: { ...projectSettings.value?.protection, timeValid: res.data.userProjectRestreamingProtectionByTime.timeValid } }
+    return res.data
+  }
+
+  return {
+    projects,
+    currentProject,
+    projectSettings,
+    setProject,
+    changeCurrentProject,
+    createProject,
+    deleteProject,
+    activateBranding,
+    activateDRM,
+    getUserProjectSettings,
+    projectChangeTitle,
+    generateAPIKey,
+    generateCode,
+    generateAPIKeyFtp,
+    addApiKey,
+    deleteApiKey,
+    updateIntegration,
+    updateProtection,
+    restreamingProtectionDisable,
+    restreamingProtectionByDomain,
+    restreamingProtectionByIp,
+    restreamingProtectionByTime
+  }
 })

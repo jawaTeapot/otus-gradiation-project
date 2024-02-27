@@ -274,6 +274,48 @@ export type UpdateIntegrationDTO = {
     }
 }
 
+export type UpdateProtectionDTO = {
+    projectId: number | string;
+    input: {
+        useDirectLink: boolean;
+    }
+}
+
+export type RestreamingProtectionDisableDTO = {
+    projectId: number | string;
+    input: {
+        userAgentAllow: Array<string> | null;
+        userAgentDeny: Array<string> | null;
+    }
+}
+
+export type RestreamingProtectionByDomainDTO = {
+    projectId: number | string;
+    input: {
+        userAgentAllow: Array<string> | null;
+        userAgentDeny: Array<string> | null;
+        deniedEmptyReferrer: boolean;
+        domains: Array<string>;
+    }
+}
+
+export type RestreamingProtectionByIpDTO = {
+    projectId: number | string;
+    input: {
+        userAgentAllow: Array<string> | null;
+        userAgentDeny: Array<string> | null;
+    }
+}
+
+export type RestreamingProtectionByTimeDTO = {
+    projectId: number | string;
+    input: {
+        userAgentAllow: Array<string> | null;
+        userAgentDeny: Array<string> | null;
+        timeValid: number | null;
+    }
+}
+
 export type CreateProjectResponse = {
     userProjectCreate: {
         record: Project;
@@ -336,4 +378,43 @@ export type DeleteApiKeyResponse = {
 
 export type UpdateIntegrationResponse = {
     userProjectIntegrationUpdate: ProjectSettingsIntegration;
+}
+
+export type UpdateProtectionResponse = {
+    userProjectProtectionUpdate: {
+        response: string;
+    }
+}
+
+export type RestreamingProtectionDisableResponse = {
+    userProjectRestreamingProtectionDisable: {
+        userAgentAllow: Array<string>;
+        userAgentDeny: Array<string>;
+    }
+}
+
+export type RestreamingProtectionByDomainResponse = {
+    userProjectRestreamingProtectionByDomain: {
+        userAgentAllow: Array<string>;
+        userAgentDeny: Array<string>;
+        deniedEmptyReferrer: boolean;
+        domains: {
+            domainList: Array<string>;
+        }
+    }
+}
+
+export type RestreamingProtectionByIpResponse = {
+    userProjectRestreamingProtectionByIp: {
+        userAgentAllow: Array<string>;
+        userAgentDeny: Array<string>;
+    }
+}
+
+export type RestreamingProtectionByTimeResponse = {
+    userProjectRestreamingProtectionByTime: {
+        userAgentAllow: Array<string>;
+        userAgentDeny: Array<string>;
+        timeValid: number | null;
+    }
 }
