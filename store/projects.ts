@@ -1,25 +1,61 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import type {
-  ActivateBrandingDTO, ActivateBrandingResponse, ActivateDRMDTO,
-  ActivateDRMResponse, AddApiKeyDTO, AddApiKeyResponse,
-  CreateProjectDTO, CreateProjectResponse, DeleteApiKeyDTO,
-  DeleteApiKeyResponse, DeletedProjectDTO, DeletedProjectResponse,
-  GenerateAPIKeyDTO, GenerateAPIKeyFtpDTO, GenerateAPIKeyFtpResponse,
-  GenerateAPIKeyResponse, GenerateCodeDTO, GenerateCodeResponse,
-  Project, ProjectChangeTitleDTO, ProjectChangeTitleResponse,
-  ProjectSettings, ProjectSettingsQuery, RestreamingProtectionByDomainDTO,
-  RestreamingProtectionByDomainResponse, RestreamingProtectionByIpDTO, RestreamingProtectionByIpResponse,
-  RestreamingProtectionByTimeDTO, RestreamingProtectionByTimeResponse, RestreamingProtectionDisableDTO,
-  RestreamingProtectionDisableResponse, UpdateIntegrationDTO, UpdateIntegrationResponse,
-  UpdateProtectionDTO, UpdateProtectionResponse
+  ActivateBrandingDTO,
+  ActivateBrandingResponse,
+  ActivateDRMDTO,
+  ActivateDRMResponse,
+  AddApiKeyDTO,
+  AddApiKeyResponse,
+  CreateProjectDTO,
+  CreateProjectResponse,
+  DeleteApiKeyDTO,
+  DeleteApiKeyResponse,
+  DeletedProjectDTO,
+  DeletedProjectResponse,
+  GenerateAPIKeyDTO,
+  GenerateAPIKeyFtpDTO,
+  GenerateAPIKeyFtpResponse,
+  GenerateAPIKeyResponse,
+  GenerateCodeDTO,
+  GenerateCodeResponse,
+  Project,
+  ProjectChangeTitleDTO,
+  ProjectChangeTitleResponse,
+  ProjectSettings,
+  ProjectSettingsQuery,
+  ProjectTargetingUpdateDTO,
+  ProjectTargetingUpdateResponse,
+  RestreamingProtectionByDomainDTO,
+  RestreamingProtectionByDomainResponse,
+  RestreamingProtectionByIpDTO,
+  RestreamingProtectionByIpResponse,
+  RestreamingProtectionByTimeDTO,
+  RestreamingProtectionByTimeResponse,
+  RestreamingProtectionDisableDTO,
+  RestreamingProtectionDisableResponse,
+  UpdateIntegrationDTO,
+  UpdateIntegrationResponse,
+  UpdateProtectionDTO,
+  UpdateProtectionResponse
 } from '~/types/store/projects'
 import {
-  userProjectActivateBranding, userProjectActivateDRM, userProjectAddApiKey,
-  userProjectChangeTitle, userProjectCreate, userProjectDeleteApiKey,
-  userProjectDeleted, userProjectGenerateAPIKey, userProjectGenerateAPIKeyFtp,
-  userProjectIntegrationUpdate, userProjectProtectionUpdate, userProjectRestreamingProtectionByDomain,
-  userProjectRestreamingProtectionByIp, userProjectRestreamingProtectionByTime, userProjectRestreamingProtectionDisable,
+  userProjectActivateBranding,
+  userProjectActivateDRM,
+  userProjectAddApiKey,
+  userProjectChangeTitle,
+  userProjectCreate,
+  userProjectDeleteApiKey,
+  userProjectDeleted,
+  userProjectGenerateAPIKey,
+  userProjectGenerateAPIKeyFtp,
+  userProjectIntegrationUpdate,
+  userProjectProtectionUpdate,
+  userProjectRestreamingProtectionByDomain,
+  userProjectRestreamingProtectionByIp,
+  userProjectRestreamingProtectionByTime,
+  userProjectRestreamingProtectionDisable,
+  userProjectTargetingUpdate,
   usrProjectGenerateCode
 } from '~/apollo/mutations/projects'
 import { userProjectSettings } from '~/apollo/queries/projects'
@@ -84,7 +120,7 @@ export const useProjectsStore = defineStore('projects', () => {
     })
     // @ts-ignore
     if (error.value?.cause?.graphQLErrors[0]?.extensions?.errorData?.errorCode === 403 || error.value?.cause?.networkError?.statusCode === 401) { return }
-    projectSettings.value = { ...data.value.userProjectSettings }
+    projectSettings.value = JSON.parse(JSON.stringify({ ...data.value.userProjectSettings }))
     return data.value
   }
 
@@ -248,6 +284,15 @@ export const useProjectsStore = defineStore('projects', () => {
     return res.data
   }
 
+  const projectTargetingUpdate = async (dto: ProjectTargetingUpdateDTO) => {
+    const { mutate } = useMutation<ProjectTargetingUpdateResponse>(userProjectTargetingUpdate)
+    const res = await mutate(dto)
+    if (!res || !res.data) {
+      throw new Error('Ошибка')
+    }
+    return res.data
+  }
+
   return {
     projects,
     currentProject,
@@ -270,6 +315,7 @@ export const useProjectsStore = defineStore('projects', () => {
     restreamingProtectionDisable,
     restreamingProtectionByDomain,
     restreamingProtectionByIp,
-    restreamingProtectionByTime
+    restreamingProtectionByTime,
+    projectTargetingUpdate
   }
 })

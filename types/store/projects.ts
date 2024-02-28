@@ -1,3 +1,5 @@
+import type { TreeKey } from 'element-plus/es/components/tree-v2/src/types'
+
 export type Stat = {
     vodCount: number;
     liveCount: number;
@@ -316,6 +318,15 @@ export type RestreamingProtectionByTimeDTO = {
     }
 }
 
+export type ProjectTargetingUpdateDTO = {
+    projectId: number | string;
+    input: {
+        useTargeting: boolean;
+        showUnknown: boolean;
+        selectedCountries: Array<number> | TreeKey[];
+    }
+}
+
 export type CreateProjectResponse = {
     userProjectCreate: {
         record: Project;
@@ -417,4 +428,8 @@ export type RestreamingProtectionByTimeResponse = {
         userAgentDeny: Array<string>;
         timeValid: number | null;
     }
+}
+
+export type ProjectTargetingUpdateResponse = {
+    userProjectTargetingUpdate: ProjectSettingsTargeting;
 }

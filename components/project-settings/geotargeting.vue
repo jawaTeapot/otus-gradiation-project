@@ -44,26 +44,26 @@
             </div>
             <el-divider />
           </template>
-          <div class="relative">
+          <div class="relative py-1">
             <div v-if="!form.useTargeting" class="absolute top-0 left-0 w-full h-full z-[2] cursor-not-allowed" />
 
             <div v-if="progress" class="absolute top-0 left-0 w-full h-full z-[2] cursor-progress" />
 
-            <!--            <el-tree-->
-            <!--              ref="treeRef"-->
-            <!--              :data="form.countries"-->
-            <!--              :props="defaultProps"-->
-            <!--              show-checkbox-->
-            <!--              node-key="id"-->
-            <!--              accordion-->
-            <!--              @check="getCheckedKeys"-->
-            <!--            >-->
-            <!--            <template #default="{ node }">-->
-            <!--              <span class="custom-tree-node">-->
-            <!--                <span>{{ $t(`projectSettings.geotargeting.countries.${node.label}`) }}</span>-->
-            <!--              </span>-->
-            <!--            </template>-->
-            <!--            </el-tree>-->
+            <el-tree
+              ref="treeRef"
+              :data="form.countries"
+              :props="defaultProps"
+              show-checkbox
+              node-key="id"
+              accordion
+              @check="getCheckedKeys"
+            >
+              <template #default="{ node }">
+                <span class="custom-tree-node">
+                  <span>{{ $t(`projectSettings.geotargeting.countries.${node.label}`) }}</span>
+                </span>
+              </template>
+            </el-tree>
           </div>
         </el-form-item>
       </el-form>
@@ -95,31 +95,31 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import type { ElTree } from 'element-plus'
 import { ElMessage } from 'element-plus'
+import type { ElTree } from 'element-plus'
 import { useProjectsStore } from '~/store/projects'
 
 const { t } = useI18n()
 const treeRef = ref<InstanceType<typeof ElTree>>()
 const projectsStore = useProjectsStore()
-// const selectedIds = ref<number[]>([])
+const selectedIds = ref<number[]>([])
 const loadingSave = ref(false)
 const progress = ref(false)
 
-// onMounted(() => {
-//   for (let i = 0; i < projectsStore.projectSettings.targeting.countries.length; i++) {
-//     const country = projectsStore.projectSettings.targeting.countries[i]
-//
-//     for (let j = 0; j < country.countryList.length; j++) {
-//       const subCountry = country.countryList[j]
-//
-//       if (subCountry.isSelected) {
-//         selectedIds.value.push(subCountry.id)
-//       }
-//     }
-//   }
-//   treeRef.value!.setCheckedKeys(selectedIds.value, false)
-// })
+onMounted(() => {
+  for (let i = 0; i < projectsStore.projectSettings.targeting.countries.length; i++) {
+    const country = projectsStore.projectSettings.targeting.countries[i]
+
+    for (let j = 0; j < country.countryList.length; j++) {
+      const subCountry = country.countryList[j]
+
+      if (subCountry.isSelected) {
+        selectedIds.value.push(subCountry.id)
+      }
+    }
+  }
+    treeRef.value!.setCheckedKeys(selectedIds.value, false)
+})
 
 const form = ref({
   useTargeting: projectsStore.projectSettings.targeting.useTargeting,
@@ -127,7 +127,7 @@ const form = ref({
   countries: projectsStore.projectSettings.targeting.countries
 })
 
-const getCheckedKeys = () => {
+const getCheckedKeys = async () => {
   loadingSave.value = true
   progress.value = true
   const currentCountries = ref()
@@ -139,14 +139,14 @@ const getCheckedKeys = () => {
     currentCountries.value = treeRef.value!.getCheckedKeys(false).filter(item => item !== undefined)
   }
   try {
-    // await projectsStore.projectTargetingUpdate({
-    //   projectId: projectsStore.currentProject.id,
-    //   input: {
-    //     useTargeting: form.value.useTargeting,
-    //     showUnknown: form.value.showUnknown,
-    //     selectedCountries: currentCountries.value
-    //   }
-    // })
+    await projectsStore.projectTargetingUpdate({
+      projectId: projectsStore.currentProject.id,
+      input: {
+        useTargeting: form.value.useTargeting,
+        showUnknown: form.value.showUnknown,
+        selectedCountries: currentCountries.value
+      }
+    })
     ElMessage({
       grouping: true,
       center: true,
@@ -166,8 +166,8 @@ const getCheckedKeys = () => {
   }
 }
 
-// const defaultProps = {
-//   children: 'countryList',
-//   label: 'iso'
-// }
+const defaultProps = {
+  children: 'countryList',
+  label: 'iso'
+}
 </script>
