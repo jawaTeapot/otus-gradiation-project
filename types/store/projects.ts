@@ -327,6 +327,13 @@ export type ProjectTargetingUpdateDTO = {
     }
 }
 
+export type UpdateSkinDTO = {
+    projectId: number | string;
+    input: {
+        skinId: number;
+    }
+}
+
 export type CreateProjectResponse = {
     userProjectCreate: {
         record: Project;
@@ -432,4 +439,10 @@ export type RestreamingProtectionByTimeResponse = {
 
 export type ProjectTargetingUpdateResponse = {
     userProjectTargetingUpdate: ProjectSettingsTargeting;
+}
+
+export type UpdateSkinResponse = {
+    userProjectSkinUpdate: {
+        skinType: string;
+    }
 }

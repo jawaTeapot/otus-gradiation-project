@@ -87,8 +87,7 @@
             <geotargeting />
           </el-tab-pane>
           <el-tab-pane :label="$t('projectSettings.tabs.tab-5')" name="settings">
-            p
-            <!--        <player-settings :tab="activeTab" />-->
+            <player-settings :tab="activeTab" />
           </el-tab-pane>
           <el-tab-pane :label="$t('projectSettings.tabs.tab-6')" name="pages">
             p
@@ -118,6 +117,7 @@ import Basic from '~/components/project-settings/basic.vue'
 import Integration from '~/components/project-settings/integration.vue'
 import Protection from '~/components/project-settings/protection.vue'
 import Geotargeting from '~/components/project-settings/geotargeting.vue'
+import PlayerSettings from '~/components/project-settings/playerSettings.vue'
 
 const md = useMediaQuery('(min-width: 767px)')
 const { t } = useI18n()

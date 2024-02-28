@@ -1,62 +1,27 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import type {
-  ActivateBrandingDTO,
-  ActivateBrandingResponse,
-  ActivateDRMDTO,
-  ActivateDRMResponse,
-  AddApiKeyDTO,
-  AddApiKeyResponse,
-  CreateProjectDTO,
-  CreateProjectResponse,
-  DeleteApiKeyDTO,
-  DeleteApiKeyResponse,
-  DeletedProjectDTO,
-  DeletedProjectResponse,
-  GenerateAPIKeyDTO,
-  GenerateAPIKeyFtpDTO,
-  GenerateAPIKeyFtpResponse,
-  GenerateAPIKeyResponse,
-  GenerateCodeDTO,
-  GenerateCodeResponse,
-  Project,
-  ProjectChangeTitleDTO,
-  ProjectChangeTitleResponse,
-  ProjectSettings,
-  ProjectSettingsQuery,
-  ProjectTargetingUpdateDTO,
-  ProjectTargetingUpdateResponse,
-  RestreamingProtectionByDomainDTO,
-  RestreamingProtectionByDomainResponse,
-  RestreamingProtectionByIpDTO,
-  RestreamingProtectionByIpResponse,
-  RestreamingProtectionByTimeDTO,
-  RestreamingProtectionByTimeResponse,
-  RestreamingProtectionDisableDTO,
-  RestreamingProtectionDisableResponse,
-  UpdateIntegrationDTO,
-  UpdateIntegrationResponse,
-  UpdateProtectionDTO,
-  UpdateProtectionResponse
+  ActivateBrandingDTO, ActivateBrandingResponse, ActivateDRMDTO,
+  ActivateDRMResponse, AddApiKeyDTO, AddApiKeyResponse,
+  CreateProjectDTO, CreateProjectResponse, DeleteApiKeyDTO,
+  DeleteApiKeyResponse, DeletedProjectDTO, DeletedProjectResponse,
+  GenerateAPIKeyDTO, GenerateAPIKeyFtpDTO, GenerateAPIKeyFtpResponse,
+  GenerateAPIKeyResponse, GenerateCodeDTO, GenerateCodeResponse,
+  Project, ProjectChangeTitleDTO, ProjectChangeTitleResponse,
+  ProjectSettings, ProjectSettingsQuery, ProjectTargetingUpdateDTO,
+  ProjectTargetingUpdateResponse, RestreamingProtectionByDomainDTO, RestreamingProtectionByDomainResponse,
+  RestreamingProtectionByIpDTO, RestreamingProtectionByIpResponse, RestreamingProtectionByTimeDTO,
+  RestreamingProtectionByTimeResponse, RestreamingProtectionDisableDTO, RestreamingProtectionDisableResponse,
+  UpdateIntegrationDTO, UpdateIntegrationResponse, UpdateProtectionDTO,
+  UpdateProtectionResponse, UpdateSkinDTO, UpdateSkinResponse
 } from '~/types/store/projects'
 import {
-  userProjectActivateBranding,
-  userProjectActivateDRM,
-  userProjectAddApiKey,
-  userProjectChangeTitle,
-  userProjectCreate,
-  userProjectDeleteApiKey,
-  userProjectDeleted,
-  userProjectGenerateAPIKey,
-  userProjectGenerateAPIKeyFtp,
-  userProjectIntegrationUpdate,
-  userProjectProtectionUpdate,
-  userProjectRestreamingProtectionByDomain,
-  userProjectRestreamingProtectionByIp,
-  userProjectRestreamingProtectionByTime,
-  userProjectRestreamingProtectionDisable,
-  userProjectTargetingUpdate,
-  usrProjectGenerateCode
+  userProjectActivateBranding, userProjectActivateDRM, userProjectAddApiKey,
+  userProjectChangeTitle, userProjectCreate, userProjectDeleteApiKey,
+  userProjectDeleted, userProjectGenerateAPIKey, userProjectGenerateAPIKeyFtp,
+  userProjectIntegrationUpdate, userProjectProtectionUpdate, userProjectRestreamingProtectionByDomain,
+  userProjectRestreamingProtectionByIp, userProjectRestreamingProtectionByTime, userProjectRestreamingProtectionDisable,
+  userProjectSkinUpdate, userProjectTargetingUpdate, usrProjectGenerateCode
 } from '~/apollo/mutations/projects'
 import { userProjectSettings } from '~/apollo/queries/projects'
 
@@ -293,6 +258,16 @@ export const useProjectsStore = defineStore('projects', () => {
     return res.data
   }
 
+  const updateSkin = async (dto: UpdateSkinDTO) => {
+    const { mutate } = useMutation<UpdateSkinResponse>(userProjectSkinUpdate)
+    const res = await mutate(dto)
+    if (!res || !res.data) {
+      throw new Error('Ошибка')
+    }
+    projectSettings.value = { ...projectSettings.value, skin: { ...projectSettings.value.skin, skinType: res.data.userProjectSkinUpdate.skinType } }
+    return res.data
+  }
+
   return {
     projects,
     currentProject,
@@ -316,6 +291,7 @@ export const useProjectsStore = defineStore('projects', () => {
     restreamingProtectionByDomain,
     restreamingProtectionByIp,
     restreamingProtectionByTime,
-    projectTargetingUpdate
+    projectTargetingUpdate,
+    updateSkin
   }
 })
