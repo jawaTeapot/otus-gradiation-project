@@ -1,79 +1,104 @@
 <template>
-  <aside class="sidebar">
-    <client-only>
-      <el-menu :collapse="menu" class="h-full !border-r-0 py-2.5" router :popper-effect="$colorMode.value === 'light' ? 'dark' : 'light'">
-        <el-menu-item v-if="xl">
-          <el-icon @click="() => menu = !menu">
-            <el-badge is-dot class="menu-dot" type="success" :hidden="!headerBonus || !lg || !menu">
-              <Icon :name="menu ? 'mdi:menu' : 'ic:baseline-arrow-circle-left'" class="text-2xl" />
-            </el-badge>
-          </el-icon>
-          <template #title>
-            <NuxtLink :to="{ path: '/app' }" class="flex items-center justify-center">
-              <NuxtImg v-show="$colorMode.value === 'light'" class="w-[183px]" src="/img/logo-white.svg" alt="" />
-              <NuxtImg v-show="$colorMode.value === 'dark'" class="w-[183px]" src="/img/logo-black.svg" alt="" />
-            </NuxtLink>
-          </template>
-        </el-menu-item>
-        <el-menu-item v-for="item in menuItems" :key="item.id" :index="`/app/${item.href}`">
-          <el-icon>
-            <Icon :name="item.icon" class="text-2xl" />
-          </el-icon>
-          <!--          <el-badge-->
-          <!--            v-if="item.badge > '0' && menu"-->
-          <!--            is-dot-->
-          <!--            class="badge-dot"-->
-          <!--            type="primary"-->
-          <!--          />-->
-          <template #title>
-            <div class="relative">
-              {{ $t(item.title) }}
-              <div v-if="+item.badge > 0 && !menu" class="absolute h-[16px] min-w-[8px] top-[50%] -translate-y-1/2 -right-8 rounded-full bg-blue-500 px-1 text-xs flex items-center justify-center text-white">
-                {{ item.badge }}
-              </div>
-            </div>
-          </template>
-        </el-menu-item>
-        <el-sub-menu v-for="item in subMenu" :key="item.id" :index="item.idx">
-          <template #title>
-            <el-icon>
-              <Icon :name="item.icon" class="text-2xl" />
+  <aside class="sidebar flex flex-col justify-between">
+    <div>
+      <client-only>
+        <el-menu :collapse="menu" class="!border-r-0 py-2.5" router :popper-effect="$colorMode.value === 'light' ? 'dark' : 'light'">
+          <el-menu-item v-if="xl">
+            <el-icon @click="() => menu = !menu">
+              <el-badge is-dot class="menu-dot" type="success" :hidden="!headerBonus || !lg || !menu">
+                <Icon :name="menu ? 'mdi:menu' : 'ic:baseline-arrow-circle-left'" class="text-2xl" />
+              </el-badge>
             </el-icon>
-            <span>  {{ $t(item.title) }}</span>
-          </template>
-          <el-menu-item v-for="e of item.children" :key="e.idx" :index="`/app/${e.href}`">
-            <span> {{ $t(e.title) }}</span>
-          </el-menu-item>
-        </el-sub-menu>
 
-        <el-divider class="!mt-0 !mb-3" />
-        <app-bonus v-if="!menu && lg" />
-        <el-menu-item>
-          <el-icon>
-            <Icon :name="!hasDrm ? 'material-symbols:add-moderator' : 'material-symbols:verified-user'" class="text-2xl" />
-          </el-icon>
-          <template #title>
-            <el-button :type="!hasDrm ? 'success' : 'default'" class="w-[184px] !flex justify-center items-center mx-auto" size="large" :disabled="hasDrm" @click="() => dialogProtection = !dialogProtection">
-              <span v-if="!hasDrm">{{ $t('labels.enable-download-protection-1') }}<br>{{ $t('labels.enable-download-protection-2') }}</span>
-              <span v-else>{{ $t('labels.true-enable-download-protection-1') }}<br>{{ $t('labels.true-enable-download-protection-2') }}</span>
-            </el-button>
-          </template>
-          <app-protection v-model="dialogProtection" />
-        </el-menu-item>
-        <el-menu-item>
-          <el-icon>
-            <Icon :name="!hasBranding ? 'material-symbols:bookmark-add-rounded' : 'material-symbols:bookmark-added'" class="text-2xl" />
-          </el-icon>
-          <template #title>
-            <el-button :type="!hasBranding ? 'success' : 'default'" class="w-[184px] !flex justify-center items-center !mx-auto" size="large" :disabled="hasBranding" @click="() => dialogBrand = !dialogBrand">
-              <span v-if="!hasBranding">{{ $t('labels.enable-branding-1') }}<br>{{ $t('labels.enable-branding-2') }}</span>
-              <span v-else>{{ $t('labels.true-enable-branding-1') }}<br>{{ $t('labels.true-enable-branding-2') }}</span>
-            </el-button>
-            <app-brend v-model="dialogBrand" />
-          </template>
-        </el-menu-item>
-      </el-menu>
-    </client-only>
+            <template #title>
+              <NuxtLink :to="{ path: '/app' }" class="flex items-center justify-center">
+                <NuxtImg v-show="$colorMode.value === 'light'" class="w-[183px]" src="/img/logo-white.svg" alt="" />
+
+                <NuxtImg v-show="$colorMode.value === 'dark'" class="w-[183px]" src="/img/logo-black.svg" alt="" />
+              </NuxtLink>
+            </template>
+          </el-menu-item>
+
+          <el-menu-item v-for="item in menuItems" :key="item.id" :index="`/app/${item.href}`">
+            <el-icon class="relative">
+              <template #default>
+                <Icon :name="item.icon" class="text-2xl" />
+
+                <div v-if="item.badge > '0' && menu" class="absolute top-0 -translate-y-1/2 -right-1 h-[8px] min-w-[8px]  rounded-full bg-blue-500" />
+              </template>
+            </el-icon>
+
+            <template #title>
+              <div class="relative">
+                {{ $t(item.title) }}
+
+                <div v-if="+item.badge > 0 && !menu" class="absolute h-[16px] min-w-[8px] top-[50%] -translate-y-1/2 -right-8 rounded-full bg-blue-500 px-1 text-xs flex items-center justify-center text-white">
+                  {{ item.badge }}
+                </div>
+              </div>
+            </template>
+          </el-menu-item>
+
+          <el-sub-menu v-for="item in subMenu" :key="item.id" :index="item.idx">
+            <template #title>
+              <el-icon>
+                <Icon :name="item.icon" class="text-2xl" />
+              </el-icon>
+
+              <span>{{ $t(item.title) }}</span>
+            </template>
+
+            <el-menu-item v-for="e of item.children" :key="e.idx" :index="`/app/${e.href}`">
+              <span>{{ $t(e.title) }}</span>
+            </el-menu-item>
+          </el-sub-menu>
+
+          <el-divider class="!mt-0 !mb-3" />
+
+          <app-bonus v-if="!menu && lg && headerBonus" />
+
+          <el-menu-item>
+            <el-icon>
+              <Icon :name="!hasDrm ? 'material-symbols:add-moderator' : 'material-symbols:verified-user'" class="text-2xl" />
+            </el-icon>
+
+            <template #title>
+              <el-button :type="!hasDrm ? 'success' : 'default'" class="w-[184px] !flex justify-center items-center mx-auto" size="large" :disabled="hasDrm" @click="() => dialogProtection = !dialogProtection">
+                <span v-if="!hasDrm">{{ $t('labels.enable-download-protection-1') }}<br>{{ $t('labels.enable-download-protection-2') }}</span>
+
+                <span v-else>{{ $t('labels.true-enable-download-protection-1') }}<br>{{ $t('labels.true-enable-download-protection-2') }}</span>
+              </el-button>
+            </template>
+
+            <app-protection v-model="dialogProtection" />
+          </el-menu-item>
+
+          <el-menu-item>
+            <el-icon>
+              <Icon :name="!hasBranding ? 'material-symbols:bookmark-add-rounded' : 'material-symbols:bookmark-added'" class="text-2xl" />
+            </el-icon>
+
+            <template #title>
+              <el-button :type="!hasBranding ? 'success' : 'default'" class="w-[184px] !flex justify-center items-center !mx-auto" size="large" :disabled="hasBranding" @click="() => dialogBrand = !dialogBrand">
+                <span v-if="!hasBranding">{{ $t('labels.enable-branding-1') }}<br>{{ $t('labels.enable-branding-2') }}</span>
+
+                <span v-else>{{ $t('labels.true-enable-branding-1') }}<br>{{ $t('labels.true-enable-branding-2') }}</span>
+              </el-button>
+
+              <app-brend v-model="dialogBrand" />
+            </template>
+          </el-menu-item>
+        </el-menu>
+      </client-only>
+    </div>
+
+    <div v-if="!menu" class="flex items-center justify-center py-3">
+      <span class="mr-4 text-sm">&copy; 2013–{{ new Date().getFullYear() }}</span>
+
+      <el-link type="info" href="https://hwd.boomstream.com/ru/contact.html">
+        {{ $t('footer.logo') }}
+      </el-link>
+    </div>
   </aside>
 </template>
 
@@ -223,38 +248,7 @@ const subMenu = ref([
 </script>
 <style lang="scss" scoped>
 .sidebar {
-  @apply max-w-[270px] overflow-y-scroll z-[1];
+  @apply max-w-[270px] overflow-y-scroll z-[1] ;
   box-shadow: var(--el-box-shadow-light);
-  //:deep(.el-menu-item) {
-  //  @apply h-[50px];
-  //  span {
-  //    @apply h-[50px];
-  //  }
-  //}
-  //:deep(.el-menu-item *) {
-  //  vertical-align: middle;
-  //}
 }
-
-//.my-btn {
-//  span {
-//    @apply h-auto #{!important};
-//  }
-//}
-//
-//:deep(.el-badge__content) {
-//  top: -19px;
-//}
-//
-//.menu-dot {
-//  :deep(.el-badge__content.is-fixed.is-dot) {
-//    @apply right-0 top-0;
-//  }
-//}
-//
-//.badge-dot {
-//  :deep(.el-badge__content) {
-//    top: -35px;
-//  }
-//}
 </style>

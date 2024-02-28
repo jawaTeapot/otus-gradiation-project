@@ -12,21 +12,26 @@
         <div>
           <div class="flex items-center justify-between gap-3 px-3">
             <select-project />
+
             <el-button text class="!p-0" @click="close">
               <Icon name="material-symbols-light:close" class="text-2xl" />
             </el-button>
           </div>
+
           <el-divider class="!mb-0 !mt-[20px]" />
         </div>
       </template>
+
       <template #default>
-        <app-sidebar class="!bg-transparent !shadow-none" />
+        <app-sidebar class="!bg-transparent !shadow-none h-full" />
       </template>
     </el-drawer>
   </client-only>
 </template>
 
 <script setup lang="ts">
+import SelectProject from '~/components/app/selectProject.vue'
+
 const props = defineProps<{
   modelValue: boolean,
 }>()

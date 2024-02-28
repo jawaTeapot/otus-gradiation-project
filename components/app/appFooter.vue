@@ -12,19 +12,6 @@
         {{ $t(link.title) }}
       </el-link>
     </div>
-    <el-divider class="!my-5" />
-    <div class="flex items-center justify-between">
-      <div class="mr-4">
-        <NuxtImg v-show="$colorMode.value === 'light'" src="/img/logo-white.svg" alt="" class="max-w-[150px]" />
-        <NuxtImg v-show="$colorMode.value === 'dark'" src="/img/logo-black.svg" alt="" class="max-w-[150px]" />
-      </div>
-      <div class="flex items-center">
-        <span class="mr-4 text-sm">&copy; 2013–{{ new Date().getFullYear() }}</span>
-        <el-link type="info" href="https://hwd.boomstream.com/ru/contact.html">
-          {{ $t('footer.logo') }}
-        </el-link>
-      </div>
-    </div>
   </footer>
 </template>
 

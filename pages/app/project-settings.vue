@@ -4,13 +4,13 @@
       <template #template>
         <el-skeleton-item variant="h1" style="width: 250px" />
 
-        <div class="mt-5 grid grid-cols-8 gap-5">
-          <el-skeleton-item variant="text" style="height: 30px" />
-          <el-skeleton-item variant="text" style="height: 30px" />
-          <el-skeleton-item variant="text" style="height: 30px" />
-          <el-skeleton-item variant="text" style="height: 30px" />
-          <el-skeleton-item variant="text" style="height: 30px" />
-          <el-skeleton-item variant="text" style="height: 30px" />
+        <div class="mt-5 flex items-center gap-3 md:gap-5">
+          <el-skeleton-item variant="text" style="height: 30px; max-width: 130px;" />
+          <el-skeleton-item variant="text" style="height: 30px; max-width: 130px;" />
+          <el-skeleton-item variant="text" style="height: 30px; max-width: 130px;" />
+          <el-skeleton-item v-if="md" variant="text" style="height: 30px; max-width: 130px;" />
+          <el-skeleton-item v-if="md" variant="text" style="height: 30px; max-width: 130px;" />
+          <el-skeleton-item v-if="md" variant="text" style="height: 30px; max-width: 130px;" />
         </div>
 
         <div class="grid grid-cols-1 xl:grid-cols-[1fr_390px] mt-5 gap-5">
@@ -119,6 +119,7 @@ import Integration from '~/components/project-settings/integration.vue'
 import Protection from '~/components/project-settings/protection.vue'
 import Geotargeting from '~/components/project-settings/geotargeting.vue'
 
+const md = useMediaQuery('(min-width: 767px)')
 const { t } = useI18n()
 const loading = ref<boolean>(true)
 const projectsStore = useProjectsStore()
