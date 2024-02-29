@@ -1,7 +1,7 @@
 import { describe, beforeEach, expect, it } from 'vitest'
 import { setActivePinia, createPinia } from 'pinia'
 import { mount } from '@vue/test-utils'
-import component from '../components/auth/authFooter.vue'
+import component from '~/components/auth/authFooter.vue'
 
 describe('authFooter component', () => {
   function buildWrapper (path = '/app') {
