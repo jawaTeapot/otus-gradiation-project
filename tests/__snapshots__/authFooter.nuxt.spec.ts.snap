@@ -1,0 +1,13 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`authFooter component > mounts without errors 1`] = `
+"<footer>
+  <div class="flex items-center justify-between p-2 md:p-3">
+    <div class="flex items-center"><span class="mr-3">© 2013–2024</span><a class="el-link el-link--info is-underline" href="https://hwd.boomstream.com/ru/contact.html" target="_self">
+        <!--v-if--><span class="el-link__inner">footer.logo</span>
+        <!--v-if-->
+      </a></div>
+    <nuxt-link-stub to="[object Object]" type="primary"></nuxt-link-stub>
+  </div>
+</footer>"
+`;
